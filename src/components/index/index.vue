@@ -24,5 +24,8 @@
 </script>
 
 <style>
+  .Index{
+    font-size: 18px;
+  }
 
 </style>
