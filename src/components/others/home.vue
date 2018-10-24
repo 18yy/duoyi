@@ -1,18 +1,20 @@
 <template>
-  <div class="home">
+  <div class="Home">
     <el-container>
         <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-main>
+            <router-view></router-view>
+        </el-main>
         <Footer class="footer"></Footer>
     </el-container>
   </div>
 </template>
 
 <script>
-import Footer from './others/footer'
+import Footer from './Footer'
 
 export default {
-  name: 'index',
+  name: 'Home',
   components: {Footer},
   data () {
     return {
@@ -28,9 +30,10 @@ body {
     margin:0;
     padding:0; 
 }
+.el-header {
+  background-color:#312e2e;
+}
 .el-container {
-    color:#fff;
-    background-color:#312e2e;
     clear:both;
     position:absolute;
     top:0px;

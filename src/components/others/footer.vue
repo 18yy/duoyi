@@ -37,38 +37,13 @@
             </el-menu-item>
           </router-link>
         </el-menu>
-      </el-row> 
-      <!-- <tabbar>
-      <tabbar-item>
-        <img slot="icon" src="../../assets/index_visited.svg">
-        <span slot="label">Wechat</span>
-      </tabbar-item>
-      <tabbar-item show-dot>
-        <img slot="icon" src="../../assets/team_visited.png">
-        <span slot="label">Message</span>
-      </tabbar-item>
-      <tabbar-item selected link="/component/demo">
-        <img slot="icon" src="../../assets/sign_visited.png">
-        <span slot="label">Explore</span>
-      </tabbar-item>
-      <tabbar-item badge="2">
-        <img slot="icon" src="../../assets/about_visited.png">
-        <span slot="label">News</span>
-      </tabbar-item>
-    </tabbar> -->
+      </el-row>
     </div>
 </template>
 
 <script>
-import { Tabbar, TabbarItem, Group, Cell } from 'vux'
 
 export default {
-  components: {
-    Tabbar,
-    TabbarItem,
-    Group,
-    Cell
-  },
   name: 'Footer',
   data () {
     return {

@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Footer from '@/components/others/Footer'
-import index from '@/components/index'
+import Home from '@/components/others/Home'
+import Index from '@/components/index/Index'
+import Team from '@/components/team/Team'
+import Sign from '@/components/sign/Sign'
+import About from '@/components/about/About'
 
 Vue.use(Router)
 
@@ -10,25 +14,25 @@ export default new Router({
 	mode: 'history',
 	routes: [{
 		path: '/',
-		name: 'index',
-		component: index,
+		name: 'Home',
+		component: Home,
 		redirect: '/index',
         children:[{
-			path: '/index',
-			name: 'index',
-			component: index
+			path: 'index',
+			name: 'Index',
+			component: Index
 		},{
-			path: '/team',
-			name: 'team',
-			component: index
+			path: 'team',
+			name: 'Team',
+			component: Team
 		},{
-			path: '/sign',
-			name: 'sign',
-			component: index
+			path: 'sign',
+			name: 'Sign',
+			component: Sign
 		},{
-			path: '/about',
-			name: 'about',
-			component: index
+			path: 'about',
+			name: 'About',
+			component: About
 		}]
 	}]
 })
