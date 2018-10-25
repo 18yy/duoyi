@@ -1,31 +1,27 @@
 <template>
-    <div class="Index">
-        {{msg}}
-    </div>
+  <div class="">
+    <index-header></index-header>
+    <second-hand></second-hand>
+  </div>
 </template>
 <script>
-    export default {
-        name: 'Index',
-        data () {
-            return {
-                msg: "这是首页"
-            }
-        },
-        methods:{
-            
-        },
-        created(){
-            
-        },
-        mounted(){
+  import IndexHeader from './components/index-header'
+  import SecondHand from './components/second-hand'
 
-        }
+  export default {
+    name: 'index',
+    components: {
+      IndexHeader,
+      SecondHand
     }
+  }
 </script>
 
 <style>
-  .Index{
-    font-size: 18px;
+  .el-main{
+    padding: 0;
   }
-
+  body{
+    background:rgb(239,239,244);
+  }
 </style>
