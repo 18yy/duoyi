@@ -7,6 +7,7 @@ import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
 import Sign from '@/components/sign/Sign'
 import About from '@/components/about/About'
+import SecondHand from '@/components/index/components/second-hand'
 
 Vue.use(Router)
 
