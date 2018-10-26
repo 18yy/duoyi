@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Footer from '@/components/others/Footer'
+import Login from '@/components/login/Login'
 import Home from '@/components/others/Home'
 import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
@@ -13,10 +13,13 @@ Vue.use(Router)
 export default new Router({
 	mode: 'history',
 	routes: [{
+		path: '/login',
+		name: 'Login',
+		component: Login
+	},{
 		path: '/',
 		name: 'Home',
 		component: Home,
-		redirect: '/index',
         children:[{
 			path: 'index',
 			name: 'Index',

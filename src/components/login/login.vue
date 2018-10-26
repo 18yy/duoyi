@@ -1,18 +1,20 @@
 <template>
-    <div class="Index">
-        {{msg}} 
+    <div class="Login">
+        <router-link :to="{ name:'Index', params: {title: '首页'} }">
+            <el-button type="success">登录</el-button>
+        </router-link>
     </div>
 </template>
 <script>
     export default {
-        name: 'Index',
+        name: 'Login',
         data () {
             return {
-                msg: "首页"
+                
             }
         },
         methods:{
- 
+            
         },
         created(){
             
@@ -24,8 +26,5 @@
 </script>
 
 <style>
-  .Index{
-    font-size: 18px;
-  }
 
 </style>

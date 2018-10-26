@@ -1,25 +1,45 @@
 <template>
   <div class="Home">
     <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+            <x-header :left-options="{showBack: false}" class="header">
+              <span style="color:#494949;font-weight:bold;">{{this.$route.params.title}}</span>
+            </x-header>
+            <!-- <x-header :left-options="{backText: ''}"></x-header> -->
+        </el-header>
         <el-main>
             <router-view></router-view>
         </el-main>
-        <Footer class="footer"></Footer>
+        <el-footer>
+          <Footer class="footer"></Footer>
+        </el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
+import { XHeader } from 'vux'
 import Footer from './Footer'
 
 export default {
   name: 'Home',
-  components: {Footer},
+  components: {
+    XHeader,
+    Footer
+  },
   data () {
     return {
-      msg: '这是首页'
+      title: "首页"
     }
+  },
+  methods:{
+
+  },
+  created(){
+      
+  },
+  mounted(){
+
   }
 }
 </script>
@@ -30,24 +50,33 @@ body {
     margin:0;
     padding:0; 
 }
-.el-header {
-  background-color:#312e2e;
-}
 .el-container {
+    width:100%;
     clear:both;
     position:absolute;
     top:0px;
     bottom:0px;
-    width:100%;
+}
+.el-header {
+  height: 62px;
+  padding: 0;
+}
+.header {
+  padding-top: 18px;
+  background-color: #f9f9f9;
+}
+.el-main {
+  margin-top: 18px;
+}
+.el-footer {
+  height:48px;
 }
 .footer {
-    height:52px;
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
     position:absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
   } 
 </style>
