@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="indexHead">
     <div class="tabBigBox vux-1px-b">
       <div class="tabImg">
         <img :src="menuSrc" alt="menu">
@@ -7,11 +7,9 @@
       <div class="tabImg">
         <img :src="searchSrc" alt="search">
       </div>
-      <router-link to="/secondHand">
         <tab :line-width="0" active-color="rgb(229, 111, 66)" default-color="#ccc" class="tabBox">
           <tab-item class="tabItem" v-for="(item,index) in tabName" :key="index" :selected="firstTab === item">{{item}}</tab-item>
         </tab>
-      </router-link>
     </div>
   </div>
 </template>
@@ -44,10 +42,12 @@
 
 <style lang="less">
   @import '~vux/src/styles/1px.less';
+
   .tabBigBox{
     width: 100%;
     height: 44px;
-    position: relative;
+   position: fixed;
+    z-index: 999;
     background: white;
   }
   .tabBox {
