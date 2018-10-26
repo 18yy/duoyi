@@ -4,17 +4,18 @@
       <img src="" alt="" class="goodsImg">
       <div class="cardInfo">
         <div class="goodsInfo">
-        <div>
-          <p class="goodsName">{{item.goodsName}}</p>
-          <p class="tradeType">#{{item.tradeType}}#</p>
-        </div>
-          
-          <p class="goodsPrice">￥<span class="intNum">22</span>.22</p>
+          <div>
+            <p class="goodsName">{{item.goodsName}}</p>
+            <p class="tradeType">#{{item.tradeType}}#</p>
+          </div>
+
+          <p class="goodsPrice">￥
+            <span class="intNum">22</span>.22</p>
         </div>
 
         <div class="sellerInfo">
           <img src="" alt="" class="sellerImg">
-          <div >
+          <div>
             <p class="sellerName">{{item.sellerName}}</p>
             <p class="sellerAdr">{{item.sellerAdr}}</p>
           </div>
@@ -28,26 +29,26 @@
     name: 'second-hand',
     data() {
       return {
-        cardImg:[{
-          imgSrc:'',
-          goodsName:'二手书籍数据结构',
-          tradeType:'线下交易',
-          sellerName:'yibaoyyyyyy',
-          sellerAdr:'生活区西区'
-
-        },{
-           imgSrc: '',
+        cardImg: [{
+            imgSrc: '',
             goodsName: '二手书籍数据结构',
             tradeType: '线下交易',
             sellerName: 'yibaoyyyyyy',
             sellerAdr: '生活区西区'
-        },{
-           imgSrc: '',
+
+          }, {
+            imgSrc: '',
+            goodsName: '二手书籍数据结构',
+            tradeType: '线下交易',
+            sellerName: 'yibaoyyyyyy',
+            sellerAdr: '生活区西区'
+          }, {
+            imgSrc: '',
             goodsName: '二手书籍数据结构哈哈哈哈',
             tradeType: '线下交易',
             sellerName: 'yibaoyyyyyy',
             sellerAdr: '生活区西区'
-        },{
+          }, {
             imgSrc: '',
             goodsName: '二手书籍数据结构哈哈哈哈',
             tradeType: '线下交易',
@@ -72,7 +73,8 @@
             tradeType: '线下交易',
             sellerName: 'yibaoyyyyyy',
             sellerAdr: '生活区西区'
-          }]
+          }
+        ]
 
       }
     },
@@ -86,12 +88,13 @@
 
     }
   }
+
 </script>
 
 <style>
   .secondHand {
     box-sizing: border-box;
-    padding: 55px 0;
+    padding: 60px 0 10px 0;
     width: 92%;
     height: auto;
     margin: 0 auto;
@@ -137,48 +140,57 @@
     display: flex;
     justify-content: space-between;
   }
-  .goodsInfo .goodsName{
+
+  .goodsInfo .goodsName {
     padding-right: 3px;
     font-size: 14px;
     line-height: 16px;
-    color: rgb(127,127,127);
+    color: rgb(127, 127, 127);
   }
-  .goodsInfo .tradeType{
+
+  .goodsInfo .tradeType {
     font-size: 10px;
-    color: rgb(209,209,214);
+    color: rgb(209, 209, 214);
     padding-top: 5px;
   }
-  .goodsInfo .goodsPrice{
+
+  .goodsInfo .goodsPrice {
     font-size: 14px;
-    color: rgb(255,59,48);
+    color: rgb(255, 59, 48);
   }
-  .goodsInfo .goodsPrice .intNum{
+
+  .goodsInfo .goodsPrice .intNum {
     font-size: 16px;
   }
-  .sellerInfo{
-       display: flex;
-  align-items: flex-start;
+
+  .sellerInfo {
+    display: flex;
+    align-items: flex-start;
     position: absolute;
     bottom: 10px;
   }
-  .sellerInfo .sellerImg{
+
+  .sellerInfo .sellerImg {
     width: 26px;
     height: 26px;
     border-radius: 50%;
     background: yellow;
     margin-right: 9px;
-    
+
   }
-  .sellerInfo div{
+
+  .sellerInfo div {
     flex: 1;
     font-size: 12px;
     color: rgb(186, 186, 187);
-     line-height: 15px;
-    
+    line-height: 15px;
+
   }
-  .sellerInfo div .sellerAdr{
+
+  .sellerInfo div .sellerAdr {
     font-size: 10px;
     color: #ffcc99;
     line-height: 13px;
   }
+
 </style>

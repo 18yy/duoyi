@@ -23,6 +23,5 @@
   }
   body{
     background:rgb(239,239,244);
-    overflow: hidden;
   }
 </style>
