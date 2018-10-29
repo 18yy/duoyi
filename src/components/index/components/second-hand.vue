@@ -9,8 +9,8 @@
             <p class="tradeType">#{{item.tradeType}}#</p>
           </div>
 
-          <p class="goodsPrice">￥
-            <span class="intNum">22</span>.22</p>
+          <p class="goodsPrice">￥22.2</p>
+            <!-- <span class="intNum">22</span>.22</p> -->
         </div>
 
         <div class="sellerInfo">
@@ -155,7 +155,7 @@
   }
 
   .goodsInfo .goodsPrice {
-    font-size: 14px;
+    font-size: 13px;
     color: rgb(255, 59, 48);
   }
 
