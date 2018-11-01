@@ -57,6 +57,14 @@ body {
 .el-main {
   margin-top: 25px;
 }
+.el-header {
+  height: 62px;
+  padding: 0;
+}
+.header {
+  padding-top: 18px;
+  background-color: #f9f9f9;
+}
 .el-footer {
   height:48px;
 }
