@@ -1,12 +1,6 @@
 <template>
   <div class="Home">
     <el-container>
-        <el-header>
-            <x-header :left-options="{showBack: false}" class="header">
-              <span style="color:#494949;font-weight:bold;">{{this.$route.params.title}}</span>
-            </x-header>
-            <!-- <x-header :left-options="{backText: ''}"></x-header> -->
-        </el-header>
         <el-main>
             <router-view></router-view>
         </el-main>
@@ -19,17 +13,20 @@
 
 <script>
 import { XHeader } from 'vux'
+import Header from './Header'
 import Footer from './Footer'
 
 export default {
   name: 'Home',
   components: {
-    XHeader,
+    Header,
     Footer
   },
   data () {
     return {
-      title: "首页"
+      title: "首页",
+      IsBack: true,
+      pre_path: "/about"
     }
   },
   methods:{
@@ -57,16 +54,8 @@ body {
     top:0px;
     bottom:0px;
 }
-.el-header {
-  height: 62px;
-  padding: 0;
-}
-.header {
-  padding-top: 18px;
-  background-color: #f9f9f9;
-}
 .el-main {
-  margin-top: 18px;
+  margin-top: 25px;
 }
 .el-footer {
   height:48px;

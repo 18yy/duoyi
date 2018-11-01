@@ -1,14 +1,14 @@
 <template>
-    <div class="Login">
+    <div class="Register">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <Header :title="title" :IsBack="IsBack" :pre_name="pre_name" id="header"></Header>
             </el-header>
             <el-main>
                 <el-card>
                     <img src="../../assets/index.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="130px">
-                        <el-form-item label="登录名" prop="name">
+                        <el-form-item label="用户名" prop="name">
                             <input v-model="registerForm.name" id="name"/>
                         </el-form-item>
                         <el-form-item label="密码" prop="password">
@@ -27,15 +27,15 @@
 import Header from '../others/Header'
 
 export default {
-    name: 'Login',
+    name: 'Register',
     components: {
         Header
     },
     data () {
         return {
-            title: "登录",
-            IsBack: false,
-            pre_path: "/login",
+            title: "注册",
+            IsBack: true,
+            pre_name: "Login",
             registerForm: {
                 name: "",
                 password: ""
@@ -54,15 +54,15 @@ export default {
     },
     methods:{
         submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-        if (valid) {
-            alert('submit!');
-        } else {
-            console.log('error submit!!');
-            return false;
+            this.$refs[formName].validate((valid) => {
+            if (valid) {
+                alert('submit!');
+            } else {
+                console.log('error submit!!');
+                return false;
+            }
+            });
         }
-        });
-    }
     },
     created(){
         

@@ -8,28 +8,28 @@
           active-text-color	="rgb(229, 111, 66)"
           mode="horizontal"
           @select="handleSelect">
-          <router-link :to="{ name:'Index', params: {title: '首页'} }">
+          <router-link :to="{ name:'Index'}">
             <el-menu-item  index="Index" class="btn" style="line-height:18px;">
               <img v-if="this.currenIndex != 'Index'" src="../../assets/index.png"/>
               <img v-if="this.currenIndex == 'Index'" src="../../assets/index_visited.svg"/>
               <span>首页</span>
             </el-menu-item>
           </router-link>
-          <router-link :to="{ name:'Team', params: {title: '组队'} }">
+          <router-link :to="{ name:'Team'}">
             <el-menu-item index="team" class="btn" style="line-height:18px;">
               <img v-if="this.currenIndex != 'team'" src="../../assets/team.png"/>
               <img v-if="this.currenIndex == 'team'" src="../../assets/team_visited.png"/>
               <span>组队</span>
             </el-menu-item>
           </router-link>
-          <router-link :to="{ name:'Sign', params: {title: '打卡'} }">
+          <router-link :to="{ name:'Sign'}">
             <el-menu-item index="sign" class="btn" style="line-height:18px;">
               <img v-if="this.currenIndex != 'sign'" src="../../assets/sign.png"/>
               <img v-if="this.currenIndex == 'sign'" src="../../assets/sign_visited.png"/>
               <span>打卡</span>
             </el-menu-item>
           </router-link>
-          <router-link :to="{ name:'About', params: {title: '我的'} }">
+          <router-link :to="{ name:'About'}">
             <el-menu-item index="about" class="btn" style="line-height:18px;">
               <img v-if="this.currenIndex != 'about'" src="../../assets/about.png"/>
               <img v-if="this.currenIndex == 'about'" src="../../assets/about_visited.png"/>

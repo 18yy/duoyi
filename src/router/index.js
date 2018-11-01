@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Login from '@/components/login/Login'
+import Register from '@/components/login/Register'
 import Home from '@/components/others/Home'
 import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
@@ -13,6 +14,10 @@ Vue.use(Router)
 export default new Router({
 	mode: 'history',
 	routes: [{
+		path: '/register',
+		name: 'Register',
+		component: Register
+	},{
 		path: '/login',
 		name: 'Login',
 		component: Login
@@ -20,6 +25,7 @@ export default new Router({
 		path: '/',
 		name: 'Home',
 		component: Home,
+		redirect: Index,
         children:[{
 			path: 'index',
 			name: 'Index',
