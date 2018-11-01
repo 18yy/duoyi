@@ -6,9 +6,11 @@
         <div class="tabImg">
           <img :src="menuSrc" alt="menu">
         </div>
-        <div class="tabImg">
-          <img :src="searchSrc" alt="search">
-        </div>
+        <router-link to="/search">
+          <div class="tabImg">
+            <img :src="searchSrc" alt="search">
+          </div>
+        </router-link>
         <tab :line-width="0" active-color="rgb(229, 111, 66)" default-color="#ccc" class="tabBox">
           <tab-item class="tabItem" v-for="(item,index) in tabName" :key="index" :selected="firstTab === item" @click.native="changeTab(index)">{{item}}</tab-item>
         </tab>
@@ -78,7 +80,7 @@
     width: 100%;
     height: 44px;
     position: fixed;
-    z-index: 999;
+    z-index: 99;
     margin-top: -1px;
     background-color: #f9f9f9;
   }
