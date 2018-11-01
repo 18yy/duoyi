@@ -55,6 +55,7 @@ body {
     bottom:0px;
 }
 .el-main {
+  padding: 0;
   margin-top: 25px;
 }
 .el-header {

@@ -91,7 +91,7 @@
 
 </script>
 
-<style>
+<style scoped>
   .secondHand {
     box-sizing: border-box;
     padding: 60px 0 10px 0;

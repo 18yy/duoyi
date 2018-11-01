@@ -9,7 +9,6 @@ import Team from '@/components/team/Team'
 import Sign from '@/components/sign/Sign'
 import About from '@/components/about/About'
 import Search from '@/components/index/components/search'
-import Se from '@/components/index/components/second-hand'
 
 Vue.use(Router)
 
@@ -45,8 +44,8 @@ export default new Router({
 			name: 'About',
 			component: About
 		},{
-          path: 'search',
-          component: Search
+      path: 'search',
+      component: Search
     }]
 	}]
 })
