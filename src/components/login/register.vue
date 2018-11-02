@@ -2,7 +2,7 @@
     <div class="Register">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_name="pre_name" id="header"></Header>
+                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
             </el-header>
             <el-main>
                 <el-card>
@@ -35,7 +35,7 @@ export default {
         return {
             title: "注册",
             IsBack: true,
-            pre_name: "Login",
+            pre_path: "/login",
             registerForm: {
                 name: "",
                 password: ""
