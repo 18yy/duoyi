@@ -42,7 +42,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 body {
     margin:0;
     padding:0; 
@@ -55,6 +55,7 @@ body {
     bottom:0px;
 }
 .el-main {
+  padding: 0;
   margin-top: 25px;
 }
 .el-header {
