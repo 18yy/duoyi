@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Footer from '@/components/others/Footer'
+import Login from '@/components/login/Login'
+import Register from '@/components/login/Register'
 import Home from '@/components/others/Home'
 import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
@@ -11,16 +12,26 @@ import Paid from '@/components/pay/paid'
 import Paying2 from '@/components/pay/paying2'
 import Paying3 from '@/components/pay/paying3'
 import Button from '@/components/pay/button'
+import Search from '@/components/index/components/search'
+import Se from '@/components/index/components/second-hand'
 
 Vue.use(Router)
 
 export default new Router({
 	mode: 'history',
 	routes: [{
+		path: '/register',
+		name: 'Register',
+		component: Register
+	},{
+		path: '/login',
+		name: 'Login',
+		component: Login
+	},{
 		path: '/',
 		name: 'Home',
 		component: Home,
-		redirect: '/index',
+		redirect: Index,
         children:[{
 			path: 'index',
 			name: 'Index',
@@ -41,6 +52,10 @@ export default new Router({
 			path: 'button',
 			name: 'Button',
 			component: Button
+    },{
+      path: 'search',
+      name: 'Search',
+      component: Search
     }]  
     },{
       path:'/paid',
