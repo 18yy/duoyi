@@ -13,7 +13,6 @@ import Paying2 from '@/components/pay/Paying2'
 import Paying3 from '@/components/pay/Paying3'
 import Button from '@/components/pay/Button'
 import Search from '@/components/index/components/search'
-import Se from '@/components/index/components/second-hand'
 
 Vue.use(Router)
 
@@ -66,4 +65,5 @@ export default new Router({
 		name: 'Paid',
 		component: Paid
 	  }]
+
 })

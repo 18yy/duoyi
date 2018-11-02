@@ -51,6 +51,10 @@ export default {
     mounted(){
         if(this.IsBack){
             this.options.showBack = true;
+        }else if(this.title == "注册") {
+            this.styleObject.color = "#EA8A62";
+        }else if(this.title == "登录") {
+            this.styleObject.color = "#E56F42";
         }
         if(this.title == "注册") {
             this.styleObject.color = "#E56F42";

@@ -1,6 +1,5 @@
 <template>
   <div class="">
-    <!-- <index-header></index-header> -->
     <div class="indexHead">
       <div class="tabBigBox vux-1px-b">
         <div class="tabImg">
@@ -16,7 +15,6 @@
         </tab>
       </div>
     </div>
-    <!-- <second-hand></second-hand> -->
     <div :is="currentView" keep-alive></div>
   </div>
 </template>
@@ -65,7 +63,7 @@
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
   .el-main {
     padding: 0;
   }
