@@ -1,6 +1,9 @@
 <template>
   <div class="Home">
     <el-container>
+        <el-header>
+          <Header class="header" :title="title" :IsBack="IsBack" :pre_path="pre_path"></header>
+        </el-header>
         <el-main>
             <router-view></router-view>
         </el-main>
@@ -58,12 +61,12 @@ body {
   margin-top: 25px;
 }
 .el-header {
-  height: 62px;
   padding: 0;
 }
 .header {
-  padding-top: 18px;
-  background-color: #f9f9f9;
+  height: 45px;  
+  margin-top: 25px;
+  background-color: #FEECDC;
 }
 .el-footer {
   height:48px;
