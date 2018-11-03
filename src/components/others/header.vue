@@ -1,5 +1,5 @@
 <template>
-    <x-header :left-options="options" @on-click-back="backTo">
+    <x-header :left-options="options" @on-click-back="backTo()">
         <span :style="styleObject">{{title}}</span>
     </x-header>
 </template>
@@ -51,8 +51,9 @@ export default {
     mounted(){
         if(this.IsBack){
             this.options.showBack = true;
-        }else if(this.title == "注册") {
-            this.styleObject.color = "#EA8A62";
+        }
+        if(this.title == "注册") {
+            this.styleObject.color = "#E56F42";
         }else if(this.title == "登录") {
             this.styleObject.color = "#E56F42";
         }
