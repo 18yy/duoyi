@@ -10,7 +10,7 @@
             <p class="tradeType">#{{item.tradeType}}#</p>
           </div>
 
-          <p class="goodsPrice"> {{$store.state.count}}</p>
+          <p class="goodsPrice"> ￥22.2</p>
             <!-- <span class="intNum">22</span>.22</p> -->
         </div>
 

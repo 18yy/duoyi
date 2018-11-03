@@ -1,55 +1,115 @@
 <template>
   <div>
-    <div class="mask" v-show="isReallyShow" @click="hideSlide"></div>
-    <div class="slideContent" v-show="isReallyShow">
-    
-    </div>
+    <transition name="fade">
+      <div class="mask" v-show="isReallyShow" @click="hideSlide"></div>
+    </transition>
+    <transition name="slide-fade">
+      <div class="slideContent" v-show="isReallyShow">
+        <div class="slideUserInfo">
+          <div>
+            <div class="userAvatar">
+
+            </div>
+            <p class="userName">一包</p>
+            <p class="userDes">生活区西区</p>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'slide-bar',
-    data() {
-      return {
+    export default {
+        name: 'slide-bar',
+        data() {
+            return {
 
-      }
-    },
-    methods:{
-      hideSlide: function () {
-        this.$store.dispatch('hideSlideBar');
-      }
-    },
-    computed: {
-      isReallyShow() {
-        return this.$store.getters.isShowMethod
-      }
+            }
+        },
+        methods: {
+            hideSlide: function() {
+                this.$store.dispatch('hideSlideBar');
+            }
+        },
+        computed: {
+            isReallyShow() {
+                return this.$store.getters.isShowMethod
+            }
+        }
     }
-  }
-
 </script>
 
 <style scoped>
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 1;
-    z-index: 10;
-    background:rgba(255,255,255,0.5);
-  }
-
-  .slideContent {
-    width: 60%;
-    height: 100%;
-    position: fixed;
-    z-index: 11;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: rgb(255, 255, 255);
-  }
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 1;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.5);
+    }
+    
+    .slideContent {
+        width: 60%;
+        height: 100%;
+        position: fixed;
+        z-index: 11;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: rgb(255, 255, 255);
+    }
+    .fade-enter-to, .fade-leave-to{
+        opacity: 1;
+        transition: opacity 0.3s
+    }
+    .fade-enter, .fade-leave-to{
+        opacity: 0
+    }
+    .slide-fade-enter-to, .slide-fade-leave-to{
+        opacity:1;
+        transition: transform 0.3s;
+        transform:translate(0px,0px);
+    }
+    .slide-fade-enter,.slide-fade-leave-to{ 
+        opacity: 0;
+        transform:translate(-100%,0);
+        transition: opacity 0.3s ease-in-out 0.3s,transform 0.3s ease-in-out;
+    }
+    .slideUserInfo{
+      width: 100%;
+      height: 25%;
+      border-bottom: 1px solid rgb(254,238,222);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slideUserInfo>div{
+      width: 100%;
+      height: 95px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .userAvatar{
+      width:50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgb(254,238,222);
+      margin-bottom: 5px;
+    }
+    .userName{
+      font-size: 18px;
+      color: rgb(229,111,66);
+      font-weight: bold;
+    }
+    .userDes{
+      font-size: 12px;
+      color: rgb(229,111,66);
+    }
 
 </style>

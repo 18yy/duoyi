@@ -6,20 +6,9 @@ import router from './router'
 import fastClick from 'fastclick'
 import 'lib-flexible'
 import './assets/styles/reset.css'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store.js'
-
-
-// import Vuex from 'vuex'
-
-// Vue.use(Vuex)
-// var store = new Vuex.Store({
-//   //store对象
-//   state: {
-//     count: 0
-//   }
-// })
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
@@ -27,11 +16,11 @@ Vue.use(ElementUI);
 
 /* eslint-disable no-new */
 new Vue({
-	el: '#app',
-  router,
-  store,
-	components: {
-		App
-	},
-	template: '<App/>'
+    el: '#app',
+    router,
+    store,
+    components: {
+        App
+    },
+    template: '<App/>'
 })

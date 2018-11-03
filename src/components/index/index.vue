@@ -26,7 +26,7 @@
   } from 'vux'
 
   
-  import SecondHand from './components/second-hand'
+  import SecondHand from '../secondHand/second-hand'
   import Reward from './components/reward'
   import Source from './components/source'
   import SlideBar from './components/slide-bar'
