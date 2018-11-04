@@ -1,6 +1,6 @@
 <template>
     <x-header :left-options="options" @on-click-back="backTo()">
-        <span :style="styleObject">{{title}}</span>
+        <span :style="styleObject">{{title}}</span> 
     </x-header>
 </template>
 <script>
