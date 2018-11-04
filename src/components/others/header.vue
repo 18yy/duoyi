@@ -1,6 +1,6 @@
 <template>
-    <x-header :left-options="options" @on-click-back="backTo">
-        <span style="color:#494949;font-weight:bold;">{{title}}</span>
+    <x-header :left-options="options" @on-click-back="backTo()">
+        <span :style="styleObject">{{title}}</span>
     </x-header>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
             type: Boolean,
             required: true
         },
-        pre_name: {
+        pre_path: {
             type :String,
             required: true
         }
@@ -29,14 +29,22 @@ export default {
         return {
             options: {
                 showBack: false,
-                backText: ''
+                backText: '',
+                preventGoBack: true
+            },
+            styleObject: {
+                height: "90px",
+                width: "180px",
+                textAlign: "center",
+                color: "#494949",
+                fontWeight: "bold"
             }
         }
     },
     methods:{
         backTo() {
             this.$router.push({
-                path: "/login"
+                path: this.pre_path
             });
         }
     },
@@ -46,6 +54,11 @@ export default {
     mounted(){
         if(this.IsBack){
             this.options.showBack = true;
+        }
+        if(this.title == "注册") {
+            this.styleObject.color = "#E56F42";
+        }else if(this.title == "登录") {
+            this.styleObject.color = "#E56F42";
         }
     }
 }

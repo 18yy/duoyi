@@ -1,5 +1,5 @@
 <template>
-    <div class="bought">
+    <div class="unused">
         <el-container>
             <el-header>
                 <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
@@ -9,23 +9,22 @@
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
                     style="marginTop:30px;"
-                    v-for="(item,index) in boughtData" 
+                    v-for="(item,index) in unusedData" 
                     :key="index">
-                    <div slot="header" class="clearfix">
-                        <span style="color:#E56F42;marginRight:38px;">卖家用户名</span>
-                        <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
-                        <span style="color:#E56F42;marginLeft:38px;">{{item.Bname}}</span>
-                    </div>
                     <div>
-                        <img src="../../assets/login/Profile.png" class="boughtImg">
-                        <div style="float:right; marginTop:48px;marginRight:388px;">
-                            <div style="color:#E56F42;fontSize:32px;">{{item.Bgoods}}</div>
-                            <div style="color:#FF3840;fontSize:38px;marginTop:25px;">￥{{item.Bmoney}}</div>
+                        <img src="../../assets/login/Profile.png" class="unusedImg">
+                        <div style="float:right; marginTop:38px;marginRight:58px;">
+                            <div style="color:#E56F42;fontSize:32px;float:left;">{{item.Ugoods}}</div>
+                            <div style="color:#FF3840;fontSize:38px;float:right;marginLeft:280px;">￥{{item.Umoney}}</div>
+                        </div>
+                        <div style="paddingTop:128px;">
+                            <span style="color:#F0AD94;"> 浏览：{{item.Ubrowse}}</span>
+                            <span style="color:#F0AD94;marginLeft:38px;">评论：{{item.Ucomment}}</span>
                         </div>
                     </div>
                     <el-button-group style="float:right;marginTop:18px;">
                         <el-button size="mini" style="margin:20px;">查看</el-button>
-                        <el-button size="mini" style="margin:20px;">售后</el-button>
+                        <el-button size="mini" style="margin:20px;">编辑</el-button>
                         <el-button size="mini" style="margin:20px;">删除</el-button>
                     </el-button-group>
                 </el-card>
@@ -38,31 +37,40 @@
 import Header from '../others/Header'
 
 export default {
-    name: 'bought',
+    name: 'unused',
     components: {
         Header
     },
     data () {
         return {
-            title: "我买下的",
+           title: "我发布的闲置",
             IsBack: true,
             pre_path: "/about",
-            boughtData: [{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+            unusedData: [{
+                Ugoods: "书书书",
+                Umoney: "2222",
+                Ubrowse: "20",
+                Ucomment: "40"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                Ugoods: "书书书",
+                Umoney: "2222",
+                Ubrowse: "20",
+                Ucomment: "40"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                Ugoods: "书书书",
+                Umoney: "2222",
+                Ubrowse: "20",
+                Ucomment: "40"
             },{
-                Bname: "XXX",
-                goods: "书书书",
-                Bmoney: "2222"
+                Ugoods: "书书书",
+                Umoney: "2222",
+                Ubrowse: "20",
+                Ucomment: "40"
+            },{
+                Ugoods: "书书书",
+                Umoney: "2222",
+                Ubrowse: "20",
+                Ucomment: "40"
             }]
         }
     },
@@ -105,10 +113,10 @@ body {
 .el-main {
     margin-top: 40px;
 }
-.boughtImg {
+.unusedImg {
     width: 60px;
     height: 60px;
     float: left;
-    margin: 18px;
+    margin: 12px;
 }
 </style>
