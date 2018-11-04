@@ -2,11 +2,13 @@
     <div class="Register">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="options" @on-click-back="backTo()">
+                    <span class="header_title">{{title}}</span>
+                </x-header>
             </el-header>
             <el-main>
                 <el-card>
-                    <img src="../../assets/register/logo.png" class="logo">
+                    <img src="../../assets/register/logo.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
                         <el-form-item label="用户名" prop="name">
                             <el-input v-model="registerForm.name"></el-input>
@@ -30,12 +32,12 @@
     </div>
 </template>
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default {
     name: 'Register',
     components: {
-        Header
+        XHeader
     },
     data () {
         var validatePass2 = (rule, value, callback) => {
@@ -47,8 +49,11 @@ export default {
         };
         return {
             title: "注册",
-            IsBack: true,
-            pre_path: "/login",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             registerForm: {
                 name: "",
                 username: "",
@@ -79,6 +84,11 @@ export default {
         }
     },
     methods:{
+        backTo() {
+            this.$router.push({
+                path: this.pre_path
+            });
+        },
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -103,8 +113,8 @@ export default {
 
 <style>
 body {
-    padding: 0;
-    margin: 0;
+    margin:0;
+    padding:0; 
 }
 .el-container {
     width:100%;
@@ -118,22 +128,21 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #FEECDC;
 }
-.vux-header-left {
-  margin-top: 25px;
-}
-.el-main {
-    margin-top:40px;
+.header_title {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
 .el-card {
     height: 420px;
     padding: 10px;
     margin: 25px;
 }
-.logo {
+.image {
     margin: 20px 70px;
     width: 80px;
     height: 70px;

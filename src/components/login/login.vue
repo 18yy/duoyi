@@ -2,12 +2,12 @@
     <div class="Login">
         <el-container>
             <el-header>
-                <x-header :left-options="{ showBack: false }" @on-click-back="backTo()">
+                <x-header id="header" :left-options="{ showBack: false }" @on-click-back="backTo()">
                     <span class="header_title">{{title}}</span>
                 </x-header>
             </el-header>
             <el-main>
-                <el-card>
+                <el-card id="card">
                     <img src="../../assets/login/Profile.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="150px">
                         <el-form-item label="登录名" prop="username">
@@ -41,7 +41,6 @@ export default {
     name: 'Login',
     components: {
         XHeader
-
     },
     data () {
         return {
@@ -65,15 +64,10 @@ export default {
         }
     },
     methods:{
-        backTo() {
-            this.$router.push({
-                path: this.pre_path
-            });
-        },
         Null() {
             this.$message({
-            message: '暂无此功能！',
-            type: 'warning'
+                message: '暂无此功能！',
+                type: 'warning'
             });
         },
         jump() {
@@ -92,9 +86,6 @@ export default {
                     return;
                     }
                     if (res.data.state == 1) {
-                        //登录成功，把用户信息保存在sessionStorage中
-                        sessionStorage.setItem('username', this.registerForm.username);
-                        //跳转到主界面
                         this.$router.push({ path: '/index' });
                     } else{
                         this.$message.error(res.data.message);
@@ -118,8 +109,8 @@ export default {
 
 <style>
 body {
-    padding: 0;
-    margin: 0;
+    margin:0;
+    padding:0; 
 }
 .el-container {
     width:100%;
@@ -133,27 +124,22 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #FEECDC;
 }
 .header_title {
-    height: "90px";
-    width: "180px";
-    text-align: "center";
-    color: "#494949";
-    font-weight: "bold";
-}
-.el-main {
-    margin-top:40px;
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
 .el-card {
     height: 420px;
     padding: 10px;
-    margin: 25px;
+    margin: 30px;
 }
 .image {
-    margin: 20px 80px;
+    margin: 20px 70px;
     width: 70px;
     height: 70px;
     border-radius:100%;

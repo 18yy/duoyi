@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import fastClick from 'fastclick'
+import fastClick from 'fastclick'
 import 'lib-flexible'
 import './assets/styles/reset.css'
 import ElementUI from 'element-ui'
