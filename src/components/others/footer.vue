@@ -9,30 +9,74 @@
           mode="horizontal"
           @select="handleSelect">
           <router-link :to="{ name:'Index'}">
-            <el-menu-item  index="Index" class="btn" style="line-height:18px;">
-              <img v-if="this.currenIndex != 'Index'" src="../../assets/index.png"/>
-              <img v-if="this.currenIndex == 'Index'" src="../../assets/index_visited.svg"/>
+            <el-menu-item  
+              index="Index" 
+              class="btn" 
+              style="line-height:18px;"
+              v-if="this.currenIndex != 'Index'">
+              <img src="../../assets/footer/index.png"/>
+              <span>首页</span>
+            </el-menu-item>
+            <el-menu-item  
+              v-if="this.currenIndex == 'Index'" 
+              index="Index" 
+              class="btn" 
+              style="line-height:18px;">
+              <img v-if="this.currenIndex == 'Index'" src="../../assets/footer/index_visited.svg"/>
               <span>首页</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'Team'}">
-            <el-menu-item index="team" class="btn" style="line-height:18px;">
-              <img v-if="this.currenIndex != 'team'" src="../../assets/team.png"/>
-              <img v-if="this.currenIndex == 'team'" src="../../assets/team_visited.png"/>
+            <el-menu-item 
+            v-if="this.currenIndex != 'team'"
+            index="team" 
+            class="btn" 
+            style="line-height:18px;">
+              <img src="../../assets/footer/team.png"/>
+              <span>组队</span>
+            </el-menu-item>
+            <el-menu-item 
+              v-if="this.currenIndex == 'team'"
+              index="team" 
+              class="btn" 
+              style="line-height:18px;">
+              <img src="../../assets/footer/team_visited.png"/>
               <span>组队</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'Sign'}">
-            <el-menu-item index="sign" class="btn" style="line-height:18px;">
-              <img v-if="this.currenIndex != 'sign'" src="../../assets/sign.png"/>
-              <img v-if="this.currenIndex == 'sign'" src="../../assets/sign_visited.png"/>
+            <el-menu-item 
+              v-if="this.currenIndex != 'sign'"
+              index="sign" 
+              class="btn" 
+              style="line-height:18px;">
+              <img src="../../assets/footer/sign.png"/>
+              <span>打卡</span>
+            </el-menu-item>
+             <el-menu-item 
+              v-if="this.currenIndex == 'sign'"
+              index="sign" 
+              class="btn" 
+              style="line-height:18px;">
+              <img src="../../assets/footer/sign_visited.png"/>
               <span>打卡</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'About'}">
-            <el-menu-item index="about" class="btn" style="line-height:18px;">
-              <img v-if="this.currenIndex != 'about'" src="../../assets/about.png"/>
-              <img v-if="this.currenIndex == 'about'" src="../../assets/about_visited.png"/>
+            <el-menu-item 
+              v-if="this.currenIndex != 'about'"
+              index="about" 
+              class="btn" 
+              style="line-height:18px;">
+              <img src="../../assets/footer/about.png"/>
+              <span>我的</span>
+            </el-menu-item>
+            <el-menu-item 
+              v-if="this.currenIndex == 'about'"
+              index="about" 
+              class="btn" 
+              style="line-height:18px;">
+              <img src="../../assets/footer/about_visited.png"/>
               <span>我的</span>
             </el-menu-item>
           </router-link>
@@ -54,6 +98,20 @@ export default {
      handleSelect(key) {
         this.currenIndex = key;
       }
+  },
+  created(){
+      
+  },
+  mounted(){
+    if(this.$router.path == "/index"){
+      this.currenIndex = "Index";
+    }else if(this.$router.path == "/team"){
+      this.currenIndex = "Team";
+    }else if(this.$router.path == "/sign"){
+      this.currenIndex = "Sign";
+    }else if(this.$router.path == "/about"){
+      this.currenIndex = "About";
+    }
   }
 }
 </script>

@@ -8,7 +8,7 @@
             </el-header>
             <el-main>
                 <el-card>
-                    <img src="../../assets/logo.png" class="image">
+                    <img src="../../assets/register/logo.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
                         <el-form-item label="用户名" prop="name">
                             <el-input v-model="registerForm.name"></el-input>

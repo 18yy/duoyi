@@ -8,7 +8,7 @@
             </el-header>
             <el-main>
                 <el-card id="card">
-                    <img src="../../assets/Profile.png" class="image">
+                    <img src="../../assets/login/Profile.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="150px">
                         <el-form-item label="登录名" prop="username">
                             <el-input v-model="registerForm.username"></el-input>
@@ -20,8 +20,8 @@
                     <el-button type="text" class="button" @click="Null()">忘记密码？</el-button>
                     <div class="line">第三方登录</div>
                     <div class="third">
-                        <img src="../../assets/QQ.png" class="QQ" @click="Null()">
-                        <img src="../../assets/wechat.png" class="wechat" @click="Null()">
+                        <img src="../../assets/login/QQ.png" class="QQ" @click="Null()">
+                        <img src="../../assets/login/wechat.png" class="wechat" @click="Null()">
                     </div>
                 </el-card>
             </el-main>
@@ -66,8 +66,8 @@ export default {
     methods:{
         Null() {
             this.$message({
-            message: '暂无此功能！',
-            type: 'warning'
+                message: '暂无此功能！',
+                type: 'warning'
             });
         },
         jump() {

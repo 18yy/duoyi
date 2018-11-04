@@ -1,6 +1,6 @@
 <template>
     <x-header :left-options="options" @on-click-back="backTo()">
-        <span :style="styleObject">{{title}}</span>
+        <span :style="styleObject">{{title}}</span> 
     </x-header>
 </template>
 <script>
@@ -33,6 +33,9 @@ export default {
                 preventGoBack: true
             },
             styleObject: {
+                height: "90px",
+                width: "180px",
+                textAlign: "center",
                 color: "#494949",
                 fontWeight: "bold"
             }
