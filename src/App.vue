@@ -11,10 +11,9 @@ export default {
 </script>
 
 <style>
-html, body{
-  margin: 0;
-  width:100%;
-  height:100%;
+html,body,#app{
+  width: 100%;
+ height: 100%;
 }
 #app {
   font-family: Microsoft Yahei, 'Avenir', Helvetica, Arial, sans-serif;

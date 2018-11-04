@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+
 
 import Login from '@/components/login/Login'
 import Register from '@/components/login/Register'
@@ -25,6 +24,7 @@ import Paying2 from '@/components/pay/Paying2'
 import Paying3 from '@/components/pay/Paying3'
 import Button from '@/components/pay/Button'
 import Search from '@/components/index/components/search'
+import PublishSe from '@/components/secondHand/publish-second'
 
 Vue.use(Router)
 
@@ -38,7 +38,10 @@ let router = new Router({
 		path: '/login',
 		name: 'Login',
 		component: Login
-	},{
+  }, {
+    path: '/publishSe',
+    component: PublishSe
+  }, {
 		path: '/',
 		name: 'Home',
 		component: Home,

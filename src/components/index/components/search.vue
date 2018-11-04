@@ -98,7 +98,7 @@
     height: 35px;
     border-radius: 5px;
     padding: 2px 10px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .searchBox img {
@@ -116,8 +116,8 @@
 
   .hotBox img,
   .historyBox img {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
 
   }
 
@@ -138,7 +138,9 @@
 
   .hotHead p,
   .historyIco p {
+    padding-top: 1px;
     font-size: 14px;
+    line-height: 14px;
     flex: 1;
   }
 

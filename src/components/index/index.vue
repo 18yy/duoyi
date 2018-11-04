@@ -2,7 +2,7 @@
   <div class="">
     <div class="indexHead">
       <div class="tabBigBox vux-1px-b">
-        <div class="tabImg">
+        <div class="tabImg" @click="showSlide"> 
           <img :src="menuSrc" alt="menu">
         </div>
         <router-link to="/search">
@@ -16,6 +16,7 @@
       </div>
     </div>
     <div :is="currentView" keep-alive></div>
+    <slide-bar></slide-bar>
   </div>
 </template>
 <script>
@@ -24,10 +25,11 @@
     TabItem
   } from 'vux'
 
-  // import IndexHeader from './components/index-header'
-  import SecondHand from './components/second-hand'
+  
+  import SecondHand from '../secondHand/second-hand'
   import Reward from './components/reward'
   import Source from './components/source'
+  import SlideBar from './components/slide-bar'
 
   export default {
     name: 'index',
@@ -36,7 +38,8 @@
       TabItem,
       SecondHand,
       Reward,
-      Source
+      Source,
+      SlideBar
     },
     data() {
       return {
@@ -54,9 +57,11 @@
     },
     methods: {
       changeTab: function (index) {
-        console.log(index)
         this.currentView=this.myViews[index]
-      }
+      },
+       showSlide:function(){
+      this.$store.dispatch('showSlideBar')
+    }
     }
   }
 
@@ -66,6 +71,7 @@
 <style lang="less" scoped>
   .el-main {
     padding: 0;
+     background: rgb(239, 239, 244);
   }
 
   body {
@@ -78,7 +84,7 @@
     width: 100%;
     height: 44px;
     position: fixed;
-    z-index: 99;
+    z-index: 9;
     margin-top: -1px;
     background-color: #f9f9f9;
   }
