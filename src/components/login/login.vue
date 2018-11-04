@@ -2,7 +2,9 @@
     <div class="Login">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="{ showBack: false }" @on-click-back="backTo()">
+                    <span class="header_title">{{title}}</span>
+                </x-header>
             </el-header>
             <el-main>
                 <el-card id="card">
@@ -31,20 +33,18 @@
     </div>
 </template>
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 import api from '../../services/main.js'
 
 
 export default {
     name: 'Login',
     components: {
-        Header
+        XHeader
     },
     data () {
         return {
             title: "登录",
-            IsBack: false,
-            pre_path: "/login",
             registerForm: {
                 username: "",
                 password: ""
@@ -124,12 +124,14 @@ body {
   padding: 0;
 }
 #header {
-  height: 45px;
-  margin-top: 25px;
   background-color: #FEECDC;
 }
-.el-main {
-    margin-top:20px;
+.header_title {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
 .el-card {
     height: 420px;

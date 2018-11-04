@@ -35,38 +35,38 @@ export default new Router({
 		component: Home,
 		redirect: Index,
         children:[{
-			path: 'index',
-			name: 'Index',
-			component: Index
+				path: 'index',
+				name: 'Index',
+				component: Index
+			},{
+				path: 'team',
+				name: 'Team',
+				component: Team
+			},{
+				path: 'sign',
+				name: 'Sign',
+				component: Sign
+			},{
+				path: 'about',
+				name: 'About',
+				component: About
+			},{
+				path: 'search',
+				name: 'Search',
+						component: Search
+				}]
 		},{
-			path: 'team',
-			name: 'Team',
-			component: Team
-		},{
-			path: 'sign',
-			name: 'Sign',
-			component: Sign
-		},{
-			path: 'about',
-			name: 'About',
-			component: About
-		},{
-		  path: 'search',
-		  name: 'Search',
-          component: Search
-   		}]
-	},{
-		path:'/paying2',
-		name: 'Paying2',
-		component: Paying2
-	  },{
-		path: '/paying2/paying3',
-		name: 'Paying3',
-		component: Paying3
-	  },{
-		path:'/paying2/paying3/paid',
-		name: 'Paid',
-		component: Paid
-	  }]
+			path:'/paying2',
+			name: 'Paying2',
+			component: Paying2
+			},{
+			path: '/paying2/paying3',
+			name: 'Paying3',
+			component: Paying3
+			},{
+			path:'/paying2/paying3/paid',
+			name: 'Paid',
+			component: Paid
+			}]
 
 })
