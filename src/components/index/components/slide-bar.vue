@@ -14,6 +14,18 @@
             <p class="userDes">生活区西区</p>
           </div>
         </div>
+        <div class="slideMenu">
+          <div v-for="(item,index) in menuTopMsg">
+            <img :src="menuSrc" alt="">
+            <span>{{item}}</span>
+          </div>
+        </div>
+        <div class="slideMenu">
+          <div v-for="(item,index) in menuBottomMsg">
+            <img :src="menuSrc" alt="">
+            <span>{{item}}</span>
+          </div>
+        </div>
       </div>
     </transition>
   </div>
@@ -24,6 +36,17 @@
         name: 'slide-bar',
         data() {
             return {
+                menuSrc: require('@/assets/indexmenu.png'),
+                menuTopMsg:[
+                  '我的金币',
+                  '我的闲置',
+                  '我接受的委托'
+                ],
+                 menuBottomMsg:[
+                  '与我相适配的比赛',
+                  '与我相适配的队伍',
+                  '与我相适配的委托'
+                ]
 
             }
         },
@@ -62,54 +85,87 @@
         bottom: 0;
         background: rgb(255, 255, 255);
     }
-    .fade-enter-to, .fade-leave-to{
+    
+    .fade-enter-to,
+    .fade-leave-to {
         opacity: 1;
         transition: opacity 0.3s
     }
-    .fade-enter, .fade-leave-to{
+    
+    .fade-enter,
+    .fade-leave-to {
         opacity: 0
     }
-    .slide-fade-enter-to, .slide-fade-leave-to{
-        opacity:1;
+    
+    .slide-fade-enter-to,
+    .slide-fade-leave-to {
+        opacity: 1;
         transition: transform 0.3s;
-        transform:translate(0px,0px);
+        transform: translate(0px, 0px);
     }
-    .slide-fade-enter,.slide-fade-leave-to{ 
+    
+    .slide-fade-enter,
+    .slide-fade-leave-to {
         opacity: 0;
-        transform:translate(-100%,0);
-        transition: opacity 0.3s ease-in-out 0.3s,transform 0.3s ease-in-out;
+        transform: translate(-100%, 0);
+        transition: opacity 0.3s ease-in-out 0.3s, transform 0.3s ease-in-out;
     }
-    .slideUserInfo{
-      width: 100%;
-      height: 25%;
-      border-bottom: 1px solid rgb(254,238,222);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    
+    .slideUserInfo {
+        width: 100%;
+        height: 20%;
+        border-bottom: 1px solid rgb(254, 238, 222);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .slideUserInfo>div{
-      width: 100%;
-      height: 95px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+    
+    .slideUserInfo>div {
+        width: 100%;
+        height: 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
-    .userAvatar{
-      width:50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgb(254,238,222);
-      margin-bottom: 5px;
+    
+    .userAvatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgb(254, 238, 222);
+        margin-bottom: 5px;
     }
-    .userName{
-      font-size: 18px;
-      color: rgb(229,111,66);
-      font-weight: bold;
+    
+    .userName {
+        font-size: 18px;
+        color: rgb(229, 111, 66);
+        font-weight: bold;
     }
-    .userDes{
-      font-size: 12px;
-      color: rgb(229,111,66);
+    
+    .userDes {
+        font-size: 12px;
+        color: rgb(229, 111, 66);
     }
-
+    
+   .slideMenu{
+     width: 100%;
+     padding: 20px 0px 20px 18px;
+     border-bottom: 1px solid rgb(254, 238, 222);
+     
+   }
+   .slideMenu div{
+     display: flex;
+     padding: 8px 0;
+   }
+   .slideMenu div img{
+     width: 12px;
+     height: 12px;
+     margin-right: 10px;
+   }
+   .slideMenu div span{
+     flex:1;
+     font-size: 12px;
+     color: rgb(229, 111, 66);
+   }
 </style>
