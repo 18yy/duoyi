@@ -5,8 +5,8 @@
                 <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
             </el-header>
             <el-main>
-                <el-card id="card">
-                    <img src="../../assets/Profile.png" class="image">
+                <el-card>
+                    <img src="../../assets/login/Profile.png" class="image">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="150px">
                         <el-form-item label="登录名" prop="username">
                             <el-input v-model="registerForm.username"></el-input>
@@ -18,8 +18,8 @@
                     <el-button type="text" class="button" @click="Null()">忘记密码？</el-button>
                     <div class="line">第三方登录</div>
                     <div class="third">
-                        <img src="../../assets/QQ.png" class="QQ" @click="Null()">
-                        <img src="../../assets/wechat.png" class="wechat" @click="Null()">
+                        <img src="../../assets/login/QQ.png" class="QQ" @click="Null()">
+                        <img src="../../assets/login/wechat.png" class="wechat" @click="Null()">
                     </div>
                 </el-card>
             </el-main>
@@ -86,6 +86,9 @@ export default {
                     return;
                     }
                     if (res.data.state == 1) {
+                        //登录成功，把用户信息保存在sessionStorage中
+                        sessionStorage.setItem('username', this.registerForm.username);
+                        //跳转到主界面
                         this.$router.push({ path: '/index' });
                     } else{
                         this.$message.error(res.data.message);
@@ -109,8 +112,8 @@ export default {
 
 <style>
 body {
-    margin:0;
-    padding:0; 
+    padding: 0;
+    margin: 0;
 }
 .el-container {
     width:100%;
@@ -124,20 +127,20 @@ body {
   padding: 0;
 }
 #header {
-  height: 45px;
-  margin-top: 25px;
+  height: 70px;
+  padding-top: 25px;
   background-color: #FEECDC;
 }
 .el-main {
-    margin-top:20px;
+    margin-top:40px;
 }
 .el-card {
     height: 420px;
     padding: 10px;
-    margin: 30px;
+    margin: 25px;
 }
 .image {
-    margin: 20px 70px;
+    margin: 20px 80px;
     width: 70px;
     height: 70px;
     border-radius:100%;

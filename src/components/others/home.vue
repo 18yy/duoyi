@@ -56,7 +56,6 @@ body {
 }
 .el-main {
   padding: 0;
-  margin-top: 25px;
 }
 .el-header {
   height: 62px;

@@ -14,6 +14,9 @@ Vue.config.productionTip = false
 // fastClick.attach(document.body)
 Vue.use(ElementUI);
 
+
+
+
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',

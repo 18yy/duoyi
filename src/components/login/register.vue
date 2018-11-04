@@ -6,7 +6,7 @@
             </el-header>
             <el-main>
                 <el-card>
-                    <img src="../../assets/logo.png" class="image">
+                    <img src="../../assets/register/logo.png" class="logo">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
                         <el-form-item label="用户名" prop="name">
                             <el-input v-model="registerForm.name"></el-input>
@@ -103,8 +103,8 @@ export default {
 
 <style>
 body {
-    margin:0;
-    padding:0; 
+    padding: 0;
+    margin: 0;
 }
 .el-container {
     width:100%;
@@ -118,19 +118,22 @@ body {
   padding: 0;
 }
 #header {
-  height: 45px;
-  margin-top: 25px;
+  height: 70px;
+  padding-top: 25px;
   background-color: #FEECDC;
 }
+.vux-header-left {
+  margin-top: 25px;
+}
 .el-main {
-    margin-top:20px;
+    margin-top:40px;
 }
 .el-card {
     height: 420px;
     padding: 10px;
     margin: 25px;
 }
-.image {
+.logo {
     margin: 20px 70px;
     width: 80px;
     height: 70px;

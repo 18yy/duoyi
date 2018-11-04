@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img v-for="(item,index) of img" :src="item.url" :style="item.style" @click="info" class="img-sml">
+    <img v-for="(item,index) of img" :key="index" :src="item.url" :style="item.style" @click="info" class="img-sml">
     <img :src="imgbig.url" :style="imgbig.style" @click="change(message)" class="img-big">
   </div>
 </template>
