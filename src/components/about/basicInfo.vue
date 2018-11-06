@@ -53,11 +53,6 @@ export default {
     },
     mounted(){
     
-    },
-    watch: {
-        '$route' () {
-            
-        }
     }
 }
 </script>

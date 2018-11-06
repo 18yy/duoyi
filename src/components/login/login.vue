@@ -2,7 +2,8 @@
     <div class="Login">
         <el-container>
             <el-header>
-                <x-header id="header" :left-options="{ showBack: false }" @on-click-back="backTo()">
+                <x-header id="header" :left-options="{ showBack: false }">
+                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
                     <span class="headerTitle">{{title}}</span>
                 </x-header>
             </el-header>

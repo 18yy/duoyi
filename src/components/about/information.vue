@@ -2,7 +2,8 @@
     <div class="information">
         <el-container>
         	<el-header>
-	            <x-header id="header" :left-options="options" @on-click-back="backTo()">
+	            <x-header id="header" :left-options="options">
+                    <x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
 	                <span class="headerTitle">{{title}}</span>
 	            </x-header>
 	        </el-header>
@@ -86,7 +87,7 @@ export default {
                 	this.InfoData[0].detail = res.data.result.name;
                 	this.InfoData[3].detail = res.data.result.phone;
                 	this.InfoData[5].detail = res.data.result.mail;
-                    console.log(res.data);
+                   // console.log(res.data);
                 } else{
                     this.$message.error(res.data.message);
                 }
@@ -128,7 +129,7 @@ body {
 }
 .headerTitle {
     text-align: center;
-    color: #E56F42;
+    color: #6B6B6B;
     font-weight: bold;
 }
 .infoMain {

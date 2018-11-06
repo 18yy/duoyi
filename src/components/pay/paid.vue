@@ -2,7 +2,7 @@
 	<div class="paid">
 	  <x-header id="header" :left-options="options" @on-click-back="backTo()">
         <span class="header_title">{{title}}</span>
-    </x-header>
+   	 </x-header>
 	  <div class="all">
 	    <div class="head">
 	      <img class="success-img" src="../../assets/order_success.svg" />
