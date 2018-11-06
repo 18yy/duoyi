@@ -79,28 +79,29 @@ export default {
         },
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
-            if (valid) {
-                let data = {
-                    username: this.loginForm.username,
-                    password: this.loginForm.password
+                if (valid) {
+                    let data = {
+                        username: this.loginForm.username,
+                        password: this.loginForm.password
+                    }
+                    api.login((err, res) => {
+                        if (err || res.status !== 200) {
+    	                    this.$message.error("出错了，刷新一下吧");
+    	                    return;
+                        }
+                        if (res.data.status == 1) {
+                        	sessionStorage.setItem("username", this.loginForm.username);
+                            this.$router.push({ path: '/' });
+                            //console.log(res);
+                        } else{
+                            this.$message.error(res.data.message);
+                        }
+                        this.$refs[formName].resetFields();
+                    },data);
+                } else {
+                    this.$message.error("格式错误");
+                    return false;
                 }
-                api.login((err, res) => {
-                    if (err || res.status !== 200) {
-	                    this.$message.error("出错了，刷新一下吧");
-	                    return;
-                    }
-                    if (res.data.status == 1) {
-                    	sessionStorage.setItem("username", this.loginForm.username);
-                        this.$router.push({ path: '/' });
-                        //console.log(res);
-                    } else{
-                        this.$message.error(res.data.message);
-                    }
-                },data);
-            } else {
-                console.log('error submit!!');
-                return false;
-            }
             });
         }
     },

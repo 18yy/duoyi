@@ -83,10 +83,10 @@ export default {
                 return;
                 }
                 if (res.data.status == 1) {
-                	this.InfoData[0].detail = this.data.result.name;
-                	this.InfoData[3].detail = this.data.result.phone;
-                	this.InfoData[5].detail = this.data.result.mail;
-                    //console.log(res.data);
+                	this.InfoData[0].detail = res.data.result.name;
+                	this.InfoData[3].detail = res.data.result.phone;
+                	this.InfoData[5].detail = res.data.result.mail;
+                    console.log(res.data);
                 } else{
                     this.$message.error(res.data.message);
                 }

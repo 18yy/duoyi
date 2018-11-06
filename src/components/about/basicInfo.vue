@@ -5,7 +5,7 @@
                 <img src="../../assets/login/Profile.png" class="leftImg">
                 <div class="leftInfo">
                     <div class="leftName">{{name}}</div>
-                    <div class="leftDetails">{{username}}</div>
+                    <div class="leftUsername">{{username}}</div>
                 </div>
             </div>
             <div class="right">
@@ -34,18 +34,14 @@ export default {
     methods:{
         init() {
             api.getInfo((err, res) => {
-            	console.log(res);
-                if (err || res.status !== 200) {
-                	console.log(res);
-               		this.$message.error("出错了，刷新一下吧");
-                	return;
-                }
+                if (err || res.status != 200) {
+               	 	this.$message.error("出错了，刷新一下吧");
+                 	return;
+                 }
                 if (res.data.status == 1) {
-                    //console.log(res);
-                    this.name = this.res.data.result.name;
-                    this.username = this.res.data.result.username;
-                    this.money = this.res.data.result.money;
-                    console.log(this.name);
+                    this.name = res.data.result.name;
+                    this.username = res.data.result.username;
+                    this.money = res.data.result.money;
                 } else{
                     this.$message.error(res.data.message);
                 }
@@ -53,10 +49,15 @@ export default {
         }
     },
     created(){
-    
+        this.init();
     },
     mounted(){
-        this.init();
+    
+    },
+    watch: {
+        '$route' () {
+            
+        }
     }
 }
 </script>
@@ -68,7 +69,7 @@ export default {
 }
 .left {
     height: 60px;
-    width: 200px;
+   /* width: 200px;*/
     float: left;
 }
 .leftImg {
@@ -79,20 +80,20 @@ export default {
 }
 .leftInfo {
 	float: right;
-	margin-top: 14px;
+	margin-top: 16px;
+    margin-left: 12px;
 }
 .leftName {
 	color: #E56F42;
 	font-size: 16px;
 }
-.leftDetails {
+.leftUsername {
 	color: #F0AD94;
 	font-size: 14px;
-	margin-top: 2px;
+	margin-top: 8px;
 }
 .right {
     height: 30px;
-    width: 70px;
     float: right;
     padding: 15px;
 }
@@ -105,5 +106,7 @@ export default {
 	float: right;
 	color: #FFCC00;
 	font-size: 19px;
+    margin-top: 1px;
+    margin-left: 8px;
 }
 </style>

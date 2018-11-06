@@ -17,10 +17,10 @@
                             <el-input v-model="registerForm.username"></el-input>
                         </el-form-item>
                         <el-form-item label="密  码" prop="password1">
-                            <el-input v-model="registerForm.password" type="password"></el-input>
+                            <el-input v-model="registerForm.password1" type="password"></el-input>
                         </el-form-item>
                         <el-form-item label="确认密码" prop="password2">
-                            <el-input v-model="registerForm.password" type="password"></el-input>
+                            <el-input v-model="registerForm.password2" type="password"></el-input>
                         </el-form-item>
                     </el-form>
                 </el-card>
@@ -33,6 +33,7 @@
 </template>
 <script>
 import { XHeader } from 'vux'
+import api from '../../services/main.js'
 
 export default {
     name: 'Register',
@@ -92,11 +93,25 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    this.$router.push({
-                        path: "/login"
-                    });
+                	let data = {
+                		name: this.registerForm.name,
+                		username: this.registerForm.username,
+                		password: this.registerForm.password2
+                	}
+                	api.register((err, res) => {
+                        if (err || res.status !== 200) {
+    	                    this.$message.error("出错了，刷新一下吧");
+    	                    return;
+                        }
+                        if (res.data.status == 1) {
+                            this.$router.push({ path: '/login' });
+                            //console.log(res);
+                        } else{
+                            this.$message.error(res.data.message);
+                        }
+                    },data);
                 } else {
-                    console.log('error submit!!');
+                    this.$message.error("格式错误");
                     return false;
                 }
             });
@@ -111,7 +126,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 body {
     margin:0;
     padding:0; 
