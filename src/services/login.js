@@ -18,7 +18,7 @@ function login(fn, data) {
       }).catch(function (err) {
         fn(err);
       });
-}
+} 
 
 export {
     register,

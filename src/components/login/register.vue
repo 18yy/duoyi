@@ -2,11 +2,13 @@
     <div class="Register">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="options" @on-click-back="backTo()">
+                    <span class="headerTitle">{{title}}</span>
+                </x-header>
             </el-header>
             <el-main>
-                <el-card>
-                    <img src="../../assets/logo.png" class="image">
+                <el-card class="registerCard">
+                    <img src="../../assets/register/logo.png" class="registerImg">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
                         <el-form-item label="用户名" prop="name">
                             <el-input v-model="registerForm.name"></el-input>
@@ -30,12 +32,12 @@
     </div>
 </template>
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default {
     name: 'Register',
     components: {
-        Header
+        XHeader
     },
     data () {
         var validatePass2 = (rule, value, callback) => {
@@ -47,8 +49,11 @@ export default {
         };
         return {
             title: "注册",
-            IsBack: true,
-            pre_path: "/login",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             registerForm: {
                 name: "",
                 username: "",
@@ -79,6 +84,11 @@ export default {
         }
     },
     methods:{
+        backTo() {
+            this.$router.push({
+                path: "/login"
+            });
+        },
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -101,7 +111,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     margin:0;
     padding:0; 
@@ -118,40 +128,42 @@ body {
   padding: 0;
 }
 #header {
-  height: 45px;
-  margin-top: 25px;
   background-color: #FEECDC;
 }
-.el-main {
-    margin-top:20px;
+.headerTitle {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-card {
+.registerCard {
     height: 420px;
     padding: 10px;
     margin: 25px;
 }
-.image {
+.registerImg {
     margin: 20px 70px;
     width: 80px;
     height: 70px;
 }
-.el-form {
+.Register .el-form {
     margin-top: 20px;
 }
-.el-form-item {
+.Register .el-form-item {
     margin-bottom: 5px;
 }
-.el-form-item__label {
+.Register .el-form-item__label {
     line-height: 55px;
     color:#F0AD94;
     font-size: 15px;
 }
-.el-input__inner {
+.Register .el-input__inner {
     /* width: 100px; */
     border: 0;
     border-bottom: 1px solid #FEECDC;
 }
-.el-form-item__error {
+.Register .el-form-item__error {
     top: 80%;
 }
 .confirm {

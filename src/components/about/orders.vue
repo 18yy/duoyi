@@ -1,34 +1,33 @@
 <template>
-    <div class="bought">
+    <div class="orders">
         <el-container>
             <el-header>
                 <x-header id="header" :left-options="options" @on-click-back="backTo()">
                     <span class="headerTitle">{{title}}</span>
                 </x-header>
             </el-header>
-            <el-main class="boughtMain">
+            <el-main class="ordersMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
-                    class="boughtCard"
-                    v-for="(item,index) in boughtData" 
+                    class="ordersCard"
+                    v-for="(item,index) in ordersData" 
                     :key="index">
                     <div slot="header" class="clearfix">
-                        <span class="boughtTitle">卖家用户名</span>
+                        <span class="ordersTitle">卖家用户名</span>
                         <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
-                        <span class="boughtName">{{item.Bname}}</span>
+                        <span class="ordersName">{{item.Oname}}</span>
                     </div>
                     <div>
-                        <img src="../../assets/login/Profile.png" class="boughtImg">
-                        <div class="boughtInfo">
-                            <div class="boughtGoods">{{item.Bgoods}}</div>
-                            <div class="boughtMoney">￥{{item.Bmoney}}</div>
+                        <img src="../../assets/login/Profile.png" class="ordersImg">
+                        <div class="ordersInfo">
+                            <div class="ordersGoods">{{item.Ogoods}}</div>
+                            <div class="ordersMoney">￥{{item.Omoney}}</div>
                         </div>
                     </div>
-                    <div class="btnGroup">
-                        <el-button size="mini" class="boughtBtn">查看</el-button>
-                        <el-button size="mini" class="boughtBtn">售后</el-button>
-                        <el-button size="mini" class="boughtBtn">删除</el-button>
+                    <div style="float:right;">
+                        <el-button size="mini" class="ordersBtn">查看</el-button>
+                        <el-button size="mini" class="ordersBtn">删除</el-button>
                     </div>
                 </el-card>
             </el-main>
@@ -40,34 +39,34 @@
 import { XHeader } from 'vux'
 
 export default {
-    name: 'bought',
+    name: 'orders',
     components: {
         XHeader
     },
     data () {
         return {
-            title: "我买下的",
+           	title: "我的订单",
             options: {
                 showBack: true,
                 backText: '',
                 preventGoBack: true
             },
-            boughtData: [{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+            ordersData: [{
+                Oname: "XXX",
+                Ogoods: "书书书",
+                Omoney: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                Oname: "XXX",
+                Ogoods: "书书书",
+                Omoney: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                Oname: "XXX",
+                Ogoods: "书书书",
+                Omoney: "2222"
             },{
-                Bname: "XXX",
-                goods: "书书书",
-                Bmoney: "2222"
+                Oname: "XXX",
+                Ogoods: "书书书",
+                Omoney: "2222"
             }]
         }
     },
@@ -107,52 +106,47 @@ body {
   background-color: #F9F9F9;
 }
 .headerTitle {
-    height: 90px;
-    width: 180px;
     text-align: center;
     color: #E56F42;
     font-weight: bold;
 }
-.boughtMain {
+.ordersMain {
 	padding-left: 0;
 	padding-right: 0;
 }
-.boughtCard {
-	margin: 12px 0;
+.ordersCard {
+	margin-top: 15px;
 }
-.boughtTitle {
+.ordersTitle {
 	color: #E56F42;
-	margin-right: 18px;
+	margin-right: 19px;
 }
-.boughtName {
+.ordersName {
 	color: #E56F42;
-	margin-left: 18px;
-} 
-.boughtImg {
+	margin-left: 19px;
+}
+.ordersImg {
     width: 60px;
     height: 60px;
     float: left;
     margin: 18px;
     background-color: #E56F42;
 }
-.boughtInfo {
+.ordersInfo {
 	float: right; 
-	margin-top: 24px; 
-	margin-right: 160px;
+	margin-top: 24px;
+	margin-right: 200px;
 }
-.boughtGoods {
+.ordersGoods {
 	color: #E56F42;
 	font-size: 16px;
 }
-.boughtMoney {
+.ordersMoney {
 	color: #FF3840;
-	font-size: 18px;
+	font-size: 19px;
 	margin-top: 12px;
 }
-.btnGroup {
-	float:right;
-}
-.boughtBtn {
+.ordersBtn {
 	margin: 10px;
 }
 </style>

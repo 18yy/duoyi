@@ -5,7 +5,14 @@ import {
     login
   } from './login.js'
 
+
+import {
+    getInfo
+} from './about.js'
+
 export default {
     register,
-    login
+    login,
+
+    getInfo
 }
