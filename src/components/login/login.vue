@@ -89,7 +89,7 @@ export default {
 	                    this.$message.error("出错了，刷新一下吧");
 	                    return;
                     }
-                    if (res.data.state == 1) {
+                    if (res.data.status == 1) {
                     	sessionStorage.setItem("username", this.loginForm.username);
                         this.$router.push({ path: '/' });
                         //console.log(res);

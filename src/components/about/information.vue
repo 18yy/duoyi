@@ -50,27 +50,27 @@ export default {
             },
             InfoData: [{
                 title: "用户名",
-                detail: "aaa",
+                detail: "",
                 src: require("../../assets/information/name.png")
             },{
                 title: "个人简介",
-                detail: "emmmm",
+                detail: "",
                 src: require("../../assets/information/quote.png")
             },{
                 title: "技能树",
-                detail: "啥也不会",
+                detail: "",
                 src: require("../../assets/information/medal.png")
             },{
                 title: "联系电话",
-                detail: "123456789",
+                detail: "",
                 src: require("../../assets/information/phone.png")
             },{
                 title: "收货地址",
-                detail: "广东工业大学",
+                detail: "",
                 src: require("../../assets/information/places.png")
             },{
                 title: "联系邮箱",
-                detail: "123456789",
+                detail: "",
                 src: require("../../assets/information/message.png")
             }]
         }
@@ -82,8 +82,11 @@ export default {
                 this.$message.error("出错了，刷新一下吧");
                 return;
                 }
-                if (res.data.state == 1) {
-                    console.log(res.data);
+                if (res.data.status == 1) {
+                	this.InfoData[0].detail = this.data.result.name;
+                	this.InfoData[3].detail = this.data.result.phone;
+                	this.InfoData[5].detail = this.data.result.mail;
+                    //console.log(res.data);
                 } else{
                     this.$message.error(res.data.message);
                 }

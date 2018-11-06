@@ -4,8 +4,8 @@
             <div class="left">
                 <img src="../../assets/login/Profile.png" class="leftImg">
                 <div class="leftInfo">
-                    <div class="leftName">JOJO DIO</div>
-                    <div class="leftDetails">I don't know know</div>
+                    <div class="leftName">{{name}}</div>
+                    <div class="leftDetails">{{username}}</div>
                 </div>
             </div>
             <div class="right">
@@ -26,19 +26,26 @@ export default {
     },
     data () {
         return {
-           money: "444"
+       		name: '',
+       		username: '',
+       		money: ''
         }
     },
     methods:{
         init() {
             api.getInfo((err, res) => {
+            	console.log(res);
                 if (err || res.status !== 200) {
                 	console.log(res);
-                this.$message.error("出错了，刷新一下吧");
-                return;
+               		this.$message.error("出错了，刷新一下吧");
+                	return;
                 }
-                if (res.data.state == 1) {
-                    console.log(res);
+                if (res.data.status == 1) {
+                    //console.log(res);
+                    this.name = this.res.data.result.name;
+                    this.username = this.res.data.result.username;
+                    this.money = this.res.data.result.money;
+                    console.log(this.name);
                 } else{
                     this.$message.error(res.data.message);
                 }
