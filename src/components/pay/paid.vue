@@ -1,60 +1,75 @@
 <template>
-<div class="paid">
-  <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
-  <div class="all">
-    <div class="head">
-      <img class="success-img" src="../../assets/order_success.svg" />
-      <div class="head-child">
-        <img class="firewords" src="../../assets/firewords_left.png" />
-        <p class="head-font">支付成功</p>
-        <img class="firewords" src="../../assets/firewords_right.png" />
-      </div>
-    </div>
-    <div class="mid">
-      <hr/>
-      <p class="mid-font">商品交易方式：寄存柜</p>
-      <hr/>
-      <p class="mid-font">商品交易日期：9月3日</p>
-      <hr/>
-      <p class="mid-font">商品交易方式：寄存柜</p>
-      <hr/>
-      <p class="mid-font">商品交易日期：9月3日</p>
-      <hr/>
-    </div>
-    <div class="bottom">
-      <p class="bottom-font">交易注意事项</p>
-      <i class="el-icon-edit"></i>
-    </div>
-  </div>
-</div>
+	<div class="paid">
+	  <x-header id="header" :left-options="options" @on-click-back="backTo()">
+        <span class="header_title">{{title}}</span>
+    </x-header>
+	  <div class="all">
+	    <div class="head">
+	      <img class="success-img" src="../../assets/order_success.svg" />
+	      <div class="head-child">
+	        <img class="firewords" src="../../assets/firewords_left.png" />
+	        <p class="head-font">支付成功</p>
+	        <img class="firewords" src="../../assets/firewords_right.png" />
+	      </div>
+	    </div>
+	    <div class="mid">
+	      <hr/>
+	      <p class="mid-font">商品交易方式：寄存柜</p>
+	      <hr/>
+	      <p class="mid-font">商品交易日期：9月3日</p>
+	      <hr/>
+	      <p class="mid-font">商品交易方式：寄存柜</p>
+	      <hr/>
+	      <p class="mid-font">商品交易日期：9月3日</p>
+	      <hr/>
+	    </div>
+	    <div class="bottom">
+	      <p class="bottom-font">交易注意事项</p>
+	      <i class="el-icon-edit"></i>
+	    </div>
+	  </div>
+	</div>
 </template>
 
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default{
   name: 'Paid',
   components: {
-      Header
+      XHeader
   },
   data () {
     return {
       title: "支付",
-      IsBack: true,
+      options: {
+        showBack: true,
+        backText: '',
+        preventGoBack: true
+    	},
       pre_path: "/paying2/paying3",
     }
+  },
+  methods: {
+  	backTo() {
+            this.$router.push({
+                path: "/paying2/paying3"
+            });
+        }
   }
 }
 </script>
 
 <style>
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.header_title {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
 .firewords {
   width: 50px;

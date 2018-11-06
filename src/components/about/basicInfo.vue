@@ -1,16 +1,16 @@
 <template>
-    <Card style="height:120px;padding:38px;">
+    <Card class="basicCard">
         <div slot="content">
             <div class="left">
-                <img src="../../assets/login/Profile.png" class="avatar">
-                <div style="float:right;marginTop:28px;">
-                    <div style="color:#E56F42;fontSize:32px;">JOJO DIO</div>
-                    <div style="color:#F0AD94;fontSize:28px;marginTop:5px;">I don't know know</div>
+                <img src="../../assets/login/Profile.png" class="leftImg">
+                <div class="leftInfo">
+                    <div class="leftName">JOJO DIO</div>
+                    <div class="leftDetails">I don't know know</div>
                 </div>
             </div>
             <div class="right">
-                <img src="../../assets/about/money.svg" style="width:38px; height:38px;float:left;">
-                <div style="marginTop:3px;float:right;color:#FFCC00;fontSize:38px;">{{money}}</div>
+                <img src="../../assets/about/money.svg" class="rightImg">
+                <div class="rightMoney">{{money}}</div>
             </div>
         </div>
     </Card>
@@ -33,11 +33,12 @@ export default {
         init() {
             api.getInfo((err, res) => {
                 if (err || res.status !== 200) {
+                	console.log(res);
                 this.$message.error("出错了，刷新一下吧");
                 return;
                 }
                 if (res.data.state == 1) {
-                    console.log(res.data);
+                    console.log(res);
                 } else{
                     this.$message.error(res.data.message);
                 }
@@ -54,22 +55,48 @@ export default {
 </script>
 
 <style>
-
+.basicCard {
+	height: 60px;
+	padding: 18px;
+}
 .left {
     height: 60px;
-    /* width: 200px; */
+    width: 200px;
     float: left;
 }
-.avatar {
+.leftImg {
     width: 60px;
     height: 60px;
     border-radius:100%;
     float: left;
+}
+.leftInfo {
+	float: right;
+	margin-top: 14px;
+}
+.leftName {
+	color: #E56F42;
+	font-size: 16px;
+}
+.leftDetails {
+	color: #F0AD94;
+	font-size: 14px;
+	margin-top: 2px;
 }
 .right {
     height: 30px;
     width: 70px;
     float: right;
     padding: 15px;
+}
+.rightImg {
+	width: 18px; 
+	height: 18px;
+	float: left;
+}
+.rightMoney {
+	float: right;
+	color: #FFCC00;
+	font-size: 19px;
 }
 </style>

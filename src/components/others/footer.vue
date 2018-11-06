@@ -2,7 +2,6 @@
     <div id="Footer">
       <el-row>
         <el-menu 
-          default-active="Index" 
           background-color="rgb(249, 249, 249)"
           text-color="rgb(214, 214, 217)"
           active-text-color	="rgb(229, 111, 66)"
@@ -22,62 +21,62 @@
               index="Index" 
               class="btn" 
               style="line-height:18px;">
-              <img v-if="this.currenIndex == 'Index'" src="../../assets/footer/index_visited.svg"/>
-              <span>首页</span>
+              <img src="../../assets/footer/index_visited.svg"/>
+              <span style="color:rgb(229, 111, 66);">首页</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'Team'}">
             <el-menu-item 
-            v-if="this.currenIndex != 'team'"
-            index="team" 
+            v-if="this.currenIndex != 'Team'"
+            index="Team" 
             class="btn" 
             style="line-height:18px;">
               <img src="../../assets/footer/team.png"/>
               <span>组队</span>
             </el-menu-item>
             <el-menu-item 
-              v-if="this.currenIndex == 'team'"
-              index="team" 
+              v-if="this.currenIndex == 'Team'"
+              index="Team" 
               class="btn" 
               style="line-height:18px;">
               <img src="../../assets/footer/team_visited.png"/>
-              <span>组队</span>
+              <span style="color:rgb(229, 111, 66);">组队</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'Sign'}">
             <el-menu-item 
-              v-if="this.currenIndex != 'sign'"
-              index="sign" 
+              v-if="this.currenIndex != 'Sign'"
+              index="Sign" 
               class="btn" 
               style="line-height:18px;">
               <img src="../../assets/footer/sign.png"/>
               <span>打卡</span>
             </el-menu-item>
              <el-menu-item 
-              v-if="this.currenIndex == 'sign'"
-              index="sign" 
+              v-if="this.currenIndex == 'Sign'"
+              index="Sign" 
               class="btn" 
               style="line-height:18px;">
               <img src="../../assets/footer/sign_visited.png"/>
-              <span>打卡</span>
+              <span style="color:rgb(229, 111, 66);">打卡</span>
             </el-menu-item>
           </router-link>
           <router-link :to="{ name:'About'}">
             <el-menu-item 
-              v-if="this.currenIndex != 'about'"
-              index="about" 
+              v-if="this.currenIndex != 'About'"
+              index="About" 
               class="btn" 
               style="line-height:18px;">
               <img src="../../assets/footer/about.png"/>
               <span>我的</span>
             </el-menu-item>
             <el-menu-item 
-              v-if="this.currenIndex == 'about'"
-              index="about" 
+              v-if="this.currenIndex == 'About'"
+              index="About" 
               class="btn" 
               style="line-height:18px;">
               <img src="../../assets/footer/about_visited.png"/>
-              <span>我的</span>
+              <span style="color:rgb(229, 111, 66);">我的</span>
             </el-menu-item>
           </router-link>
         </el-menu>
@@ -103,15 +102,16 @@ export default {
       
   },
   mounted(){
-    if(this.$router.path == "/index"){
+  	if(this.$route.path == "/index"){
       this.currenIndex = "Index";
-    }else if(this.$router.path == "/team"){
+    }else if(this.$route.path == "/team"){
       this.currenIndex = "Team";
-    }else if(this.$router.path == "/sign"){
+    }else if(this.$route.path == "/sign"){
       this.currenIndex = "Sign";
-    }else if(this.$router.path == "/about"){
+    }else if(this.$route.path == "/about"){
       this.currenIndex = "About";
     }
+    //console.log(this.$route.path);
   }
 }
 </script>

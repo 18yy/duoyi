@@ -3,18 +3,22 @@
         <el-container>
             <el-header>
                 <x-header id="header" :left-options="{ showBack: false }" @on-click-back="backTo()">
-                    <span class="header_title">{{title}}</span>
+                    <span class="headerTitle">{{title}}</span>
                 </x-header>
             </el-header>
             <el-main>
-                <el-card id="card">
-                    <img src="../../assets/login/Profile.png" class="image">
-                    <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="150px">
+                <el-card class="loginCard">
+                    <img src="../../assets/login/Profile.png" class="loginImg">
+                    <el-form 
+                    	:model="loginForm" 
+                    	:rules="rules" 
+                    	ref="loginForm" 
+                    	label-width="150px">
                         <el-form-item label="登录名" prop="username">
-                            <el-input v-model="registerForm.username"></el-input>
+                            <el-input v-model="loginForm.username"></el-input>
                         </el-form-item>
                         <el-form-item label="密  码" prop="password">
-                            <el-input v-model="registerForm.password" type="password"></el-input>
+                            <el-input v-model="loginForm.password" type="password"></el-input>
                         </el-form-item>
                     </el-form>
                     <el-button type="text" class="button" @click="Null()">忘记密码？</el-button>
@@ -27,7 +31,7 @@
             </el-main>
             <el-footer height="150px">
                 <el-button @click="jump()" class="register">注册</el-button>
-                <el-button @click="submitForm('registerForm')" class="login">登录</el-button>
+                <el-button @click="submitForm('loginForm')" class="loginBtn">登录</el-button>
             </el-footer>
         </el-container>
     </div>
@@ -45,7 +49,7 @@ export default {
     data () {
         return {
             title: "登录",
-            registerForm: {
+            loginForm: {
                 username: "",
                 password: ""
             },
@@ -77,16 +81,18 @@ export default {
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let data = {
-                    username: this.registerForm.username,
-                    password: this.registerForm.password
+                    username: this.loginForm.username,
+                    password: this.loginForm.password
                 }
                 api.login((err, res) => {
                     if (err || res.status !== 200) {
-                    this.$message.error("出错了，刷新一下吧");
-                    return;
+	                    this.$message.error("出错了，刷新一下吧");
+	                    return;
                     }
                     if (res.data.state == 1) {
-                        this.$router.push({ path: '/index' });
+                    	sessionStorage.setItem("username", this.loginForm.username);
+                        this.$router.push({ path: '/' });
+                        //console.log(res);
                     } else{
                         this.$message.error(res.data.message);
                     }
@@ -126,19 +132,19 @@ body {
 #header {
   background-color: #FEECDC;
 }
-.header_title {
+.headerTitle {
     height: 90px;
     width: 180px;
     text-align: center;
     color: #E56F42;
     font-weight: bold;
 }
-.el-card {
+.loginCard {
     height: 420px;
     padding: 10px;
-    margin: 30px;
+    margin: 25px;
 }
-.image {
+.loginImg {
     margin: 20px 70px;
     width: 70px;
     height: 70px;
@@ -146,26 +152,26 @@ body {
     border: 1px dashed #707070;
     padding: 5px;
 }
-.el-form {
+.Login .el-form {
     margin-top: 20px;
 }
-.el-form-item {
+.Login .el-form-item {
     margin-bottom: 5px;
 }
-.el-form-item__label {
+.Login .el-form-item__label {
     line-height: 55px;
     color:#F0AD94;
     font-size: 15px;
 }
-.el-input__inner {
+.Login .el-input__inner {
     /* width: 150px; */
     border: 0;
     border-bottom: 1px solid #FEECDC;
 }
-.el-form-item__error {
+.Login .el-form-item__error {
     top: 80%;
 }
-.el-button--text {
+.Login .el-button--text {
     float: right;
     color:#C7C7CC;
 }
@@ -175,27 +181,23 @@ body {
     margin-top: 60px;
     color: #C7C7CC;
 }
-.QQ {
-    width: 30px;
+.QQ , .wechat {
+	width: 30px;
     height: 30px;
     border-radius:100%;
-    float:left;
     margin-top: 20px;
-    margin-left: 30px;
     border: 1px solid #ff9565;
     padding: 5px;
+}
+.QQ {
+    float:left;
+    margin-left: 30px;
 }
 .wechat {
-    width: 30px;
-    height: 30px;
-    border-radius:100%;
     float: right;
-    margin-top: 20px;
     margin-right: 30px;
-    border: 1px solid #ff9565;
-    padding: 5px;
 }
-.register, .login {
+.register, .loginBtn {
     font-size: 20px;
     margin-left: 25px;
     width: 135px;
@@ -204,7 +206,7 @@ body {
 .register {
     color:#F0AD94;
 }
-.login {
+.loginBtn {
     background-color: #FF9565;
     color: #FFFFFF;
 }

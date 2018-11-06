@@ -2,31 +2,33 @@
     <div class="unused">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="options" @on-click-back="backTo()">
+                    <span class="headerTitle">{{title}}</span>
+                </x-header>
             </el-header>
-            <el-main style="padding:0;">
+            <el-main class="unusedMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
-                    style="marginTop:30px;"
+                    class="unusedCard"
                     v-for="(item,index) in unusedData" 
                     :key="index">
                     <div>
                         <img src="../../assets/login/Profile.png" class="unusedImg">
-                        <div style="float:right; marginTop:38px;marginRight:58px;">
-                            <div style="color:#E56F42;fontSize:32px;float:left;">{{item.Ugoods}}</div>
-                            <div style="color:#FF3840;fontSize:38px;float:right;marginLeft:280px;">￥{{item.Umoney}}</div>
+                        <div class="unusedInfo">
+                            <div class="unusedGoods">{{item.Ugoods}}</div>
+                            <div class="unusedMoney">￥{{item.Umoney}}</div>
                         </div>
-                        <div style="paddingTop:128px;">
+                        <div class="unusedBrowse">
                             <span style="color:#F0AD94;"> 浏览：{{item.Ubrowse}}</span>
-                            <span style="color:#F0AD94;marginLeft:38px;">评论：{{item.Ucomment}}</span>
+                            <span class="unusedComment">评论：{{item.Ucomment}}</span>
                         </div>
                     </div>
-                    <el-button-group style="float:right;marginTop:18px;">
-                        <el-button size="mini" style="margin:20px;">查看</el-button>
-                        <el-button size="mini" style="margin:20px;">编辑</el-button>
-                        <el-button size="mini" style="margin:20px;">删除</el-button>
-                    </el-button-group>
+                    <div style="float:right;">
+                        <el-button size="mini" class="unusedBtn">查看</el-button>
+                        <el-button size="mini" class="unusedBtn">编辑</el-button>
+                        <el-button size="mini" class="unusedBtn">删除</el-button>
+                    </div>
                 </el-card>
             </el-main>
         </el-container>
@@ -34,18 +36,21 @@
 </template>
 
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default {
     name: 'unused',
     components: {
-        Header
+        XHeader
     },
     data () {
         return {
            title: "我发布的闲置",
-            IsBack: true,
-            pre_path: "/about",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             unusedData: [{
                 Ugoods: "书书书",
                 Umoney: "2222",
@@ -75,7 +80,11 @@ export default {
         }
     },
     methods:{
-
+    	backTo() {
+            this.$router.push({
+                path: "/about"
+            });
+        }
     },
     created(){
     
@@ -103,20 +112,51 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.headerTitle {
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-main {
-    margin-top: 40px;
+.unusedMain {
+	padding-left: 0;
+	padding-right: 0;
+}
+.unusedCard {
+	margin-top: 15px;
 }
 .unusedImg {
     width: 60px;
     height: 60px;
     float: left;
     margin: 12px;
+    background-color: #E56F42;
+}
+.unusedInfo {
+	float: right; 
+	margin-top: 19px;
+	margin-right: 29px;
+}
+.unusedGoods {
+	color: #E56F42;
+	font-size: 16px;
+	float: left;
+}
+.unusedMoney {
+	color: #FF3840;
+	font-size: 19px;
+	float: right;
+	margin-left: 140px;
+}
+.unusedBrowse {
+	padding-top: 64px;
+}
+.unusedComment {
+	color: #F0AD94;
+	margin-left: 19px;
+}
+.unusedBtn {
+	margin: 10px;
 }
 </style>

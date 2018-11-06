@@ -1,9 +1,7 @@
 <template>
   <div class="Home">
     <el-container>
-        <el-main>
-            <router-view></router-view>
-        </el-main>
+        <router-view></router-view>
         <el-footer>
           <Footer class="footer"></Footer>
         </el-footer>
@@ -13,13 +11,11 @@
 
 <script>
 import { XHeader } from 'vux'
-import Header from './Header'
 import Footer from './Footer'
 
 export default {
   name: 'Home',
   components: {
-    Header,
     Footer
   },
   data () {
@@ -53,9 +49,6 @@ body {
     position:absolute;
     top:0px;
     bottom:0px;
-}
-.el-main {
-  padding: 0;
 }
 .el-header {
   height: 62px;

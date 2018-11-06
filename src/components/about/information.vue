@@ -1,25 +1,27 @@
 <template>
     <div class="information">
         <el-container>
-            <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
-            </el-header>
-            <el-main>
+        	<el-header>
+	            <x-header id="header" :left-options="options" @on-click-back="backTo()">
+	                <span class="headerTitle">{{title}}</span>
+	            </x-header>
+	        </el-header>
+            <el-main class="infoMain">
                 <Basic></Basic>
                 <el-collapse accordion>
                     <el-collapse-item v-for="(item,index) in InfoData" :key="index">
                         <template slot="title">
                             <div class="leftIcon">
                                 <img :src="item.src" class="icon">
-                                <div style="height:50px;color:#E56F42;fontSize:32px;marginTop:-42px;">{{item.detail}}</div>
-                                <div style="height:50px;color:#F0AD94;fontSize:28px;">{{item.title}}</div>
+                                <div class="infoDetail">{{item.detail}}</div>
+                                <div class="infoTitle">{{item.title}}</div>
                             </div>
                         </template>
-                        <div>暂时啥也没有
-                            <!-- <el-input style="fontSize:58px;color:#E56F42;" v-model="item.title">
+                        <!-- <div>暂时啥也没有
+                            <el-input style="fontSize:58px;color:#E56F42;" v-model="item.title">
                                 <el-button slot="append" icon="el-icon-edit"></el-button>
-                            </el-input> -->
-                        </div>
+                            </el-input>
+                        </div> -->
                     </el-collapse-item>
                 </el-collapse>
             </el-main>
@@ -28,21 +30,24 @@
 </template>
 
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 import Basic from './basicInfo.vue'
 import api from '../../services/main.js'
 
 export default {
     name: 'information',
     components: {
-        Header,
+        XHeader,
         Basic
     },
     data () {
         return {
             title: "个人资料",
-            IsBack: true,
-            pre_path: "/about",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             InfoData: [{
                 title: "用户名",
                 detail: "aaa",
@@ -83,6 +88,11 @@ export default {
                     this.$message.error(res.data.message);
                 }
             });
+        },
+        backTo() {
+            this.$router.push({
+                path: "/about"
+            });
         }
     },
     created(){
@@ -108,19 +118,19 @@ body {
     background-color: #EFEFF4;
 }
 .el-header {
-  padding: 0;
+  	padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.headerTitle {
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-main {
-    padding:0;
-    margin-top: 40px;
+.infoMain {
+	padding-left: 0;
+	padding-right: 0;
 }
 .leftIcon {
     height: 36px;
@@ -134,6 +144,17 @@ body {
     padding: 5px;
     margin-right: 18px;
     float: left;
+}
+.infoDetail {
+	height: 25px;
+	color: #E56F42;
+	font-size: 16px;
+	margin-top: -21px;
+}
+.infoTitle {
+	height: 25px;
+	color: #F0AD94;
+	font-size: 14px;
 }
 .el-collapse-item__header {
     height:50px;

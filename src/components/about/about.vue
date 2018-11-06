@@ -1,46 +1,56 @@
 <template>
     <div class="About">
          <el-container>
-            <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
-            </el-header>
-            <el-main>
+         	<el-header>
+	            <x-header id="header" :left-options="{ showBack: false }">
+	                <span class="headerTitle">{{title}}</span>
+	            </x-header>
+	        </el-header>
+            <el-main class="aboutMain">
                 <Basic></Basic>
-                <el-card :body-style="{ padding: '0px' }" shadow="never" style="marginTop:20px;">
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;" 
+                        class="aboutBtn"
                         @click="goto('Information')">个人资料</el-button>
                 </el-card>
-                <el-card :body-style="{ padding: '0px' }" shadow="never" style="marginTop:20px;">
-                    <el-button type="text" style="margin:10px 60px;color:#E56F42;" @click="Null()">聊天记录</el-button>
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard">
+                    <el-button type="text" class="aboutBtn" @click="Null()">聊天记录</el-button>
                 </el-card>
-                <el-card :body-style="{ padding: '0px' }" shadow="never" style="marginTop:20px;">
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Unused')">我发布的闲置</el-button>
+                </el-card>
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard1">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Orders')">我的订单</el-button>
+                </el-card>
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard1">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Bought')">我买下的</el-button>
                 </el-card>
-                <el-card :body-style="{ padding: '0px' }" shadow="never" style="marginTop:20px;">
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Entrust')">我发布的委托</el-button>
+                </el-card>
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard1">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Entrusting')">我接受的委托</el-button>
+                </el-card>
+                <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard1">
                     <el-button 
                         type="text" 
-                        style="margin:10px 60px;color:#E56F42;display:block;"
+                        class="aboutBtn"
                         @click="goto('Entrusted')">我完成的委托</el-button>
                 </el-card>
             </el-main>
@@ -48,20 +58,18 @@
     </div>
 </template>
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 import Basic from './basicInfo.vue'
 
 export default {
     name: 'About',
     components: {
-        Header,
+        XHeader,
         Basic
     },
     data () {
         return {
-            title: "个人中心",
-            IsBack: false,
-            pre_path: "/about"
+            title: "个人中心"
         }
     },
     methods:{
@@ -103,14 +111,30 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.headerTitle {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-main {
-    margin-top: 40px;
+.aboutMain {
+	padding-left: 0;
+	padding-right: 0;
+}	
+.aboutCard {
+	border: 0px solid white;
+	margin-top: 12px;
+}
+.aboutCard1 {
+	border: 0px solid white;
+	border-top: 1px solid #FEEEDE;
+}
+.aboutBtn {
+	margin: 3px 28px;
+	color: #E56F42;
+	display: block;
 }
 </style>

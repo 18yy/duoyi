@@ -1,6 +1,8 @@
 <template>
 <div class="Paying">
-  <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+  <x-header id="header" :left-options="options" @on-click-back="backTo()">
+    <span class="header_title">{{title}}</span>
+</x-header>
   <div class="all">
     <div class="head">
       <img class="head-img" src="../../assets/bar2.png">
@@ -63,18 +65,21 @@
 </template>
 
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default{
   name: 'Paying2',
   components: {
-      Header
+      XHeader
   },
   data () {
     return {
       title: "支付",
-      IsBack: true,
-      pre_path: "/login",
+      options: {
+            showBack: true,
+            backText: '',
+            preventGoBack: true
+        },
       payType: '支付',
         radios:[
           {
@@ -96,6 +101,11 @@ export default{
     }
   },
   methods: {
+  	backTo() {
+        this.$router.push({
+            path: "/login"
+        });
+    },
     check(index) {
       this.radios.forEach((item) => {
         item.isChecked = false;
@@ -123,12 +133,14 @@ export default{
 
 <style>
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.header_title {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
 .block {
   background-color: #FEEEDE;

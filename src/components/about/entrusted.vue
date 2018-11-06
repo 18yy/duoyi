@@ -2,33 +2,33 @@
     <div class="entrusted">
          <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="options" @on-click-back="backTo()">
+                    <span class="headerTitle">{{title}}</span>
+                </x-header>
             </el-header>
-            <el-main style="paddingTop:0;">
+            <el-main>
                 <el-card 
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
-                    style="marginTop:38px;"
+                    class="entrustedCard"
                     v-for="(item,index) in entrustedData" 
                     :key="index">
-                    <div style="minHeight:220px;padding:52px;">
+                    <div class="entrustedInfo">
                         <div>
-                            <span style="color:#C7C7CC;fontSize:37px;fontWeight:bold;">{{item.EDname}}</span>
-                            <span style="color:#CACACF;fontSize:38px;float:right;">￥{{item.EDmoney}}</span>
+                            <span class="entrustedName">{{item.EDname}}</span>
+                            <span class="entrustedMoney">￥{{item.EDmoney}}</span>
                         </div>
-                        <div style="marginTop:28px;">
-                            <span style="color:#C7C7CC;marginTop:5px;fontSize:32px;">任务完成时间：{{item.EDdate}}</span>
-                        </div>
-                        <div style="marginTop:98px;height:48px;">
-                            <div style="float:left;width:320px;paddingTop:8px;">
-                                <span style="color:#E56F42;fontSize:32px;fontWeight:bold;">雇主评分</span>
+                        <div class="entrustedDate">任务完成时间：{{item.EDdate}}</div>
+                        <div class="entrustedFooter">
+                            <div>
+                                <span class="entrustedRate">雇主评分</span>
                                 <el-rate 
                                     style="float:right;" 
                                     :colors="['#E56F42','#E56F42','#E56F42']" 
                                     v-model="item.EDrate"
                                     disabled></el-rate>
                             </div>
-                            <el-button size="mini" style="float:right;fontSize:20px;">查看</el-button>
+                            <el-button size="mini" style="float:right;">查看</el-button>
                         </div>
                     </div>
                 </el-card>
@@ -37,18 +37,21 @@
     </div>
 </template>
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default {
     name: 'entrusted',
     components: {
-        Header
+        XHeader
     },
     data () {
         return {
             title: "我完成的委托",
-            IsBack: true,
-            pre_path: "/about",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             entrustedData: [{
                 EDname: "任务名称",
                 EDmoney: "444",
@@ -78,6 +81,11 @@ export default {
                 message: '暂无此功能！',
                 type: 'warning'
             });
+        },
+        backTo() {
+            this.$router.push({
+                path: "/about"
+            });
         }
     },
     created(){
@@ -106,17 +114,49 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.headerTitle {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-main {
-    margin-top: 40px;
+.entrustedCard {
+	margin-top: 15px;
 }
-.el-rate__icon {
-    margin: 0;
+.entrustedInfo {
+	min-height: 110px;
+	padding: 26px;
+}
+.entrustedName {
+	color: #C7C7CC;
+	font-size: 18px;
+	font-weight: bold;
+}
+.entrustedMoney {
+	color: #CACACF;
+	font-size: 19px;
+	float: right;
+	margin-right: 26px;
+}
+.entrustedDate {
+	margin-top: 14px;
+	color: #C7C7CC;
+	font-size: 16px;
+}
+.entrustedFooter {
+	margin-top: 49px;
+	height: 24px;
+}
+.entrustedFooter div {
+	float: left;
+}
+.entrustedRate{
+	color: #E56F42;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 5px;
 }
 </style>

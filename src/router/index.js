@@ -47,41 +47,6 @@ let router = new Router({
 		component: Home,
 		redirect: '/index',
         children:[{
-<<<<<<< HEAD
-				path: 'index',
-				name: 'Index',
-				component: Index
-			},{
-				path: 'team',
-				name: 'Team',
-				component: Team
-			},{
-				path: 'sign',
-				name: 'Sign',
-				component: Sign
-			},{
-				path: 'about',
-				name: 'About',
-				component: About
-			},{
-				path: 'search',
-				name: 'Search',
-						component: Search
-				}]
-		},{
-			path:'/paying2',
-			name: 'Paying2',
-			component: Paying2
-			},{
-			path: '/paying2/paying3',
-			name: 'Paying3',
-			component: Paying3
-			},{
-			path:'/paying2/paying3/paid',
-			name: 'Paid',
-			component: Paid
-			}]
-=======
 			path: 'index',
 			name: 'Index',
 			component: Index,
@@ -148,8 +113,6 @@ let router = new Router({
 		name: 'Paid',
 		component: Paid
 	  }]
->>>>>>> wang
-
 })
 
 // 访问之前，都检查下是否登录了

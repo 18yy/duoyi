@@ -2,32 +2,34 @@
     <div class="bought">
         <el-container>
             <el-header>
-                <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+                <x-header id="header" :left-options="options" @on-click-back="backTo()">
+                    <span class="headerTitle">{{title}}</span>
+                </x-header>
             </el-header>
-            <el-main style="padding:0;">
+            <el-main class="boughtMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
-                    style="marginTop:30px;"
+                    class="boughtCard"
                     v-for="(item,index) in boughtData" 
                     :key="index">
                     <div slot="header" class="clearfix">
-                        <span style="color:#E56F42;marginRight:38px;">卖家用户名</span>
+                        <span class="boughtTitle">卖家用户名</span>
                         <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
-                        <span style="color:#E56F42;marginLeft:38px;">{{item.Bname}}</span>
+                        <span class="boughtName">{{item.Bname}}</span>
                     </div>
                     <div>
                         <img src="../../assets/login/Profile.png" class="boughtImg">
-                        <div style="float:right; marginTop:48px;marginRight:388px;">
-                            <div style="color:#E56F42;fontSize:32px;">{{item.Bgoods}}</div>
-                            <div style="color:#FF3840;fontSize:38px;marginTop:25px;">￥{{item.Bmoney}}</div>
+                        <div class="boughtInfo">
+                            <div class="boughtGoods">{{item.Bgoods}}</div>
+                            <div class="boughtMoney">￥{{item.Bmoney}}</div>
                         </div>
                     </div>
-                    <el-button-group style="float:right;marginTop:18px;">
-                        <el-button size="mini" style="margin:20px;">查看</el-button>
-                        <el-button size="mini" style="margin:20px;">售后</el-button>
-                        <el-button size="mini" style="margin:20px;">删除</el-button>
-                    </el-button-group>
+                    <div class="btnGroup">
+                        <el-button size="mini" class="boughtBtn">查看</el-button>
+                        <el-button size="mini" class="boughtBtn">售后</el-button>
+                        <el-button size="mini" class="boughtBtn">删除</el-button>
+                    </div>
                 </el-card>
             </el-main>
         </el-container>
@@ -35,18 +37,21 @@
 </template>
 
 <script>
-import Header from '../others/Header'
+import { XHeader } from 'vux'
 
 export default {
     name: 'bought',
     components: {
-        Header
+        XHeader
     },
     data () {
         return {
             title: "我买下的",
-            IsBack: true,
-            pre_path: "/about",
+            options: {
+                showBack: true,
+                backText: '',
+                preventGoBack: true
+            },
             boughtData: [{
                 Bname: "XXX",
                 Bgoods: "书书书",
@@ -67,7 +72,11 @@ export default {
         }
     },
     methods:{
-
+    	backTo() {
+            this.$router.push({
+                path: "/about"
+            });
+        }
     },
     created(){
     
@@ -95,20 +104,55 @@ body {
   padding: 0;
 }
 #header {
-  height: 70px;
-  padding-top: 25px;
   background-color: #F9F9F9;
 }
-.vux-header-left {
-  margin-top: 25px;
+.headerTitle {
+    height: 90px;
+    width: 180px;
+    text-align: center;
+    color: #E56F42;
+    font-weight: bold;
 }
-.el-main {
-    margin-top: 40px;
+.boughtMain {
+	padding-left: 0;
+	padding-right: 0;
 }
+.boughtCard {
+	margin: 12px 0;
+}
+.boughtTitle {
+	color: #E56F42;
+	margin-right: 18px;
+}
+.boughtName {
+	color: #E56F42;
+	margin-left: 18px;
+} 
 .boughtImg {
     width: 60px;
     height: 60px;
     float: left;
     margin: 18px;
+    background-color: #E56F42;
+}
+.boughtInfo {
+	float: right; 
+	margin-top: 24px; 
+	margin-right: 160px;
+}
+.boughtGoods {
+	color: #E56F42;
+	font-size: 16px;
+}
+.boughtMoney {
+	color: #FF3840;
+	font-size: 18px;
+	margin-top: 12px;
+}
+.btnGroup {
+	float:right;
+}
+.boughtBtn {
+	margin: 10px;
 }
 </style>
