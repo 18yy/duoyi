@@ -8,16 +8,24 @@
       <div :class="[isBarShow?'leftContent-active':'leftContent']">
         <div class="publishTop">
           <div class="title">
-            <input type="text" placeholder="标题 品类品牌型号" maxlength="20">
+            <input type="text" placeholder="标题 品类品牌型号" maxlength="20" v-model="name">
           </div>
           <div class="descript">
-            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受">
+            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受" v-model="describe">
               
             </textarea>
           </div>
           <div class="imgAndMore">
             <div class="updateImg">
+              <div class="previewBox">  
 
+              </div>
+              <div class="previewBox">  
+                
+              </div>
+              <div class="updateInput">
+                <input type="file" @change="getFile($event)">
+              </div>
             </div>
             <div class="moreIco" @click="showBar" v-show="!isBarShow">
               <span>更多</span>
@@ -52,7 +60,7 @@
           </div>
         </div>
         <div class="publishBtn">
-          <button>
+          <button @click="submitPublish">
           确认发布
           </button>
         </div>
@@ -69,6 +77,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   import { XHeader } from 'vux'
 
    export default {
@@ -78,6 +88,9 @@
       },
       data(){
         return{
+          file:'',
+          name:'',
+          describe:'',
           title:'发布闲置',
           isBarShow:false,
           menuSrc: require('@/assets/indexmenu.png'),
@@ -99,13 +112,39 @@
         }
       },
       methods:{
+        getFile(event) {
+            this.file = event.target.files[0];
+          },
+        submitPublish(){
+          console.log(this.name)
+          console.log(this.describe)
+          console.log(this.file)
+           event.preventDefault();
+            let formData = new FormData();
+            formData.append('name', this.name);
+            formData.append('descipt', this.descipt);
+            formData.append('imgs', this.file);
+            formData.append('price', this.name);
+            let config = {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+              }
+
+               axios.post('http://39.108.138.225:8080/duoyi/goods/add', formData, config).then(function (res) {
+                console.log(res.data)
+              }).catch(function (err) {
+                 console.log(err);
+               })
+
+        },
         showBar(){
           console.log('click')
           this.isBarShow=!this.isBarShow
         },
          check(index) {
             this.radios[index].isChecked = !this.radios[index].isChecked;
-          },
+          }      
       }
    }
 </script>
@@ -231,10 +270,23 @@
     margin: 0 auto;
     position: relative
   }
+  /*上传图片模块*/
   .updateImg{
     width: 260px;
     height: 100px;
 
+  }
+  .updateImg /deep/ .el-upload--picture-card{
+    width:60px;
+    height:60px;
+
+  }
+   .updateImg /deep/ .el-upload-list--picture-card .el-upload-list__item{
+    width:60px;
+    height:60px;
+  }
+  .el-icon-plus{
+    line-height: 50px;
   }
   .moreIco{
     height: 30px;
