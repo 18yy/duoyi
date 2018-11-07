@@ -10,12 +10,6 @@ import Team from '@/components/team/Team'
 import Sign from '@/components/sign/Sign'
 
 import About from '@/components/about/About'
-<<<<<<< HEAD
-import Paid from '@/components/pay/paid'
-import Paying2 from '@/components/pay/paying2'
-import Paying3 from '@/components/pay/paying3'
-import Button from '@/components/pay/button'
-=======
 import Information from '@/components/about/information'
 import Unused from '@/components/about/unused'
 import Orders from '@/components/about/orders'
@@ -29,7 +23,6 @@ import Paid from '@/components/pay/Paid'
 import Paying2 from '@/components/pay/Paying2'
 import Paying3 from '@/components/pay/Paying3'
 import Button from '@/components/pay/Button'
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
 import Search from '@/components/index/components/search'
 import PublishSe from '@/components/secondHand/publish-second'
 
@@ -78,30 +71,6 @@ let router = new Router({
 			path: 'about',
 			name: 'About',
 			component: About
-<<<<<<< HEAD
-    },{
-			path: 'button',
-			name: 'Button',
-			component: Button
-    },{
-      path: 'search',
-      name: 'Search',
-      component: Search
-    }]  
-    },{
-      path:'/paid',
-      name: 'paid',
-      component: Paid
-    },{
-      path:'/paying2',
-      name: 'paying2',
-      component: Paying2
-    },{
-      path: '/paying3',
-      name: 'paying3',
-      component: Paying3
-    }]
-=======
 		}]
 	},{
 		path: '/about/information',
@@ -162,7 +131,6 @@ router.beforeEach((to, from, next) => {
     } else {
 		next();
 	}
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
 })
 
 export default router;
