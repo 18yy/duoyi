@@ -148,9 +148,6 @@
           this.imgLen--
         },
         submitPublish(){
-          console.log(this.name)
-          console.log(this.describe)
-          console.log(this.file)
            event.preventDefault()
             let formData = new FormData()
              for (let key in this.imgs) {   
