@@ -8,17 +8,24 @@
       <div :class="[isBarShow?'leftContent-active':'leftContent']">
         <div class="publishTop">
           <div class="title">
-            <input type="text" placeholder="标题 品类品牌型号" maxlength="20">
+            <input type="text" placeholder="标题 品类品牌型号" maxlength="20" v-model="name">
           </div>
           <div class="descript">
-            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受">
+            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受" v-model="describe">
               
             </textarea>
           </div>
           <div class="imgAndMore">
-            <div class="updateImg">
-
-            </div>
+              <ul class="updateImg">
+                <li class="previewBox" v-for="(value,key) in imgs" :key="key"> 
+                   <img :src="deleteSrc" alt="delete" @click="deleteImg(key)"> 
+                   <img :src="getImgUrl(value)" class="previewImg">
+                </li>
+                <li>
+                  <img :src="updateSrc" alt="update">
+                   <input type="file" @change="addImg" multiple="multiple" ref="inputer" class="updateInput"> 
+                </li>
+              </ul>
             <div class="moreIco" @click="showBar" v-show="!isBarShow">
               <span>更多</span>
               <img :src="menuSrc" alt="">
@@ -52,7 +59,7 @@
           </div>
         </div>
         <div class="publishBtn">
-          <button>
+          <button @click="submitPublish">
           确认发布
           </button>
         </div>
@@ -70,6 +77,7 @@
 
 <script>
   import { XHeader } from 'vux'
+  import api from '../../services/main.js'
 
    export default {
       name: 'publish-second',
@@ -78,8 +86,16 @@
       },
       data(){
         return{
+          file:'',
+          imgs: {},
+          imgLen: 0,
+          name:'',
+          describe:'',
           title:'发布闲置',
           isBarShow:false,
+          price:22,
+          updateSrc:  require('@/assets/second-hand/update.png'),
+          deleteSrc: require('@/assets/second-hand/delete.png'),
           menuSrc: require('@/assets/indexmenu.png'),
             radios: [
               {
@@ -99,18 +115,82 @@
         }
       },
       methods:{
+        addImg(event){
+        
+          let inputDOM = this.$refs.inputer
+          // 通过DOM取文件数据
+          var fil= inputDOM.files
+          let oldLen = this.imgLen
+          let len = fil.length + oldLen;
+           if (len > 2 ){
+              this.$message.error("最多上传两张");
+              return false;
+            }
+           for (let i = 0; i < fil.length; i++) {
+            //   let size = Math.floor(fil[i].size / 1024);
+            //  if (size > 800* 1024 * 1024) {
+            //    this.$message.error('请选择800M以内的图片！');
+            //    return false
+            //  }
+               this.imgLen++
+             this.$set(this.imgs,fil[i].name + '?' + new Date().getTime() + i,fil[i]);
+           }
+          console.log(this.imgs)
+
+        },
+        getImgUrl(file){
+          //本地创建预览图片地址
+          let url = window.URL.createObjectURL(file)
+          return url
+        },
+        deleteImg(key){
+          this.$delete(this.imgs, key)
+          this.imgLen--
+        },
+        submitPublish(){
+           event.preventDefault()
+            let formData = new FormData()
+             for (let key in this.imgs) {   
+                formData.append('img', this.imgs[key])
+              }
+            formData.append('name', this.name)
+            formData.append('describe', this.describe)
+            formData.append('price', this.price)
+            let config = {
+                headers: {
+                  "Content-Type": "multipart/form-data"
+                }
+              }
+              api.addGoods((err, res) => {
+                if (res.data.status == 1) {
+                  console.log('success')
+                  this.name=""
+                  this.describe=""
+                  this.imgs={}
+                }else{
+                   this.$message.error("提交失败");
+                }
+              },formData, config)
+             
+
+        },
         showBar(){
           console.log('click')
           this.isBarShow=!this.isBarShow
         },
          check(index) {
             this.radios[index].isChecked = !this.radios[index].isChecked;
-          },
+          }      
       }
    }
 </script>
 
 <style scoped lang="less">
+ .deleteMsgBox{
+     width: 160px;
+     height:160px;
+      background: black
+   }
 
   .publishWrap /deep/ .vux-header .vux-header-title{
     color: black!important;
@@ -231,10 +311,55 @@
     margin: 0 auto;
     position: relative
   }
+  /*上传图片模块*/
   .updateImg{
     width: 260px;
-    height: 100px;
+    height: 60px;
 
+  }
+ .updateImg li{
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   margin-right: 9px;
+   position: relative;
+    border: 1px solid rgb(254, 238, 222);
+    border-radius: 10px;
+    background: rgb(254, 238, 222);
+ }
+ .updateImg li img[alt="update"]{
+   width: 16px;
+   height: 16px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin:-8px 0 0 -8px;
+ }
+ .updateInput{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+ }
+ .previewBox img[alt="delete"]{
+   width: 12px;
+   height: 12px;
+   position: absolute;
+   right: -6px;
+   top:-6px;
+   z-index: 2;
+ }
+ .previewImg{
+   width: 60px;
+   height: 60px;
+   position: absolute;
+   left: 0;
+   top: 0;
+ }
+  .el-icon-plus{
+    line-height: 50px;
   }
   .moreIco{
     height: 30px;

@@ -10,9 +10,13 @@ import {
     getInfo
 } from './about.js'
 
+import {
+  addGoods
+} from './secondHand.js'
+
 export default {
     register,
     login,
-
-    getInfo
+    getInfo,
+    addGoods
 }
