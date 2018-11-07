@@ -12,28 +12,28 @@ export default {
     return {
       message: true,
       img: [{
-        url: 'src\assets\about_visited.png',
+        url: '../../assets/resource.png',
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-        url: '../../../static/main.png',
+        url: '../../assets/entrust.png',
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-        url: '../../../static/main.png',
+        url: '../../assets/unused.png',
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-        url: '../../../static/main.png',
+        url: '../../assets/resource.png',
         style: {
           position: 'fixed',
           left: '8.4rem',
@@ -41,7 +41,7 @@ export default {
         }
       }],
       imgbig: {
-        url: '../../../static/main.png',
+        url: '../../assets/main.png',
         }
       }
     },

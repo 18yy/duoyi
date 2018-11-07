@@ -8,12 +8,15 @@ import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
 import Sign from '@/components/sign/Sign'
 import About from '@/components/about/About'
-import Paid from '@/components/pay/paid'
-import Paying2 from '@/components/pay/paying2'
-import Paying3 from '@/components/pay/paying3'
-import Button from '@/components/pay/button'
+import Paid from '@/components/pay/Paid'
+import Paying2 from '@/components/pay/Paying2'
+import Paying3 from '@/components/pay/Paying3'
+import Button from '@/components/pay/Button'
 import Search from '@/components/index/components/search'
-import Se from '@/components/index/components/second-hand'
+import GoodsMessage from '@/components/about/goodsmessage'
+import TeamMessage from '@/components/team/teammessage'
+import ReleaseTeam from '@/components/team/releaseteam'
+import SuccessRelease from '@/components/team/successrelease'
 
 Vue.use(Router)
 
@@ -48,26 +51,39 @@ export default new Router({
 			path: 'about',
 			name: 'About',
 			component: About
+		},{
+		  path: 'search',
+		  name: 'Search',
+          component: Search
+   		}]
+	},{
+		path:'/paying2',
+		name: 'Paying2',
+		component: Paying2
+	  },{
+		path: '/paying2/paying3',
+		name: 'Paying3',
+		component: Paying3
+	  },{
+		path:'/paying2/paying3/paid',
+		name: 'Paid',
+		component: Paid
+	  },{
+    path:'/goodsmessage',
+    name: 'GoodsMessage',
+    component: GoodsMessage      
     },{
-			path: 'button',
-			name: 'Button',
-			component: Button
+    path:'/teammessage',
+    name: 'TeamMessage',
+    component: TeamMessage
     },{
-      path: 'search',
-      name: 'Search',
-      component: Search
-    }]  
+    path:'/releaseteam',
+    name: 'ReleaseTeam',
+    component: ReleaseTeam
     },{
-      path:'/paid',
-      name: 'paid',
-      component: Paid
-    },{
-      path:'/paying2',
-      name: 'paying2',
-      component: Paying2
-    },{
-      path: '/paying3',
-      name: 'paying3',
-      component: Paying3
+    path:'/successrelease',
+    name: 'SuccessRelease',
+    component: SuccessRelease
     }]
+
 })

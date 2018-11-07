@@ -3,22 +3,22 @@
   <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
   <div class="all">
     <div class="head">
-      <img class="success-img" src="../../assets/order_success.svg" />
+      <img class="success-img" src="../../assets/wanted.png" />
       <div class="head-child">
         <img class="firewords" src="../../assets/firewords_left.png" />
-        <p class="head-font">支付成功</p>
+        <p class="head-font">发布成功</p>
         <img class="firewords" src="../../assets/firewords_right.png" />
       </div>
     </div>
     <div class="mid">
       <hr/>
-      <p class="mid-font">商品交易方式：{{tradeway}}</p>
+      <p class="mid-font">委托名字：{{entrust}}</p>
       <hr/>
-      <p class="mid-font">商品交易日期：{{month1}}月{{date1}}日</p>
+      <p class="mid-font">委托金额：{{money}}</p>
       <hr/>
-      <p class="mid-font">商品支付金额：{{money}}</p>
+      <p class="mid-font">委托完成时间：{{month}}月{{date}}日</p>
       <hr/>
-      <p class="mid-font">估计到货时间：{{month2}}月{{date2}}日</p>
+      <p class="mid-font">委托清单：{{num}}件</p>
       <hr/>
     </div>
     <div class="bottom">
@@ -39,15 +39,14 @@ export default{
   },
   data () {
     return {
-      title: "支付",
+      title: "发布组队",
       IsBack: true,
-      pre_path: "/paying2/paying3",
-      tradeway: "寄存柜",
+      pre_path: "/successrelease",
+      entrust: "名字",
       money: "￥1234.00",
-      month1: 11,
-      date1: 11,
-      month2: 11,
-      date2: 13
+      month: 11,
+      date: 11,
+      num: 2
     }
   }
 }
@@ -69,7 +68,7 @@ export default{
   display: inline;
 }
 .success-img {
-  width: 7.2rem;
+  width: 2.2rem;
   height: 2rem;
   margin: 30px auto;
 }
