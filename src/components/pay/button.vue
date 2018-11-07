@@ -1,10 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <img v-for="(item,index) of img" :src="item.url" :style="item.style" @click="info" class="img-sml">
-=======
     <img v-for="(item,index) of img" :key="index" :src="item.url" :style="item.style" @click="info" class="img-sml">
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
     <img :src="imgbig.url" :style="imgbig.style" @click="change(message)" class="img-big">
   </div>
 </template>
@@ -16,44 +12,28 @@ export default {
     return {
       message: true,
       img: [{
-<<<<<<< HEAD
-        url: '/static/资源button.png',
-=======
         url: '../../assets/resource.png',
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-<<<<<<< HEAD
-        url: '/static/委托button.png',
-=======
         url: '../../assets/entrust.png',
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-<<<<<<< HEAD
-        url: '/static/闲置button.png',
-=======
         url: '../../assets/unused.png',
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
         style: {
           position: 'fixed',
           left: '8.4rem',
           top: '14.6rem'
         }
       },{
-<<<<<<< HEAD
-        url: '/static/资源button.png',
-=======
         url: '../../assets/resource.png',
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
         style: {
           position: 'fixed',
           left: '8.4rem',
@@ -61,11 +41,7 @@ export default {
         }
       }],
       imgbig: {
-<<<<<<< HEAD
-        url: '/static/主button.png',
-=======
         url: '../../assets/main.png',
->>>>>>> 9e814bb3e3eeaf65b5de66803ae8314de2989b20
         style: {
           position: 'fixed',
           left: '8.2rem',
