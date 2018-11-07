@@ -1,9 +1,7 @@
 <template>
   <div class="Home">
     <el-container>
-        <el-main>
-            <router-view></router-view>
-        </el-main>
+        <router-view></router-view>
         <el-footer>
           <Footer class="footer"></Footer>
         </el-footer>
@@ -13,13 +11,11 @@
 
 <script>
 import { XHeader } from 'vux'
-import Header from './Header'
 import Footer from './Footer'
 
 export default {
   name: 'Home',
   components: {
-    Header,
     Footer
   },
   data () {
@@ -42,7 +38,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 body {
     margin:0;
     padding:0; 
@@ -53,9 +49,6 @@ body {
     position:absolute;
     top:0px;
     bottom:0px;
-}
-.el-main {
-  margin-top: 25px;
 }
 .el-header {
   height: 62px;

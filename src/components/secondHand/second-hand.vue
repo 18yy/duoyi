@@ -1,5 +1,6 @@
 <template>
   <div class="secondHand">
+    <div>
     <div class="card" v-for="(item,index) in cardImg">
       <img src="" alt="" class="goodsImg">
       <div class="cardInfo">
@@ -9,7 +10,7 @@
             <p class="tradeType">#{{item.tradeType}}#</p>
           </div>
 
-          <p class="goodsPrice">￥22.2</p>
+          <p class="goodsPrice"> ￥22.2</p>
             <!-- <span class="intNum">22</span>.22</p> -->
         </div>
 
@@ -21,6 +22,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -91,11 +93,16 @@
 
 </script>
 
-<style>
+<style scoped>
   .secondHand {
+    width: 100%;
+    height: auto;
+     background-color: rgb(239, 239, 244);
+  }
+  .secondHand>div{
     box-sizing: border-box;
-    padding: 60px 0 10px 0;
-    width: 92%;
+    padding: 60px 0 30px 0;
+    width:92%;
     height: auto;
     margin: 0 auto;
     display: flex;
@@ -104,7 +111,6 @@
     justify-content: space-between;
 
   }
-
   .card {
     width: 167px;
     height: 232px;
