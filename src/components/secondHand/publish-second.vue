@@ -48,7 +48,7 @@
           <div class="publishPriceAndType">
             <div>
               <p>价格</p>
-              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;"></x-icon>
+              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;" @click="showPrice"></x-icon>
             </div>
           </div>
           <div class="publishPriceAndType">
@@ -72,20 +72,26 @@
         </div>
       </transition>
     </div>
+     <div v-show="isShowPrice"> 
+      <edit-price v-on:listenToChildClick="closePrice" ></edit-price>
+     </div> 
   </div>
 </template>
 
 <script>
+  import EditPrice from './components/editPrice'
   import { XHeader } from 'vux'
   import api from '../../services/main.js'
 
    export default {
       name: 'publish-second',
       components:{
-        XHeader
+        XHeader,
+        EditPrice
       },
       data(){
         return{
+          isShowPrice:false,
           file:'',
           imgs: {},
           imgLen: 0,
@@ -93,7 +99,7 @@
           describe:'',
           title:'发布闲置',
           isBarShow:false,
-          price:22,
+          price:'',
           updateSrc:  require('@/assets/second-hand/update.png'),
           deleteSrc: require('@/assets/second-hand/delete.png'),
           menuSrc: require('@/assets/indexmenu.png'),
@@ -127,11 +133,6 @@
               return false;
             }
            for (let i = 0; i < fil.length; i++) {
-            //   let size = Math.floor(fil[i].size / 1024);
-            //  if (size > 800* 1024 * 1024) {
-            //    this.$message.error('请选择800M以内的图片！');
-            //    return false
-            //  }
                this.imgLen++
              this.$set(this.imgs,fil[i].name + '?' + new Date().getTime() + i,fil[i]);
            }
@@ -175,12 +176,22 @@
 
         },
         showBar(){
-          console.log('click')
           this.isBarShow=!this.isBarShow
         },
          check(index) {
             this.radios[index].isChecked = !this.radios[index].isChecked;
-          }      
+          },
+          showPrice(){
+            this.isShowPrice=true
+          },
+          closePrice(){
+            this.isShowPrice = false
+          },
+          closePrice(data,price){
+            //监听子组件的点击
+            this.isShowPrice=false
+           this.price=price
+          }
       }
    }
 </script>
@@ -197,6 +208,7 @@
   }
   .vux-header{
     background:rgb(249,249,249);
+    z-index:999
   }
   .vux-header-left {
     margin-top: 25px;
