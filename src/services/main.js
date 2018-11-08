@@ -11,12 +11,14 @@ import {
 } from './about.js'
 
 import {
-  addGoods
+  addGoods,
+  showGoods
 } from './secondHand.js'
 
 export default {
     register,
     login,
     getInfo,
-    addGoods
+    addGoods,
+    showGoods
 }

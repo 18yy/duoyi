@@ -149,30 +149,36 @@
           this.imgLen--
         },
         submitPublish(){
-           event.preventDefault()
-            let formData = new FormData()
-             for (let key in this.imgs) {   
-                formData.append('img', this.imgs[key])
-              }
+            event.preventDefault()
+            
+          if(JSON.stringify(this.imgs) == '{}'|| this.name==""|| this.describe==""||this.price==""){
+             this.$message.error("请把资料填写完成！");
+          }else{
+              let formData = new FormData()
+            for (let key in this.imgs) {
+              formData.append('img', this.imgs[key])
+            }
             formData.append('name', this.name)
             formData.append('describe', this.describe)
             formData.append('price', this.price)
             let config = {
-                headers: {
-                  "Content-Type": "multipart/form-data"
-                }
+              headers: {
+                "Content-Type": "multipart/form-data"
               }
-              api.addGoods((err, res) => {
-                if (res.data.status == 1) {
-                  console.log('success')
-                  this.name=""
-                  this.describe=""
-                  this.imgs={}
-                }else{
-                   this.$message.error("提交失败");
-                }
-              },formData, config)
-             
+            }
+            api.addGoods((err, res) => {
+              if (res.data.status == 1) {
+                console.log('success')
+                this.name = ""
+                this.describe = ""
+                this.imgs = {}
+              } else {
+                this.$message.error("提交失败");
+              }
+            }, formData, config)
+            this.$router.push({ path: '/index' });
+              
+          }
 
         },
         showBar(){

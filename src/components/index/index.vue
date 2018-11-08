@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="indexWrap">
     <div class="indexHead">
       <div class="tabBigBox vux-1px-b">
         <div class="tabImg" @click="showSlide"> 
@@ -69,6 +69,10 @@
 
 
 <style lang="less" scoped>
+  .indexWrap{
+    width: 100%;
+    height: 100%;
+  }
   .el-main {
     padding: 0;
      background: rgb(239, 239, 244);

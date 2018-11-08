@@ -5,21 +5,21 @@
         <p>价格</p>
         <div>
           <span>￥</span>
-          <input type="text" v-model="price" >
+          <input type="number" v-model="price" >
         </div>
       </div>
       <div class="editSmallBox">
         <p>入手价</p>
         <div>
           <span>￥</span>
-          <input type="text" >
+          <input type="number" >
         </div>
       </div>
       <div class="editSmallBox">
         <p>运费/寄存费</p>
         <div>
           <span>￥</span>
-          <input type="text" >
+          <input type="number" >
         </div>
       </div>
     </div>

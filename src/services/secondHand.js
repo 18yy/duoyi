@@ -10,6 +10,16 @@ function addGoods(fn, data,config) {
       });
 }
 
+//发布闲置
+function showGoods(fn) {
+  services.get('/duoyi/goods/getAll')
+      .then(function (res) {
+        fn(false, res);
+      }).catch(function (err) {
+        fn(err);
+      });
+}
 export {
-  addGoods
+  addGoods,
+  showGoods
 }
