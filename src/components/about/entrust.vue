@@ -145,6 +145,7 @@ body {
 .entrustCard {
 	margin-top: 15px;
 }
+<<<<<<< HEAD
 .entrustInfo {
 	min-height: 100px;
 	padding: 25px;

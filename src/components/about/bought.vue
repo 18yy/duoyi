@@ -129,7 +129,6 @@ body {
     height: 60px;
     float: left;
     margin: 18px;
-    background-color: #E56F42;
 }
 .boughtInfo {
 	padding-top: 24px; 

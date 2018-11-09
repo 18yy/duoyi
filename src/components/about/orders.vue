@@ -17,7 +17,6 @@
                     <div slot="header" class="clearfix">
                         <span class="ordersTitle">卖家用户名</span>
                         <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
-                        <!-- <span class="ordersName">{{item.Oname}}</span> -->
                     </div>
                     <div>
                         <img src="../../assets/login/Profile.png" class="ordersImg">
@@ -36,7 +35,6 @@
 				        <p style="text-align:center;color:#F9BE82;">
 				        	删除操作无法撤销，该消息将被永久删除
 				        </p>
-				    </confirm>
                 </el-card>
             </el-main>
         </el-container>
@@ -44,8 +42,17 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { XHeader,Confirm } from 'vux'
 import api from '../../services/main.js'
+=======
+<<<<<<< HEAD
+import Header from '../others/Header'
+=======
+import { XHeader,Confirm } from 'vux'
+import api from '../../services/main.js'
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
+>>>>>>> wang
 
 export default {
     name: 'orders',
@@ -167,7 +174,6 @@ body {
     height: 60px;
     float: left;
     margin: 18px;
-    background-color: #E56F42;
 }
 .ordersInfo { 
 	padding-top: 24px;

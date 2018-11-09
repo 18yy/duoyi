@@ -168,4 +168,13 @@ body {
 	border-radius: 0;
 	color: #B8B8BB;
 }
+.entrustedBtn {
+	float: right;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
+}
 </style>

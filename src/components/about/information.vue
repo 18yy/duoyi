@@ -50,6 +50,7 @@
 </template>
 
 <script>
+
 import { XHeader,ConfirmPlugin } from 'vux'
 import Basic from './basicInfo.vue'
 import api from '../../services/main.js'
@@ -230,6 +231,17 @@ body {
     text-align: center;
     color: #6B6B6B;
     font-weight: bold;
+}
+.infoMain {
+	padding: 0;
+}
+.updateImg {
+	position: fixed;
+	top: 98px;
+	left: 68px;
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
 }
 .infoMain {
 	padding: 0;
