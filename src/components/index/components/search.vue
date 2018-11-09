@@ -40,15 +40,12 @@
         </div>
       </div>
     </div>
-     <HoverBtn></HoverBtn>
   </div>
 </template>
 <script>
-  import HoverBtn from '@/components/others/hoverbutton'
   export default {
     name: 'search',
     components: {
-        HoverBtn
       },
     data() {
       return {
