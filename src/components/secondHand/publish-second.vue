@@ -75,6 +75,7 @@
      <div v-show="isShowPrice"> 
       <edit-price v-on:listenToChildClick="closePrice" ></edit-price>
      </div> 
+    <HoverBtn></HoverBtn>
   </div>
 </template>
 
@@ -82,12 +83,14 @@
   import EditPrice from './components/editPrice'
   import { XHeader } from 'vux'
   import api from '../../services/main.js'
+   import HoverBtn from '@/components/others/hoverbutton'
 
    export default {
       name: 'publish-second',
       components:{
         XHeader,
-        EditPrice
+        EditPrice,
+        HoverBtn
       },
       data(){
         return{

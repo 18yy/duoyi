@@ -5,7 +5,7 @@
 </x-header>
   <div class="all">
     <div class="head">
-      <img class="head-img" src="../../assets/bar2.png">
+      <img class="head-img" src="../../assets/pay/bar2.png">
       <div>
         <p class="font-one head-font-left">下单</p>
         <p class="font-one head-font-mid">确认个人信息</p>

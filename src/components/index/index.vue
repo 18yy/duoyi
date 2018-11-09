@@ -15,8 +15,10 @@
         </tab>
       </div>
     </div>
-    <div :is="currentView" keep-alive></div>
+    <div :is="currentView" keep-alive>
+    </div>
     <slide-bar></slide-bar>
+    <hoverBtn></hoverBtn>
   </div>
 </template>
 <script>
@@ -25,6 +27,7 @@
     TabItem
   } from 'vux'
 
+  import HoverBtn from '@/components/others/hoverbutton'
   
   import SecondHand from '../secondHand/second-hand'
   import Reward from './components/reward'
@@ -39,7 +42,8 @@
       SecondHand,
       Reward,
       Source,
-      SlideBar
+      SlideBar,
+      HoverBtn
     },
     data() {
       return {
