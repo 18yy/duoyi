@@ -7,7 +7,7 @@
 	            </x-header>
 	        </el-header>
             <el-main class="aboutMain">
-                <Basic></Basic>
+                <Basic :name="name" :username="username" :money="money" :src="avatar"></Basic>
                 <el-card :body-style="{ padding: '0px' }" shadow="never" class="aboutCard">
                     <el-button 
                         type="text" 
@@ -60,6 +60,7 @@
 <script>
 import { XHeader } from 'vux'
 import Basic from './basicInfo.vue'
+import api from '../../services/main.js'
 
 export default {
     name: 'About',
@@ -69,10 +70,30 @@ export default {
     },
     data () {
         return {
-            title: "个人中心"
+            title: "个人中心",
+            name: "",
+            username: "",
+            money: 0,
+            avatar: ""
         }
     },
     methods:{
+    	init() {
+            api.getInfo((err, res) => {
+                if (err || res.status != 200) {
+               	 	this.$message.error("出错了，刷新一下吧");
+                 	return;
+                 }
+                if (res.data.status == 1) {
+                	this.avatar = res.data.result.img;
+                    this.name = res.data.result.name;
+                    this.username = res.data.result.username;
+                    this.money = res.data.result.money;
+                } else{
+                    this.$message.error(res.data.message);
+                }
+            });
+        },
        Null() {
             this.$message({
                 message: '暂无此功能！',
@@ -89,7 +110,7 @@ export default {
         
     },
     mounted(){
-
+    	this.init();
     }
 }
 </script>
@@ -109,6 +130,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   background-color: #F9F9F9;
@@ -121,8 +143,7 @@ body {
     font-weight: bold;
 }
 .aboutMain {
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
 }	
 .aboutCard {
 	border: 0px solid white;
@@ -133,8 +154,13 @@ body {
 	border-top: 1px solid #FEEEDE;
 }
 .aboutBtn {
-	margin: 3px 28px;
+	width: 100%;
+	margin: 3px 0;
 	color: #E56F42;
 	display: block;
+}
+.aboutBtn span {
+	float: left;
+	margin-left: 30px;
 }
 </style>

@@ -7,12 +7,24 @@ import {
 
 
 import {
-    getInfo
+    getInfo,
+    updateImg,
+    updateInfo,
+    getAllByUserid,
+    deleteUnused,
+    selectOrders,
+    deleteOrders
 } from './about.js'
 
 export default {
     register,
     login,
 
-    getInfo
+    getInfo,
+    updateImg,
+    updateInfo,
+    getAllByUserid,
+    deleteUnused,
+    selectOrders,
+    deleteOrders
 }

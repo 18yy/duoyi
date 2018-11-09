@@ -17,19 +17,19 @@
                     <div slot="header" class="clearfix">
                         <span class="boughtTitle">卖家用户名</span>
                         <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
-                        <span class="boughtName">{{item.Bname}}</span>
+                        <!--  <span class="boughtName">{{item.Bname}}</span>  -->
                     </div>
                     <div>
                         <img src="../../assets/login/Profile.png" class="boughtImg">
                         <div class="boughtInfo">
-                            <div class="boughtGoods">{{item.Bgoods}}</div>
-                            <div class="boughtMoney">￥{{item.Bmoney}}</div>
+                            <div class="boughtGoods">{{item.name}}</div>
+                            <div class="boughtMoney">￥{{item.price}}</div>
                         </div>
                     </div>
                     <div class="btnGroup">
-                        <el-button size="mini" class="boughtBtn">查看</el-button>
-                        <el-button size="mini" class="boughtBtn">售后</el-button>
-                        <el-button size="mini" class="boughtBtn">删除</el-button>
+                        <el-button class="boughtBtn">查看</el-button>
+                        <el-button class="boughtBtn">售后</el-button>
+                        <el-button class="boughtBtn">删除</el-button>
                     </div>
                 </el-card>
             </el-main>
@@ -54,21 +54,17 @@ export default {
                 preventGoBack: true
             },
             boughtData: [{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                goods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             }]
         }
     },
@@ -103,6 +99,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   background-color: #F9F9F9;
@@ -123,10 +120,10 @@ body {
 	color: #E56F42;
 	margin-right: 18px;
 }
-.boughtName {
+/*.boughtName {
 	color: #E56F42;
 	margin-left: 18px;
-} 
+} */
 .boughtImg {
     width: 60px;
     height: 60px;
@@ -135,9 +132,7 @@ body {
     background-color: #E56F42;
 }
 .boughtInfo {
-	float: right; 
-	margin-top: 24px; 
-	margin-right: 160px;
+	padding-top: 24px; 
 }
 .boughtGoods {
 	color: #E56F42;
@@ -146,12 +141,18 @@ body {
 .boughtMoney {
 	color: #FF3840;
 	font-size: 18px;
-	margin-top: 12px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 .btnGroup {
 	float:right;
 }
 .boughtBtn {
-	margin: 10px;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
 }
 </style>

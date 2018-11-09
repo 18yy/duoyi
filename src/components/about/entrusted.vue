@@ -29,7 +29,7 @@
                                     v-model="item.EDrate"
                                     disabled></el-rate>
                             </div>
-                            <el-button size="mini" style="float:right;">查看</el-button>
+                            <el-button class="entrustedBtn">查看</el-button>
                         </div>
                     </div>
                 </el-card>
@@ -113,6 +113,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   background-color: #F9F9F9;
@@ -157,5 +158,14 @@ body {
 	font-size: 16px;
 	font-weight: bold;
 	margin-right: 5px;
+}
+.entrustedBtn {
+	float: right;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
 }
 </style>

@@ -38,9 +38,9 @@
                     </div>
                     <div style="borderTop:1px solid #EFA589;">
                         <div style="float:right;">
-                            <el-button size="mini" class="entrustBtn">查看</el-button>
-                            <el-button size="mini" class="entrustBtn">编辑</el-button>
-                            <el-button size="mini" class="entrustBtn">删除</el-button>
+                            <el-button class="entrustBtn">查看</el-button>
+                            <el-button class="entrustBtn">编辑</el-button>
+                            <el-button class="entrustBtn">删除</el-button>
                         </div>
                     </div>
                 </el-card>
@@ -132,6 +132,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   background-color: #F9F9F9;
@@ -196,6 +197,11 @@ body {
 	margin-top: 5px;
 }
 .entrustBtn {
-	margin: 14px;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
 }
 </style>

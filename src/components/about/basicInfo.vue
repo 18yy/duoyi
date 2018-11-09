@@ -2,7 +2,7 @@
     <Card class="basicCard">
         <div slot="content">
             <div class="left">
-                <img src="../../assets/login/Profile.png" class="leftImg">
+                <img :src="src" class="leftImg">
                 <div class="leftInfo">
                     <div class="leftName">{{name}}</div>
                     <div class="leftUsername">{{username}}</div>
@@ -24,32 +24,34 @@ export default {
     components: {
         Card
     },
+    props: {
+    	src: {
+            type :String,
+            required: true
+        },
+        name: {
+            type :String,
+            required: true
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        money: {
+            type :Number,
+            required: true
+        }
+    },
     data () {
         return {
-       		name: '',
-       		username: '',
-       		money: ''
+       		
         }
     },
     methods:{
-        init() {
-            api.getInfo((err, res) => {
-                if (err || res.status != 200) {
-               	 	this.$message.error("出错了，刷新一下吧");
-                 	return;
-                 }
-                if (res.data.status == 1) {
-                    this.name = res.data.result.name;
-                    this.username = res.data.result.username;
-                    this.money = res.data.result.money;
-                } else{
-                    this.$message.error(res.data.message);
-                }
-            });
-        }
+
     },
     created(){
-        this.init();
+
     },
     mounted(){
     
@@ -59,8 +61,8 @@ export default {
 
 <style>
 .basicCard {
-	height: 60px;
-	padding: 18px;
+	height: 48px;
+	padding: 28px;
 }
 .left {
     height: 60px;
@@ -101,7 +103,7 @@ export default {
 	float: right;
 	color: #FFCC00;
 	font-size: 19px;
-    margin-top: 1px;
+    margin-top: 0.8px;
     margin-left: 8px;
 }
 </style>

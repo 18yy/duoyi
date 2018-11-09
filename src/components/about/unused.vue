@@ -17,8 +17,8 @@
                     <div>
                         <img src="../../assets/login/Profile.png" class="unusedImg">
                         <div class="unusedInfo">
-                            <div class="unusedGoods">{{item.Ugoods}}</div>
-                            <div class="unusedMoney">￥{{item.Umoney}}</div>
+                            <div class="unusedGoods">{{item.name}}</div>
+                            <div class="unusedMoney">￥{{item.price}}</div>
                         </div>
                         <div class="unusedBrowse">
                             <span style="color:#F0AD94;"> 浏览：{{item.Ubrowse}}</span>
@@ -26,10 +26,15 @@
                         </div>
                     </div>
                     <div style="float:right;">
-                        <el-button size="mini" class="unusedBtn">查看</el-button>
-                        <el-button size="mini" class="unusedBtn">编辑</el-button>
-                        <el-button size="mini" class="unusedBtn">删除</el-button>
+                        <el-button class="unusedBtn">查看</el-button>
+                        <el-button class="unusedBtn">编辑</el-button>
+                        <el-button class="unusedBtn" @click="openDelete(index)">删除</el-button>
                     </div>
+                    <confirm v-model="DeleteVisible"
+				      title="确定删除吗？"
+				      @on-confirm="deleteUnused">
+				        <p style="text-align:center;">删除操作无法撤销，该消息将被永久删除</p>
+				    </confirm>
                 </el-card>
             </el-main>
         </el-container>
@@ -37,12 +42,14 @@
 </template>
 
 <script>
-import { XHeader } from 'vux'
+import { XHeader,Confirm } from 'vux'
+import api from '../../services/main.js'
 
 export default {
     name: 'unused',
     components: {
-        XHeader
+        XHeader,
+        Confirm
     },
     data () {
         return {
@@ -52,46 +59,62 @@ export default {
                 backText: '',
                 preventGoBack: true
             },
-            unusedData: [{
-                Ugoods: "书书书",
-                Umoney: "2222",
-                Ubrowse: "20",
-                Ucomment: "40"
-            },{
-                Ugoods: "书书书",
-                Umoney: "2222",
-                Ubrowse: "20",
-                Ucomment: "40"
-            },{
-                Ugoods: "书书书",
-                Umoney: "2222",
-                Ubrowse: "20",
-                Ucomment: "40"
-            },{
-                Ugoods: "书书书",
-                Umoney: "2222",
-                Ubrowse: "20",
-                Ucomment: "40"
-            },{
-                Ugoods: "书书书",
-                Umoney: "2222",
-                Ubrowse: "20",
-                Ucomment: "40"
-            }]
+            unusedData: [],
+            deleteIndex:0,
+            DeleteVisible: false
         }
     },
     methods:{
+    	init() {
+    		api.getAllByUserid((err, res) => {
+                if (err || res.status != 200) {
+               	 	this.$message.error("出错了，刷新一下吧");
+                 	return;
+                 }
+                if (res.data.status == 1) {
+                	this.unusedData = res.data.result;
+                    //console.log(res);
+                } else{
+                    this.$message.error(res.data.message);
+                }
+            });
+    	},
     	backTo() {
             this.$router.push({
                 path: "/about"
             });
+        },
+        openDelete(index) {
+        	this.deleteIndex = index;
+        	this.DeleteVisible = true;
+        },
+        deleteUnused() {
+        	let goodsid = this.unusedData[this.deleteIndex].id;
+        	api.deleteUnused((err, res) => {
+                if (err || res.status != 200) {
+               	 	this.$message.error("出错了，刷新一下吧");
+                 	return;
+                 }
+                if (res.data.status == 1) {
+                	this.$message({
+			          message: '删除成功',
+			          type: 'success'
+			        });
+                	this.DeleteVisible = false;
+                	this.init();
+                    //console.log(res);
+                } else{
+                    this.$message.error(res.data.message);
+                }
+            }, goodsid);
+        	console.log(this.unusedData[this.deleteIndex].id);
         }
     },
     created(){
     
     },
     mounted(){
-
+    	this.init();
     }
 }
 </script>
@@ -111,6 +134,7 @@ body {
 }
 .el-header {
   	padding: 0;
+  	z-index: 99;
 }
 #header {
   background-color: #F9F9F9;
@@ -134,9 +158,8 @@ body {
     margin: 12px;
     background-color: #E56F42;
 }
-.unusedInfo {
-	float: right; 
-	margin-top: 19px;
+.unusedInfo { 
+	padding-top: 15px;
 	margin-right: 29px;
 }
 .unusedGoods {
@@ -148,16 +171,30 @@ body {
 	color: #FF3840;
 	font-size: 19px;
 	float: right;
-	margin-left: 140px;
 }
 .unusedBrowse {
-	padding-top: 64px;
+	padding-top: 48px;
+	padding-bottom: 12px;
 }
 .unusedComment {
 	color: #F0AD94;
 	margin-left: 19px;
-}
+} 
 .unusedBtn {
-	margin: 10px;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
+}
+.unused .weui-mask {
+	opacity: 0.2;
+}
+.unused .weui-dialog strong {
+	color: #E56F42;
+}
+.unused .weui-dialog__ft a {
+	color: #E56F42;
 }
 </style>
