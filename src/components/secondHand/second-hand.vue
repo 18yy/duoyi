@@ -1,24 +1,24 @@
 <template>
   <div class="secondHand">
     <div>
-    <div class="card" v-for="(item,index) in cardImg">
-      <img src="" alt="" class="goodsImg">
+    <div class="card" v-for="(item,index) in cardMsg">
+      <img :src="item.img[0]" alt="" class="goodsImg">
       <div class="cardInfo">
         <div class="goodsInfo">
           <div>
-            <p class="goodsName">{{item.goodsName}}</p>
-            <p class="tradeType">#{{item.tradeType}}#</p>
+            <p class="goodsName">{{item.name}}</p>
+            <p class="tradeType">#线下交易#</p>
           </div>
 
-          <p class="goodsPrice"> ￥22.2</p>
+          <p class="goodsPrice"> ￥{{item.price}}</p>
             <!-- <span class="intNum">22</span>.22</p> -->
         </div>
 
         <div class="sellerInfo">
           <img src="" alt="" class="sellerImg">
           <div>
-            <p class="sellerName">{{item.sellerName}}</p>
-            <p class="sellerAdr">{{item.sellerAdr}}</p>
+            <p class="sellerName">一包</p>
+            <p class="sellerAdr">生活区西区</p>
           </div>
         </div>
       </div>
@@ -27,56 +27,12 @@
   </div>
 </template>
 <script>
+  import api from '../../services/main.js'
   export default {
     name: 'second-hand',
     data() {
       return {
-        cardImg: [{
-            imgSrc: '',
-            goodsName: '二手书籍数据结构',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-
-          }, {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          }, {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构哈哈哈哈',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          }, {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构哈哈哈哈',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          },
-          {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构哈哈哈哈',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          }, {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构哈哈哈哈',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          }, {
-            imgSrc: '',
-            goodsName: '二手书籍数据结构哈哈哈哈',
-            tradeType: '线下交易',
-            sellerName: 'yibaoyyyyyy',
-            sellerAdr: '生活区西区'
-          }
-        ]
+        cardMsg:[]
 
       }
     },
@@ -87,6 +43,14 @@
 
     },
     mounted() {
+      api.showGoods((err, res) => {
+        if (res.data.status == 1) {
+           this.cardMsg=res.data.result
+        console.log(11)
+        } else {
+          this.$message.error("提交失败");
+        }
+      })
 
     }
   }
@@ -96,14 +60,15 @@
 <style scoped>
   .secondHand {
     width: 100%;
-    height: auto;
+     min-height:90%;
      background-color: rgb(239, 239, 244);
+     margin-top: 10%;
   }
   .secondHand>div{
     box-sizing: border-box;
-    padding: 60px 0 30px 0;
+    padding: 30px 0 20px 0;
     width:92%;
-    height: auto;
+    min-height: 100%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -124,10 +89,12 @@
     position: relative;
     top: 0;
     left: 0;
-    background: rgb(229, 111, 66);
-    width: 100%;
+    /* background: rgb(229, 111, 66); */
+    width:167px;
     height: 45%;
+    border:none;
     border-radius: 5px 5px 0px 0px;
+    box-sizing: border-box
   }
 
   .cardInfo {

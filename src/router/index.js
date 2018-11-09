@@ -22,9 +22,9 @@ import Entrusted from '@/components/about/entrusted'
 import Paid from '@/components/pay/Paid'
 import Paying2 from '@/components/pay/Paying2'
 import Paying3 from '@/components/pay/Paying3'
-import Button from '@/components/pay/Button'
 import Search from '@/components/index/components/search'
 import PublishSe from '@/components/secondHand/publish-second'
+// import GoodsMsg from '@/components/secondHand/goodsmessage'
 
 Vue.use(Router)
 
@@ -42,6 +42,9 @@ let router = new Router({
     path: '/publishSe',
     component: PublishSe
   }, {
+    path: '/search',
+    component: Search 
+  }, {
 		path: '/',
 		name: 'Home',
 		component: Home,
@@ -53,7 +56,13 @@ let router = new Router({
 			meta: {
 				requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
 			}
-		},{
+    },
+    // {
+		// 	path: 'GoodsMsg',
+		// 	name: 'GoodsMsg',
+		// 	component: GoodsMsg
+    // },
+    {
 			path: 'team',
 			name: 'Team',
 			component: Team,

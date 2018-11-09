@@ -16,9 +16,15 @@ import {
     deleteOrders
 } from './about.js'
 
+import {
+  addGoods,
+  showGoods
+} from './secondHand.js'
+
 export default {
     register,
     login,
+<<<<<<< HEAD
 
     getInfo,
     updateImg,
@@ -27,4 +33,9 @@ export default {
     deleteUnused,
     selectOrders,
     deleteOrders
+=======
+    getInfo,
+    addGoods,
+    showGoods
+>>>>>>> 430dac768de93380a95abbc66a1101c8b46ff623
 }

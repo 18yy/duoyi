@@ -13,6 +13,7 @@
 import { XHeader } from 'vux'
 import Footer from './Footer'
 
+
 export default {
   name: 'Home',
   components: {

@@ -8,17 +8,24 @@
       <div :class="[isBarShow?'leftContent-active':'leftContent']">
         <div class="publishTop">
           <div class="title">
-            <input type="text" placeholder="标题 品类品牌型号" maxlength="20">
+            <input type="text" placeholder="标题 品类品牌型号" maxlength="20" v-model="name">
           </div>
           <div class="descript">
-            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受">
+            <textarea type="text"  placeholder="描述一下商品的转手原因，入手渠道和使用感受" v-model="describe">
               
             </textarea>
           </div>
           <div class="imgAndMore">
-            <div class="updateImg">
-
-            </div>
+              <ul class="updateImg">
+                <li class="previewBox" v-for="(value,key) in imgs" :key="key"> 
+                   <img :src="deleteSrc" alt="delete" @click="deleteImg(key)"> 
+                   <img :src="getImgUrl(value)" class="previewImg">
+                </li>
+                <li>
+                  <img :src="updateSrc" alt="update">
+                   <input type="file" @change="addImg" multiple="multiple" ref="inputer" class="updateInput"> 
+                </li>
+              </ul>
             <div class="moreIco" @click="showBar" v-show="!isBarShow">
               <span>更多</span>
               <img :src="menuSrc" alt="">
@@ -41,7 +48,7 @@
           <div class="publishPriceAndType">
             <div>
               <p>价格</p>
-              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;"></x-icon>
+              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;" @click="showPrice"></x-icon>
             </div>
           </div>
           <div class="publishPriceAndType">
@@ -52,7 +59,7 @@
           </div>
         </div>
         <div class="publishBtn">
-          <button>
+          <button @click="submitPublish">
           确认发布
           </button>
         </div>
@@ -65,21 +72,39 @@
         </div>
       </transition>
     </div>
+     <div v-show="isShowPrice"> 
+      <edit-price v-on:listenToChildClick="closePrice" ></edit-price>
+     </div> 
+    <HoverBtn></HoverBtn>
   </div>
 </template>
 
 <script>
+  import EditPrice from './components/editPrice'
   import { XHeader } from 'vux'
+  import api from '../../services/main.js'
+   import HoverBtn from '@/components/others/hoverbutton'
 
    export default {
       name: 'publish-second',
       components:{
-        XHeader
+        XHeader,
+        EditPrice,
+        HoverBtn
       },
       data(){
         return{
+          isShowPrice:false,
+          file:'',
+          imgs: {},
+          imgLen: 0,
+          name:'',
+          describe:'',
           title:'发布闲置',
           isBarShow:false,
+          price:'',
+          updateSrc:  require('@/assets/second-hand/update.png'),
+          deleteSrc: require('@/assets/second-hand/delete.png'),
           menuSrc: require('@/assets/indexmenu.png'),
             radios: [
               {
@@ -99,24 +124,100 @@
         }
       },
       methods:{
+        addImg(event){
+        
+          let inputDOM = this.$refs.inputer
+          // 通过DOM取文件数据
+          var fil= inputDOM.files
+          let oldLen = this.imgLen
+          let len = fil.length + oldLen;
+           if (len > 2 ){
+              this.$message.error("最多上传两张");
+              return false;
+            }
+           for (let i = 0; i < fil.length; i++) {
+               this.imgLen++
+             this.$set(this.imgs,fil[i].name + '?' + new Date().getTime() + i,fil[i]);
+           }
+          console.log(this.imgs)
+
+        },
+        getImgUrl(file){
+          //本地创建预览图片地址
+          let url = window.URL.createObjectURL(file)
+          return url
+        },
+        deleteImg(key){
+          this.$delete(this.imgs, key)
+          this.imgLen--
+        },
+        submitPublish(){
+            event.preventDefault()
+            
+          if(JSON.stringify(this.imgs) == '{}'|| this.name==""|| this.describe==""||this.price==""){
+             this.$message.error("请把资料填写完成！");
+          }else{
+              let formData = new FormData()
+            for (let key in this.imgs) {
+              formData.append('img', this.imgs[key])
+            }
+            formData.append('name', this.name)
+            formData.append('describe', this.describe)
+            formData.append('price', this.price)
+            let config = {
+              headers: {
+                "Content-Type": "multipart/form-data"
+              }
+            }
+            api.addGoods((err, res) => {
+              if (res.data.status == 1) {
+                console.log('success')
+                this.name = ""
+                this.describe = ""
+                this.imgs = {}
+              } else {
+                this.$message.error("提交失败");
+              }
+            }, formData, config)
+            this.$router.push({ path: '/index' });
+              
+          }
+
+        },
         showBar(){
-          console.log('click')
           this.isBarShow=!this.isBarShow
         },
          check(index) {
             this.radios[index].isChecked = !this.radios[index].isChecked;
           },
+          showPrice(){
+            this.isShowPrice=true
+          },
+          closePrice(){
+            this.isShowPrice = false
+          },
+          closePrice(data,price){
+            //监听子组件的点击
+            this.isShowPrice=false
+           this.price=price
+          }
       }
    }
 </script>
 
 <style scoped lang="less">
+ .deleteMsgBox{
+     width: 160px;
+     height:160px;
+      background: black
+   }
 
   .publishWrap /deep/ .vux-header .vux-header-title{
     color: black!important;
   }
   .vux-header{
     background:rgb(249,249,249);
+    z-index:999
   }
   .vux-header-left {
     margin-top: 25px;
@@ -231,10 +332,55 @@
     margin: 0 auto;
     position: relative
   }
+  /*上传图片模块*/
   .updateImg{
     width: 260px;
-    height: 100px;
+    height: 60px;
 
+  }
+ .updateImg li{
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   margin-right: 9px;
+   position: relative;
+    border: 1px solid rgb(254, 238, 222);
+    border-radius: 10px;
+    background: rgb(254, 238, 222);
+ }
+ .updateImg li img[alt="update"]{
+   width: 16px;
+   height: 16px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin:-8px 0 0 -8px;
+ }
+ .updateInput{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+ }
+ .previewBox img[alt="delete"]{
+   width: 12px;
+   height: 12px;
+   position: absolute;
+   right: -6px;
+   top:-6px;
+   z-index: 2;
+ }
+ .previewImg{
+   width: 60px;
+   height: 60px;
+   position: absolute;
+   left: 0;
+   top: 0;
+ }
+  .el-icon-plus{
+    line-height: 50px;
   }
   .moreIco{
     height: 30px;
