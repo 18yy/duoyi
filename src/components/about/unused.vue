@@ -42,17 +42,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import { XHeader,Confirm } from 'vux'
 import api from '../../services/main.js'
-=======
-<<<<<<< HEAD
-import Header from '../others/Header'
-=======
-import { XHeader,Confirm } from 'vux'
-import api from '../../services/main.js'
->>>>>>> f847dd3... 完成个人中心现有的所有接口
->>>>>>> wang
 
 export default {
     name: 'unused',
@@ -142,17 +133,8 @@ body {
     background-color: #EFEFF4;
 }
 .el-header {
-<<<<<<< HEAD
   	padding: 0;
   	z-index: 99;
-=======
-<<<<<<< HEAD
-  padding: 0;
-=======
-  	padding: 0;
-  	z-index: 99;
->>>>>>> f847dd3... 完成个人中心现有的所有接口
->>>>>>> wang
 }
 #header {
   background-color: #F9F9F9;
@@ -174,12 +156,6 @@ body {
     height: 60px;
     float: left;
     margin: 12px;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> wang
-    background-color: #E56F42;
 }
 .unusedInfo { 
 	padding-top: 15px;
@@ -219,9 +195,5 @@ body {
 }
 .unused .weui-dialog__ft a {
 	color: #E56F42;
-<<<<<<< HEAD
-=======
->>>>>>> f847dd3... 完成个人中心现有的所有接口
->>>>>>> wang
 }
 </style>

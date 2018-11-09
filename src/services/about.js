@@ -2,12 +2,6 @@ import services from './services.js'
 
 //获取用户信息
 function getInfo(fn) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    services.post('/duoyi/user/get')
-=======
->>>>>>> wang
 	services.post('/duoyi/user/get')
     .then(function (res) {
         fn(false, res);
@@ -19,10 +13,6 @@ function getInfo(fn) {
 //用户更改头像
 function updateImg(fn, data, config) {
 	services.post('/duoyi/user/img', data, config)
-<<<<<<< HEAD
-=======
->>>>>>> f847dd3... 完成个人中心现有的所有接口
->>>>>>> wang
       .then(function (res) {
         fn(false, res);
       }).catch(function (err) {

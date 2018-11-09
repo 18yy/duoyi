@@ -24,7 +24,6 @@ import {
 export default {
     register,
     login,
-<<<<<<< HEAD
 
     getInfo,
     updateImg,
@@ -32,10 +31,9 @@ export default {
     getAllByUserid,
     deleteUnused,
     selectOrders,
-    deleteOrders
-=======
+    deleteOrders,
+
     getInfo,
     addGoods,
     showGoods
->>>>>>> 430dac768de93380a95abbc66a1101c8b46ff623
 }
