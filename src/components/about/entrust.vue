@@ -36,11 +36,19 @@
                         </div>
                     </div>
                     <div style="borderTop:1px solid #EFA589;">
+<<<<<<< HEAD
                         <el-button-group style="float:right;">
                             <el-button size="mini" style="margin:28px;">查看</el-button>
                             <el-button size="mini" style="margin:28px;">编辑</el-button>
                             <el-button size="mini" style="margin:28px;">删除</el-button>
                         </el-button-group>
+=======
+                        <div style="float:right;">
+                            <el-button class="entrustBtn">查看</el-button>
+                            <el-button class="entrustBtn">编辑</el-button>
+                            <el-button class="entrustBtn">删除</el-button>
+                        </div>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                     </div>
                 </el-card>
             </el-main>
@@ -123,6 +131,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   height: 70px;
@@ -135,7 +144,47 @@ body {
 .el-main {
     margin-top: 40px;
 }
+<<<<<<< HEAD
 .el-rate__icon {
     margin: 0;
+=======
+.entrustBrowse {
+	float: right;
+	height: 12px;
+}
+.entrustImg {
+	height: 15px;
+	width: 15px;
+	float: left;
+}
+.entrustBrowse div {
+	color: #E56F42;
+	font-size: 11px;
+	padding: 2.5px;
+	float: right;
+}
+.entrustFooter {
+	padding-top: 29px;
+}
+.entrustRate {
+	min-width: 60px;
+	color:#E56F42;
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+}
+.entrustDate {
+	color: #E56F42;
+	float: right;
+	margin-top: 5px;
+}
+.entrustBtn {
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
 }
 </style>

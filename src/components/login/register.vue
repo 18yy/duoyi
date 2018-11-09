@@ -2,7 +2,14 @@
     <div class="Register">
         <el-container>
             <el-header>
+<<<<<<< HEAD
                 <Header :title="title" :IsBack="IsBack" :pre_path="pre_path" id="header"></Header>
+=======
+                <x-header id="header" :left-options="options">
+                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
+                    <span class="headerTitle">{{title}}</span>
+                </x-header>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
             </el-header>
             <el-main>
                 <el-card>
@@ -82,9 +89,29 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
+<<<<<<< HEAD
                     this.$router.push({
                         path: "/login"
                     });
+=======
+                	let data = {
+                		name: this.registerForm.name,
+                		username: this.registerForm.username,
+                		password: this.registerForm.password2
+                	}
+                	api.register((err, res) => {
+                        if (err || res.status !== 200) {
+    	                    this.$message.error("出错了，刷新一下吧");
+    	                    return;
+                        }
+                        if (res.data.status == 1) {
+                            this.$router.push({ path: '/login' });
+                            console.log(res);
+                        } else{
+                            this.$message.error(res.data.message);
+                        }
+                    },data);
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                 } else {
                     console.log('error submit!!');
                     return false;

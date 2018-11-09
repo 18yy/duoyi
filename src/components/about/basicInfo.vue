@@ -2,10 +2,17 @@
     <Card style="height:120px;padding:38px;">
         <div slot="content">
             <div class="left">
+<<<<<<< HEAD
                 <img src="../../assets/login/Profile.png" class="avatar">
                 <div style="float:right;marginTop:28px;">
                     <div style="color:#E56F42;fontSize:32px;">JOJO DIO</div>
                     <div style="color:#F0AD94;fontSize:28px;marginTop:5px;">I don't know know</div>
+=======
+                <img :src="src" class="leftImg">
+                <div class="leftInfo">
+                    <div class="leftName">{{name}}</div>
+                    <div class="leftUsername">{{username}}</div>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                 </div>
             </div>
             <div class="right">
@@ -24,8 +31,27 @@ export default {
     components: {
         Card
     },
+    props: {
+    	src: {
+            type :String,
+            required: true
+        },
+        name: {
+            type :String,
+            required: true
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        money: {
+            type :Number,
+            required: true
+        }
+    },
     data () {
         return {
+<<<<<<< HEAD
            money: "444"
         }
     },
@@ -46,6 +72,16 @@ export default {
     },
     created(){
     
+=======
+       		
+        }
+    },
+    methods:{
+
+    },
+    created(){
+
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
     },
     mounted(){
         this.init();
@@ -54,7 +90,14 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 
+=======
+.basicCard {
+	height: 48px;
+	padding: 28px;
+}
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
 .left {
     height: 60px;
     /* width: 200px; */
@@ -72,4 +115,19 @@ export default {
     float: right;
     padding: 15px;
 }
+<<<<<<< HEAD
+=======
+.rightImg {
+	width: 18px; 
+	height: 18px;
+	float: left;
+}
+.rightMoney {
+	float: right;
+	color: #FFCC00;
+	font-size: 19px;
+    margin-top: 0.8px;
+    margin-left: 8px;
+}
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
 </style>

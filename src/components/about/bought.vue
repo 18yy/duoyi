@@ -14,6 +14,7 @@
                     <div slot="header" class="clearfix">
                         <span style="color:#E56F42;marginRight:38px;">卖家用户名</span>
                         <span style="color:#E56F42;" class="el-icon-arrow-right"></span>
+<<<<<<< HEAD
                         <span style="color:#E56F42;marginLeft:38px;">{{item.Bname}}</span>
                     </div>
                     <div>
@@ -28,6 +29,22 @@
                         <el-button size="mini" style="margin:20px;">售后</el-button>
                         <el-button size="mini" style="margin:20px;">删除</el-button>
                     </el-button-group>
+=======
+                        <!--  <span class="boughtName">{{item.Bname}}</span>  -->
+                    </div>
+                    <div>
+                        <img src="../../assets/login/Profile.png" class="boughtImg">
+                        <div class="boughtInfo">
+                            <div class="boughtGoods">{{item.name}}</div>
+                            <div class="boughtMoney">￥{{item.price}}</div>
+                        </div>
+                    </div>
+                    <div class="btnGroup">
+                        <el-button class="boughtBtn">查看</el-button>
+                        <el-button class="boughtBtn">售后</el-button>
+                        <el-button class="boughtBtn">删除</el-button>
+                    </div>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                 </el-card>
             </el-main>
         </el-container>
@@ -48,21 +65,17 @@ export default {
             IsBack: true,
             pre_path: "/about",
             boughtData: [{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                Bgoods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             },{
-                Bname: "XXX",
-                goods: "书书书",
-                Bmoney: "2222"
+                name: "XXX",
+                price: "2222"
             }]
         }
     },
@@ -93,6 +106,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   height: 70px;
@@ -105,10 +119,45 @@ body {
 .el-main {
     margin-top: 40px;
 }
+<<<<<<< HEAD
+=======
+/*.boughtName {
+	color: #E56F42;
+	margin-left: 18px;
+} */
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
 .boughtImg {
     width: 60px;
     height: 60px;
     float: left;
     margin: 18px;
+<<<<<<< HEAD
+=======
+    background-color: #E56F42;
+}
+.boughtInfo {
+	padding-top: 24px; 
+}
+.boughtGoods {
+	color: #E56F42;
+	font-size: 16px;
+}
+.boughtMoney {
+	color: #FF3840;
+	font-size: 18px;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+.btnGroup {
+	float:right;
+}
+.boughtBtn {
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
 }
 </style>

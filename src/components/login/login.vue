@@ -2,8 +2,13 @@
     <div class="Login">
         <el-container>
             <el-header>
+<<<<<<< HEAD
                 <x-header :left-options="{ showBack: false }" @on-click-back="backTo()">
                     <span class="header_title">{{title}}</span>
+=======
+                <x-header id="header" :left-options="{ showBack: false }">
+                    <span class="headerTitle">{{title}}</span>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                 </x-header>
             </el-header>
             <el-main>

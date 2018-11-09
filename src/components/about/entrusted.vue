@@ -28,7 +28,11 @@
                                     v-model="item.EDrate"
                                     disabled></el-rate>
                             </div>
+<<<<<<< HEAD
                             <el-button size="mini" style="float:right;fontSize:20px;">查看</el-button>
+=======
+                            <el-button class="entrustedBtn">查看</el-button>
+>>>>>>> f847dd3... 完成个人中心现有的所有接口
                         </div>
                     </div>
                 </el-card>
@@ -104,6 +108,7 @@ body {
 }
 .el-header {
   padding: 0;
+  z-index: 99;
 }
 #header {
   height: 70px;
@@ -118,5 +123,14 @@ body {
 }
 .el-rate__icon {
     margin: 0;
+}
+.entrustedBtn {
+	float: right;
+	width: 60px;
+	height: 20px;
+	margin: 15px;
+	padding: 0;
+	border-radius: 0;
+	color: #B8B8BB;
 }
 </style>
