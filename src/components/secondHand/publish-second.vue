@@ -1,7 +1,7 @@
 <template>
   <div class="publishWrap">
     <XHeader>
-      <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;"></x-icon>
+      <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;" @click="backTo"></x-icon>
       发布闲置
     </XHeader>
     <div class="publishBox">
@@ -67,7 +67,11 @@
       <transition name="slide-fade">
         <div class="rightContent" v-show="isBarShow">
           <div class="rightBar">
-            <x-icon @click.native="showBar" type="ios-close-empty" size="80" style="fill:#cc6633;position:relative;top:6px;left:50%;margin-left: -40px;"></x-icon>
+          <x-icon @click.native="showBar" type="ios-close-empty" size="80" style="fill:#cc6633;position:relative;top:6px;left:50%;margin-left: -40px;"></x-icon>
+          <img src="../../assets/publishBar/Attachment.png" alt="">
+          <img src="../../assets/publishBar/Places.png" alt="">
+          <img src="../../assets/publishBar/Videos.png" alt="">
+          <img src="../../assets/publishBar/Folder.png" alt="">
           </div>
         </div>
       </transition>
@@ -75,7 +79,6 @@
      <div v-show="isShowPrice"> 
       <edit-price v-on:listenToChildClick="closePrice" ></edit-price>
      </div> 
-    <HoverBtn></HoverBtn>
   </div>
 </template>
 
@@ -83,14 +86,12 @@
   import EditPrice from './components/editPrice'
   import { XHeader } from 'vux'
   import api from '../../services/main.js'
-   import HoverBtn from '@/components/others/hoverbutton'
 
    export default {
       name: 'publish-second',
       components:{
         XHeader,
         EditPrice,
-        HoverBtn
       },
       data(){
         return{
@@ -124,6 +125,9 @@
         }
       },
       methods:{
+        backTo(){
+            this.$router.push({ path: '/index' });
+        },
         addImg(event){
         
           let inputDOM = this.$refs.inputer
@@ -175,11 +179,11 @@
                 this.name = ""
                 this.describe = ""
                 this.imgs = {}
+                this.$router.push({ path: '/index' });
               } else {
                 this.$message.error("提交失败");
               }
             }, formData, config)
-            this.$router.push({ path: '/index' });
               
           }
 
@@ -477,5 +481,12 @@
   font-size: 14px;
   color:rgb(229,111,66);
    position: relative;
+}
+.rightBar>img{
+  width: 16px;
+  height: 16px;
+  display: block;
+  margin:0 auto;
+  padding-top: 33px;
 }
 </style>

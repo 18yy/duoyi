@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 const state = {
     isShow:false,
-  count:0
+    showGoodsDetail:[]
 }
 
 

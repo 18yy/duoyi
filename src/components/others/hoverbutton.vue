@@ -5,7 +5,10 @@
     <transition name="move">
       <div class="menu" v-show="show">
         <div class="inner inner-1" @click="toOtherPage('')">组队</div>
-        <div class="inner inner-2" @click="toOtherPage('/paying2')">闲置</div>
+
+        <router-link to="/publishSe">
+          <div class="inner inner-2" @click="toOtherPage('/paying2')">闲置</div>
+        </router-link>
         <div class="inner inner-3" @click="toOtherPage('')">委托</div>
         <div class="inner inner-4" @click="toOtherPage('')">资源</div>
       </div>

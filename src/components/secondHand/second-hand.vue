@@ -1,8 +1,10 @@
 <template>
   <div class="secondHand">
     <div>
-    <div class="card" v-for="(item,index) in cardMsg">
-      <img :src="item.img[0]" alt="" class="goodsImg">
+    <div class="card" v-for="(item,index) in cardMsg" @click="toDetail(index)">
+      <div class="goodsImg">
+        <img :src="item.img[0]" >
+      </div>
       <div class="cardInfo">
         <div class="goodsInfo">
           <div>
@@ -15,9 +17,9 @@
         </div>
 
         <div class="sellerInfo">
-          <img src="" alt="" class="sellerImg">
+          <img :src="item.userImg" alt="" class="sellerImg">
           <div>
-            <p class="sellerName">一包</p>
+            <p class="sellerName">{{item.username}}</p>
             <p class="sellerAdr">生活区西区</p>
           </div>
         </div>
@@ -37,7 +39,12 @@
       }
     },
     methods: {
-
+      toDetail(index){
+        this.$store.state.showGoodsDetail= this.cardMsg[index]
+          this.$router.push({
+              path: "/goodsMsg"
+            });
+      }
     },
     created() {
 
@@ -46,7 +53,6 @@
       api.showGoods((err, res) => {
         if (res.data.status == 1) {
            this.cardMsg=res.data.result
-        console.log(11)
         } else {
           this.$message.error("提交失败");
         }
@@ -66,7 +72,7 @@
   }
   .secondHand>div{
     box-sizing: border-box;
-    padding: 30px 0 20px 0;
+    padding: 30px 0 70px 0;
     width:92%;
     min-height: 100%;
     margin: 0 auto;
@@ -89,14 +95,17 @@
     position: relative;
     top: 0;
     left: 0;
-    /* background: rgb(229, 111, 66); */
     width:167px;
     height: 45%;
     border:none;
     border-radius: 5px 5px 0px 0px;
-    box-sizing: border-box
+    box-sizing: border-box;
+    overflow: hidden
   }
-
+   .goodsImg>img{
+    width:100%;
+    height: auto;
+   }
   .cardInfo {
     margin: 0 auto;
     width: 80%;
@@ -109,7 +118,6 @@
 
   .goodsInfo {
     width: 100%;
-    /* height: 40%; */
     display: flex;
     justify-content: space-between;
   }
@@ -147,7 +155,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: yellow;
+    /* background: yellow; */
     margin-right: 9px;
 
   }

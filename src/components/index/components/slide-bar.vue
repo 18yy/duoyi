@@ -15,15 +15,37 @@
           </div>
         </div>
         <div class="slideMenu">
-          <div v-for="(item,index) in menuTopMsg">
-            <img :src="menuSrc" alt="">
-            <span>{{item}}</span>
+          <div>
+            <img src="../../../assets/indexslidebar/jinbi.png" alt="">
+            <span>我的金币</span>
+          </div>
+          <div>
+            <img src="../../../assets/indexslidebar/goods.png" alt="">
+            <span>我的闲置</span>
+          </div>
+          <div>
+            <img src="../../../assets/indexslidebar/msg.png" alt="">
+            <span>我的消息</span>
+          </div>
+          <div>
+            <img src="../../../assets/indexslidebar/weituo.png" alt="">
+            <span>我接受的委托</span>
           </div>
         </div>
         <div class="slideMenu">
-          <div v-for="(item,index) in menuBottomMsg">
-            <img :src="menuSrc" alt="">
-            <span>{{item}}</span>
+          <div>
+            <img src="../../../assets/indexslidebar/team.png" alt="">
+            <span>我的队伍</span>
+          </div>
+          <div>
+            <img src="../../../assets/indexslidebar/competition.png" alt="">
+            <span>与我相适配的比赛</span>
+          </div>
+        </div>
+        <div class="slideMenu">
+          <div>
+            <img src="../../../assets/indexslidebar/people.png" alt="">
+            <span>联系客服</span>
           </div>
         </div>
       </div>
@@ -36,7 +58,6 @@
         name: 'slide-bar',
         data() {
             return {
-                menuSrc: require('@/assets/indexmenu.png'),
                 menuTopMsg:[
                   '我的金币',
                   '我的闲置',
@@ -84,6 +105,7 @@
         top: 0;
         bottom: 0;
         background: rgb(255, 255, 255);
+        box-shadow:1px 0px 17px rgba(229, 111, 66,0.6)
     }
     
     .fade-enter-to,
@@ -114,7 +136,6 @@
     .slideUserInfo {
         width: 100%;
         height: 20%;
-        border-bottom: 1px solid rgb(254, 238, 222);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -150,8 +171,9 @@
     
    .slideMenu{
      width: 100%;
-     padding: 20px 0px 20px 18px;
-     border-bottom: 1px solid rgb(254, 238, 222);
+     padding: 15px 0px 15px 18px;
+     border-top: 1px solid rgb(254, 238, 222);
+     
      
    }
    .slideMenu div{
