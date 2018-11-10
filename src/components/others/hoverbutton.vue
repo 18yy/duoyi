@@ -1,16 +1,15 @@
 <template>
   <div class="app">
-    <div class="block" v-show="show"></div>
+    <div class="block" v-show="show"  @click="showMenu"></div>
     <button @click="showMenu" class="btn">{{text}}</button>
     <transition name="move">
       <div class="menu" v-show="show">
-        <div class="inner inner-1" @click="toOtherPage('')">组队</div>
-
+        <div class="inner inner-1" @click="toOtherPage('/releaseteam')">组队</div>
         <router-link to="/publishSe">
           <div class="inner inner-2" @click="toOtherPage('/paying2')">闲置</div>
         </router-link>
-        <div class="inner inner-3" @click="toOtherPage('')">委托</div>
-        <div class="inner inner-4" @click="toOtherPage('')">资源</div>
+        <div class="inner inner-3" @click="Null">委托</div>
+        <div class="inner inner-4" @click="Null">资源</div>
       </div>
     </transition>
   </div>
@@ -24,6 +23,12 @@ export default {
     };
   },
   methods: {
+  	Null() {
+        this.$message({
+            message: '暂无此功能！',
+            type: 'warning'
+        });
+    },
     showMenu () {
       this.show = !this.show;
     },

@@ -1,4 +1,4 @@
-<template>
+ 	<template>
   <div class="publishWrap">
     <XHeader>
       <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;" @click="backTo"></x-icon>
@@ -179,9 +179,10 @@
                 this.name = ""
                 this.describe = ""
                 this.imgs = {}
+                this.$message.success("发布成功");
                 this.$router.push({ path: '/index' });
               } else {
-                this.$message.error("提交失败");
+                this.$message.error("发布失败");
               }
             }, formData, config)
               

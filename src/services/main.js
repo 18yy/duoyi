@@ -1,9 +1,8 @@
-
 // 用户信息
 import {
     register,
     login
-  } from './login.js'
+} from './login.js'
 
 
 import {
@@ -13,12 +12,14 @@ import {
     getAllByUserid,
     deleteUnused,
     selectOrders,
-    deleteOrders
+    deleteOrder,
+    getBought
 } from './about.js'
 
 import {
-  addGoods,
-  showGoods
+    addGoods,
+    showGoods,
+    insertOrder
 } from './secondHand.js'
 
 export default {
@@ -31,9 +32,10 @@ export default {
     getAllByUserid,
     deleteUnused,
     selectOrders,
-    deleteOrders,
+    deleteOrder,
+    getBought,
 
-    getInfo,
     addGoods,
-    showGoods
+    showGoods,
+    insertOrder
 }

@@ -33,7 +33,7 @@
                     <confirm v-model="DeleteVisible"
 				      title="确定删除吗？"
 				      @on-confirm="deleteUnused">
-				        <p style="text-align:center;">删除操作无法撤销，该消息将被永久删除</p>
+				        <p style="text-align:center;color:#F9BE82;">删除操作无法撤销，该消息将被永久删除</p>
 				    </confirm>
                 </el-card>
             </el-main>

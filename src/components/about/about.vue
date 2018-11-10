@@ -136,8 +136,6 @@ body {
   background-color: #F9F9F9;
 }
 .headerTitle {
-    height: 90px;
-    width: 180px;
     text-align: center;
     color: #E56F42;
     font-weight: bold;

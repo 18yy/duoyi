@@ -99,6 +99,7 @@ export default {
                 		username: this.registerForm.username,
                 		password: this.registerForm.password2
                 	}
+                	console.log(data);
                 	api.register((err, res) => {
                         if (err || res.status !== 200) {
     	                    this.$message.error("出错了，刷新一下吧");
@@ -109,6 +110,7 @@ export default {
                             console.log(res);
                         } else{
                             this.$message.error(res.data.message);
+                            console.log(res);
                         }
                     },data);
                 } else {
@@ -132,7 +134,7 @@ body {
     margin:0;
     padding:0; 
 }
-.el-container {
+.Register .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -140,25 +142,25 @@ body {
     bottom:0px;
     background-color: #FEECDC;
 }
-.el-header {
+.Register .el-header {
   padding: 0;
 }
-#header {
+.Register #header {
   background-color: #FEECDC;
 }
-.headerTitle {
+.Register .headerTitle {
     height: 90px;
     width: 180px;
     text-align: center;
     color: #E56F42;
     font-weight: bold;
 }
-.registerCard {
+.Register .registerCard {
     height: 420px;
     padding: 10px;
     margin: 25px;
 }
-.registerImg {
+.Register .registerImg {
     margin: 20px 70px;
     width: 80px;
     height: 70px;

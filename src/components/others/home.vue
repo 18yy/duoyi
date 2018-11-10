@@ -61,6 +61,7 @@ body {
 }
 .el-footer {
   height:48px;
+  width: 100%;
 }
 .footer {
     background-color: #B3C0D1;
@@ -69,5 +70,6 @@ body {
     position:fixed;
     bottom: 0;
     left: 0;
+    width: 100%;
   } 
 </style>

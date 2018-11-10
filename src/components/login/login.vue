@@ -119,7 +119,7 @@ body {
     margin:0;
     padding:0; 
 }
-.el-container {
+.Login .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -127,25 +127,25 @@ body {
     bottom:0px;
     background-color: #FEECDC;
 }
-.el-header {
+.Login .el-header {
   padding: 0;
 }
-#header {
+.Login #header {
   background-color: #FEECDC;
 }
-.headerTitle {
+.Login .headerTitle {
     height: 90px;
     width: 180px;
     text-align: center;
     color: #E56F42;
     font-weight: bold;
 }
-.loginCard {
+.Login .loginCard {
     height: 420px;
     padding: 10px;
     margin: 25px;
 }
-.loginImg {
+.Login .loginImg {
     margin: 20px 70px;
     width: 70px;
     height: 70px;

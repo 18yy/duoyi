@@ -9,6 +9,10 @@ import Index from '@/components/index/Index'
 import Team from '@/components/team/Team'
 import Sign from '@/components/sign/Sign'
 
+import Releaseteam from '@/components/team/releaseteam.vue'
+import Successrelease from '@/components/team/successrelease.vue'
+import Teammessage from '@/components/team/teammessage.vue'
+
 import About from '@/components/about/About'
 import Information from '@/components/about/information'
 import Unused from '@/components/about/unused'
@@ -34,23 +38,11 @@ let router = new Router({
 		path: '/register',
 		name: 'Register',
 		component: Register
-  },
-   {
-			path: '/goodsMsg',
-			name: '/goodsMsg',
-			component: GoodsMsg
-    },
-    {
+  	},{
 		path: '/login',
 		name: 'Login',
 		component: Login
-  }, {
-    path: '/publishSe',
-    component: PublishSe
-  }, {
-    path: '/search',
-    component: Search 
-  }, {
+  	},{
 		path: '/',
 		name: 'Home',
 		component: Home,
@@ -62,7 +54,7 @@ let router = new Router({
 			meta: {
 				requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
 			}
-    },{
+    	},{
 			path: 'team',
 			name: 'Team',
 			component: Team,
@@ -82,6 +74,30 @@ let router = new Router({
 			component: About
 		}]
 	},{
+		path: '/goodsMsg',
+		name: 'GoodsMsg',
+		component: GoodsMsg
+    },{
+	    path: '/publishSe',
+	    name: 'PublishSe',
+	    component: PublishSe
+  	},{
+	    path: '/search',
+	    name: 'Search',
+	    component: Search 
+    },{
+	    path: '/releaseteam',
+	    name: 'Releaseteam',
+	    component: Releaseteam 
+    },{
+	    path: '/successrelease',
+	    name: 'Successrelease',
+	    component: Successrelease 
+    },{
+	    path: '/teammessage',
+	    name: 'Teammessage',
+	    component: Teammessage 
+    },{
 		path: '/about/information',
 		name: 'Information',
 		component: Information
@@ -113,15 +129,15 @@ let router = new Router({
 		path:'/paying2',
 		name: 'Paying2',
 		component: Paying2
-	  },{
+	},{
 		path: '/paying2/paying3',
 		name: 'Paying3',
 		component: Paying3
-	  },{
+	},{
 		path:'/paying2/paying3/paid',
 		name: 'Paid',
 		component: Paid
-	  }]
+	}]
 })
 
 // 访问之前，都检查下是否登录了

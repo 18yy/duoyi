@@ -31,7 +31,7 @@
                     </div>
                     <confirm v-model="DeleteVisible"
 				      title="确定删除吗？"
-				      @on-confirm="deleteOrders">
+				      @on-confirm="deleteOrder">
 				        <p style="text-align:center;color:#F9BE82;">
 				        	删除操作无法撤销，该消息将被永久删除
 				        </p>
@@ -39,7 +39,7 @@
                 </el-card>
             </el-main>
         </el-container>
-    </div>
+    </di
 </template>
 
 <script>
@@ -90,11 +90,11 @@ export default {
         	this.deleteIndex = index;
         	this.DeleteVisible = true;
         },
-        deleteOrders() {
+        deleteOrder() {
         	let data = {
         		id: this.ordersData[this.deleteIndex].id
         	}
-        	api.deleteOrders((err, res) => {
+        	api.deleteOrder((err, res) => {
                 if (err || res.status != 200) {
                	 	this.$message.error("出错了，刷新一下吧");
                  	return;

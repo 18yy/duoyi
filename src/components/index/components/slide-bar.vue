@@ -8,7 +8,7 @@
         <div class="slideUserInfo">
           <div>
             <div class="userAvatar">
-
+            	<img :src="avatar" alt="">
             </div>
             <p class="userName">一包</p>
             <p class="userDes">生活区西区</p>
@@ -54,10 +54,14 @@
 </template>
 
 <script>
+import api from '../../services/main.js'
+
     export default {
         name: 'slide-bar',
         data() {
             return {
+            	name: "",
+            	avatar: "",
                 menuTopMsg:[
                   '我的金币',
                   '我的闲置',
@@ -72,6 +76,22 @@
             }
         },
         methods: {
+        	init() {
+        		api.getInfo((err, res) => {
+                if (err || res.status !== 200) {
+                this.$message.error("出错了，刷新一下吧");
+                return;
+                }
+                if (res.data.status == 1) {
+                	this.avatar = res.data.result.img;
+                	this.name = res.data.result.name;
+                    
+                   	//console.log(res.data);
+                } else{
+                    this.$message.error(res.data.message);
+                }
+            });
+        	},
             hideSlide: function() {
                 this.$store.dispatch('hideSlideBar');
             }
@@ -80,6 +100,9 @@
             isReallyShow() {
                 return this.$store.getters.isShowMethod
             }
+        },
+        mounted() {
+        	this.init();
         }
     }
 </script>

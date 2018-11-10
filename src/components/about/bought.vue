@@ -22,8 +22,8 @@
                     <div>
                         <img src="../../assets/login/Profile.png" class="boughtImg">
                         <div class="boughtInfo">
-                            <div class="boughtGoods">{{item.name}}</div>
-                            <div class="boughtMoney">￥{{item.price}}</div>
+                            <div class="boughtGoods">{{item.good.name}}</div>
+                            <div class="boughtMoney">￥{{item.good.price}}</div>
                         </div>
                     </div>
                     <div class="btnGroup">
@@ -39,6 +39,7 @@
 
 <script>
 import { XHeader } from 'vux'
+import api from '../../services/main.js'
 
 export default {
     name: 'bought',
@@ -53,22 +54,24 @@ export default {
                 backText: '',
                 preventGoBack: true
             },
-            boughtData: [{
-                name: "XXX",
-                price: "2222"
-            },{
-                name: "XXX",
-                price: "2222"
-            },{
-                name: "XXX",
-                price: "2222"
-            },{
-                name: "XXX",
-                price: "2222"
-            }]
+            boughtData: []
         }
     },
     methods:{
+        init() {
+            api.getBought((err, res) => {
+                if (err || res.status != 200) {
+                    this.$message.error("出错了，刷新一下吧");
+                    return;
+                 }
+                if (res.data.status == 1) {
+                    this.boughtData = res.data.result;
+                    //console.log(res);
+                } else{
+                    this.$message.error(res.data.message);
+                }
+            });
+        },
     	backTo() {
             this.$router.push({
                 path: "/about"
@@ -79,7 +82,7 @@ export default {
     
     },
     mounted(){
-
+        this.init();
     }
 }
 </script>

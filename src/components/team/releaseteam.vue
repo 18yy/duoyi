@@ -1,6 +1,7 @@
 <template>
   <div class="all">
-    <x-header id="header" :left-options="options" @on-click-back="backTo()">
+    <x-header id="header" :left-options="options">
+    	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
       <span class="header_title">{{title}}</span>
     </x-header>
     <div class="block block-one">
@@ -14,7 +15,15 @@
       </div>
     </div>
     <div class="block block-two">
-    
+    	<el-collapse>
+		  <el-collapse-item>
+		  	<template slot="title">
+		      <span class="addTitle">添加更多</span>
+		      <span class="addSubTitle">报名表 | 比赛链接...</span>
+		    </template>
+		    <div>这里还没有东西哦</div>
+		  </el-collapse-item>
+		</el-collapse>
     </div>
     <div class="block block-one">
       <div class="block-one-message" @click="arrow()">
@@ -45,19 +54,16 @@
       <div class="block-three-right">
       </div>
     </div>
-    <HoverButton></HoverButton>
   </div>
 </template>
 
 <script>
 import { XHeader } from 'vux'
-import HoverButton from '../others/hoverbutton'
 
 export default {
   name: "releaseTeam",
   components: {
-    XHeader,
-    HoverButton
+    XHeader
   },
   data () {
     return {
@@ -78,7 +84,7 @@ export default {
     },
   	backTo() {
         this.$router.push({
-            path: "/login"
+            path: "/index"
         });
     }
   }
@@ -127,7 +133,15 @@ hr {
   height: 40px;
 }
 .block-two {
-  height: 100px;
+  min-height: 50px;
+}
+.addTitle {
+	color: #E56F42;
+	margin-left: 30px;
+}
+.addSubTitle {
+	color: #D8D8DB;
+	margin-left: 30px;
 }
 .block-three {
   position: fixed;

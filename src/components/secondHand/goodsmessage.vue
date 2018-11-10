@@ -35,26 +35,34 @@
         </div>
       </div>
     </div>
+     <confirm v-model="bugVisible"
+      title="确定购买吗？"
+      @on-confirm="insertOrder">
+    </confirm>
   </div>  
 </template>
 
 <script>
-import {XHeader} from 'vux'
+import {XHeader,Confirm } from 'vux'
+import api from '../../services/main.js'
 
 export default{
   name: 'goodsmessage',
   components: {
-    XHeader
+    XHeader,
+    Confirm 
   },
   data () {
     return {
       title: "物品信息",
+      bugVisible:false,
       goodsMsg:{
         username: "填写用户名",
         userphone: 110,
         message: "这里填写物品信息",
         goodsimage: [],//用户上传的图片
-        userImg:''
+        userImg:'',
+        goodId:''
 
       }
     }
@@ -63,9 +71,27 @@ export default{
     call () {
       alert(this.username + '：' + this.userphone);
     },
-    buy () {
-      alert("购买商品");
+    buy(){
+    	this.bugVisible=true
+
     },
+   insertOrder() {
+		//购买
+		var orderId= this.goodsMsg.goodId
+		let config = {
+			"goodid":this.goodsMsg.goodId,
+			"address": "广东工业大学",
+			"way": "微信支付" 
+		}
+		api.insertOrder((err, res) => {
+			if (res.data.status == 1) {
+				this.$message.success("购买成功");
+				this.$router.push({ path: '/about/bought' });
+			} else {
+				this.$message.error("购买失败");
+			}
+		}, config)
+	},
   	backTo() {
         this.$router.push({
             path: "/index"
@@ -78,12 +104,22 @@ export default{
     this.goodsMsg.message=goodsmsg.describe
      this.goodsMsg.goodsimage= goodsmsg.img
       this.goodsMsg.userImg = goodsmsg.userImg
+      this.goodsMsg.goodId=goodsmsg.id
   },
 
 }
 </script>
 
-<style scoped >
+<style scoped>
+.goodsMsgWrap /deep/ .weui-mask {
+	opacity: 0.2;
+}
+.goodsMsgWrap /deep/ .weui-dialog strong {
+	color: #E56F42;
+}
+.goodsMsgWrap /deep/ .weui-dialog__ft a {
+	color: #E56F42;
+}
 .goodsMsgWrap{
   width: 100%;
   min-height: 100%;
@@ -94,7 +130,11 @@ hr {
   border: none;
   border-top: 1px solid #e7e7eb;
 }
+.goodsMsgWrap /deep/ .vux-header{
+	position: fixed;
+}
 #header {
+	width: 100%;
   height: 50px;
   padding-top: 25px;
   background-color: #F9F9F9;
