@@ -1,12 +1,10 @@
 <template>
     <div class="bought">
         <el-container>
-            <el-header>
-                <x-header id="header" :left-options="options">
-                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-                    <span class="headerTitle">{{title}}</span>
-                </x-header>
-            </el-header>
+            <div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
             <el-main class="boughtMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
@@ -38,22 +36,13 @@
 </template>
 
 <script>
-import { XHeader } from 'vux'
 import api from '../../services/main.js'
 
 export default {
     name: 'bought',
-    components: {
-        XHeader
-    },
     data () {
         return {
             title: "我买下的",
-            options: {
-                showBack: true,
-                backText: '',
-                preventGoBack: true
-            },
             boughtData: []
         }
     },
@@ -87,7 +76,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     padding: 0;
     margin: 0;
@@ -100,25 +89,36 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.bought .el-header {
-  padding: 0;
-  z-index: 99;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
 }
-.bought #header {
-  background-color: #F9F9F9;
-}
-.bought .headerTitle {
-    text-align: center;
-    color: #6B6B6B;
-    font-weight: bold;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
 .bought .boughtMain {
 	padding-left: 0;
 	padding-right: 0;
+	margin-top: 28px;
 }
-.bought .boughtCard {
-	margin: 12px 0;
-}.bought 
+.bought .boughtCard{
+	margin:15px 0;
+}
 .bought .boughtTitle {
 	color: #E56F42;
 	margin-right: 18px;

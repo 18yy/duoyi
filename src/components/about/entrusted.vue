@@ -1,13 +1,11 @@
 <template>
     <div class="entrusted">
          <el-container>
-            <el-header>
-                <x-header id="header" :left-options="options">
-                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-                    <span class="headerTitle">{{title}}</span>
-                </x-header>
-            </el-header>
-            <el-main>
+           <div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
+            <el-main class="entrustedMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
                     shadow="never" 
@@ -38,21 +36,12 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
 
 export default {
     name: 'entrusted',
-    components: {
-        XHeader
-    },
     data () {
         return {
             title: "我完成的委托",
-            options: {
-                showBack: true,
-                backText: '',
-                preventGoBack: true
-            },
             entrustedData: [{
                 EDname: "任务名称",
                 EDmoney: "444",
@@ -98,7 +87,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     padding: 0;
     margin: 0;
@@ -111,17 +100,30 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.entrusted .el-header {
-  padding: 0;
-  z-index: 99;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
 }
-.entrusted #header {
-  background-color: #F9F9F9;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
-.entrusted .headerTitle {
-    text-align: center;
-    color: #6B6B6B;
-    font-weight: bold;
+.entrustedMain {
+	margin-top: 28px;
 }
 .entrustedCard {
 	margin-top: 15px;
@@ -158,15 +160,6 @@ body {
 	font-size: 16px;
 	font-weight: bold;
 	margin-right: 5px;
-}
-.entrustedBtn {
-	float: right;
-	width: 60px;
-	height: 20px;
-	margin: 15px;
-	padding: 0;
-	border-radius: 0;
-	color: #B8B8BB;
 }
 .entrustedBtn {
 	float: right;

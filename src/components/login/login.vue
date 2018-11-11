@@ -114,7 +114,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     margin:0;
     padding:0; 
@@ -153,26 +153,26 @@ body {
     border: 1px dashed #707070;
     padding: 5px;
 }
-.Login .el-form {
+.Login /deep/ .el-form {
     margin-top: 20px;
 }
-.Login .el-form-item {
+.Login /deep/ .el-form-item {
     margin-bottom: 5px;
 }
-.Login .el-form-item__label {
+.Login /deep/ .el-form-item__label {
     line-height: 55px;
     color:#F0AD94;
     font-size: 15px;
 }
-.Login .el-input__inner {
+.Login /deep/ .el-input__inner {
     /* width: 150px; */
     border: 0;
     border-bottom: 1px solid #FEECDC;
 }
-.Login .el-form-item__error {
+.Login /deep/ .el-form-item__error {
     top: 80%;
 }
-.Login .el-button--text {
+.Login /deep/ .el-button--text {
     float: right;
     color:#C7C7CC;
 }

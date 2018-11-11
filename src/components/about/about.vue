@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     padding: 0;
     margin: 0;
@@ -157,7 +157,7 @@ body {
 	color: #E56F42;
 	display: block;
 }
-.aboutBtn span {
+.aboutBtn /deep/ span {
 	float: left;
 	margin-left: 30px;
 }

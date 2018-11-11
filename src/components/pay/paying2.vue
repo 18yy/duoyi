@@ -1,9 +1,10 @@
 <template>
 <div class="Paying">
-  <x-header id="header" :left-options="options">
-  	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-    <span class="header_title">{{title}}</span>
-</x-header>
+  <div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
+ 
   <div class="all">
     <div class="head">
       <img class="head-img" src="../../assets/pay/bar2.png">
@@ -170,20 +171,29 @@ export default{
 </script>
 
 <style scoped>
-#header {
-  background-color: #F9F9F9;
-  z-index: 99;
-  position: fixed;
-  width: 100%;
-  top: 0;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
 }
-.header_title {
-    height: 90px;
-    width: 180px;
-    text-align: center;
-    color: #E56F42;
-    font-weight: bold;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
+
 .block {
   background-color: #FEEEDE;
   width: 327px;

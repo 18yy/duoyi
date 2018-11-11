@@ -26,10 +26,10 @@
    
       <div :class="[isEdit?'editPriceBtn-check':'editPriceBtn-close']"  @click="closeBox">
         <transition name="fade" v-if="isEdit">
-           <x-icon type="ios-checkMark-empty" size="80" style="fill:#cc6633"  ></x-icon>
+           <div class="el-icon-check"></div>
         </transition>
         <transition name="fade" v-else>
-          <x-icon type="ios-close-empty" size="80" style="fill:white" ></x-icon>
+          <div class="el-icon-close"></div>
         </transition>
       </div>
     
@@ -130,6 +130,9 @@
     background: #ddd;
     border-radius: 50%;
     border: 2px solid  white;
+     display: flex;
+    justify-content:center;
+    align-items: center;
 
   }
   
@@ -141,7 +144,19 @@
     background:rgba(255,255,255,0.5);
     border-radius: 50%;
     border: 2px solid  #cc6633;
+     display: flex;
+    justify-content:center;
+    align-items: center;
 
+  }
+  .el-icon-close{
+  	 font-size: 18px;
+    color: white;
+  }
+  .el-icon-check{
+  	 font-size: 18px;
+    color: #cc6633;
+    font-weight: bold;
   }
  
 </style>

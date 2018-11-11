@@ -1,9 +1,9 @@
  	<template>
   <div class="publishWrap">
-    <XHeader>
-      <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;" @click="backTo"></x-icon>
-      发布闲置
-    </XHeader>
+    <div class="indexheader">
+        <span style="color:#E56F42;" class="el-icon-close" @click="backTo()"></span>
+		<p>发布闲置</p >
+	</div>
     <div class="publishBox">
       <div :class="[isBarShow?'leftContent-active':'leftContent']">
         <div class="publishTop">
@@ -48,13 +48,14 @@
           <div class="publishPriceAndType">
             <div>
               <p>价格</p>
-              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;" @click="showPrice"></x-icon>
+              
+              <span @click="showPrice">→</span>
             </div>
           </div>
           <div class="publishPriceAndType">
             <div>
               <p>分类</p>
-              <x-icon type="ios-arrow-thin-right" size="50" style="fill:#cc6633;position:absolute;right:0;top:50%;margin-top: -25px;" ></x-icon>
+              <span @click="showPrice">→</span>
             </div>
           </div>
         </div>
@@ -67,7 +68,7 @@
       <transition name="slide-fade">
         <div class="rightContent" v-show="isBarShow">
           <div class="rightBar">
-          <x-icon @click.native="showBar" type="ios-close-empty" size="80" style="fill:#cc6633;position:relative;top:6px;left:50%;margin-left: -40px;"></x-icon>
+          <div  @click="showBar" class="el-icon-close"></div>
           <img src="../../assets/publishBar/Attachment.png" alt="">
           <img src="../../assets/publishBar/Places.png" alt="">
           <img src="../../assets/publishBar/Videos.png" alt="">
@@ -211,6 +212,28 @@
 </script>
 
 <style scoped lang="less">
+.indexheader{
+		width: 100%;
+		height: 8%;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
+}
+.indexheader /deep/ .el-icon-close {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
+}
  .deleteMsgBox{
      width: 160px;
      height:160px;
@@ -220,24 +243,19 @@
   .publishWrap /deep/ .vux-header .vux-header-title{
     color: black!important;
   }
-  .vux-header{
-    background:rgb(249,249,249);
-    z-index:999
-  }
-  .vux-header-left {
-    margin-top: 25px;
-  }
+ 
   .publishWrap{
     width: 100%;
     height: 100%;
     overflow: hidden;
+    position:relative;
   }
   .publishBox{
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: 92%;
     background: rgb(254,238,222);
-    position: relative;
+    position: absolute;
     left: 0;
     bottom: 0;
      overflow: hidden; 
@@ -262,12 +280,13 @@
 
   .publishTop{
     width: 100%;
-    height: 43%;
+    height: 48%;
     background: white;
+    position:relative;
   }
   .publishBottom{
     width: 100%;
-    height: 34%;
+    height: 38%;
     background: white;
     margin-top:3%;
   }
@@ -334,8 +353,10 @@
   }
   .imgAndMore{
     width: 300px;
-    margin: 0 auto;
-    position: relative
+   	left:50%;
+   	margin-left:-150px;
+    position: absolute;
+    bottom:10%;
   }
   /*上传图片模块*/
   .pubUpdateImg{
@@ -471,6 +492,7 @@
   display: flex;
   flex-direction: column;
   justify-content:center;
+  align-items:space-around
 
 }
 .publishPriceAndType p{
@@ -482,6 +504,22 @@
   font-size: 14px;
   color:rgb(229,111,66);
    position: relative;
+   display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.publishPriceAndType>div>span{
+	font-size:18px;
+}
+.rightBar>div{
+	color:rgb(229,111,66);
+	position:relative;
+	left:50%;
+	margin-left:-15px;
+	padding-top: 33px;
+	font-size:30px;
+	width: 30px;
+  height: 30px;
 }
 .rightBar>img{
   width: 16px;

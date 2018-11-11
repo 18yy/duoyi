@@ -1,12 +1,10 @@
 <template>
     <div class="unused">
         <el-container>
-            <el-header>
-                <x-header id="header" :left-options="options">
-                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-                    <span class="headerTitle">{{title}}</span>
-                </x-header>
-            </el-header>
+            <div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
             <el-main class="unusedMain">
                 <el-card 
                     :body-style="{ padding: '0px' }" 
@@ -42,23 +40,17 @@
 </template>
 
 <script>
-import { XHeader,Confirm } from 'vux'
+import { Confirm } from 'vux'
 import api from '../../services/main.js'
 
 export default {
     name: 'unused',
     components: {
-        XHeader,
         Confirm
     },
     data () {
         return {
            title: "我发布的闲置",
-            options: {
-                showBack: true,
-                backText: '',
-                preventGoBack: true
-            },
             unusedData: [],
             deleteIndex:0,
             DeleteVisible: false
@@ -119,7 +111,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     padding: 0;
     margin: 0;
@@ -132,23 +124,34 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.unused .el-header {
-  	padding: 0;
-  	z-index: 99;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
 }
-.unused #header {
-  background-color: #F9F9F9;
-}
-.unused .headerTitle {
-    text-align: center;
-   color: #6B6B6B;
-    font-weight: bold;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
 .unusedMain {
 	padding-left: 0;
 	padding-right: 0;
+	margin-top: 28px;
 }
-.unusedCard {
+.unusedCard{
 	margin-top: 15px;
 }
 .unusedImg {
@@ -187,13 +190,13 @@ body {
 	border-radius: 0;
 	color: #B8B8BB;
 }
-.unused .weui-mask {
+.unused /deep/ .weui-mask {
 	opacity: 0.2;
 }
-.unused .weui-dialog strong {
+.unused /deep/ .weui-dialog strong {
 	color: #E56F42;
 }
-.unused .weui-dialog__ft a {
+.unused /deep/ .weui-dialog__ft a {
 	color: #E56F42;
 }
 </style>

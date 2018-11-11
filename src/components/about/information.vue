@@ -1,12 +1,10 @@
 <template>
     <div class="information">
         <el-container>
-        	<el-header>
-	            <x-header id="header" :left-options="options">
-                    <x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-	                <span class="headerTitle">{{title}}</span>
-	            </x-header>
-	        </el-header>
+        	<div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
             <el-main class="infoMain">
                 <Basic :name="name" :username="username" :money="money" :src="avatar"></Basic>
                 <label for="avatar">
@@ -51,14 +49,13 @@
 
 <script>
 
-import { XHeader,ConfirmPlugin } from 'vux'
+import { ConfirmPlugin } from 'vux'
 import Basic from './basicInfo.vue'
 import api from '../../services/main.js'
 
 export default {
     name: 'information',
     components: {
-        XHeader,
         Basic
     },
     data () {
@@ -71,11 +68,6 @@ export default {
             dialogVisible: false,
             currentIndex: 0,
             detail: "",
-            options: {
-                showBack: true,
-                backText: '',
-                preventGoBack: true
-            },
             InfoData: [{
                 title: "用户名",
                 detail: "",
@@ -207,7 +199,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     padding: 0;
     margin: 0;
@@ -220,12 +212,27 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.information .el-header {
-  	padding: 0;
-  	z-index: 99;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
 }
-.information #header {
-  background-color: #F9F9F9;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
 .information .headerTitle {
     text-align: center;
@@ -234,6 +241,7 @@ body {
 }
 .infoMain {
 	padding: 0;
+	margin-top: 40px;
 }
 .updateImg {
 	position: fixed;
@@ -246,7 +254,7 @@ body {
 .infoMain {
 	padding: 0;
 }
-information .updateImg {
+.information .updateImg {
 	position: fixed;
 	top: 98px;
 	left: 68px;
@@ -287,24 +295,24 @@ information .updateImg {
     float: right;
     margin-top: 12px;
 }
-.information .el-dialog{
+.information /deep/ .el-dialog{
 	width: 310px;
 	height: 150px;
 	box-shadow: 1px 3px 12px #FFE9DE;
 }
-.information .el-dialog__headerbtn .el-dialog__close {
+.information /deep/ .el-dialog__headerbtn .el-dialog__close {
 	color: #E56F42;
 }
-.information .el-dialog__title {
+.information /deep/ .el-dialog__title {
 	padding-top: 10px;
 	color: #EA8D69;
 	font-size: 15px;
 }
-.information .el-dialog__body {
+.information /deep/ .el-dialog__body {
 	padding: 0 20px;
 	color: #F9BE82;
 }
-.information .el-input__inner {
+.information /deep/ .el-input__inner {
 	padding: 0;
 	border: 0;
 	border-bottom: 1px solid #FEEEDE;

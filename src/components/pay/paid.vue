@@ -1,9 +1,9 @@
 <template>
 <div class="paid">
-  <x-Header id="header">
-    <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;" @click="backTo"></x-icon>
-    <span class="header_title">{{title}}</span>
-  </x-Header>
+   <div class="indexheader">
+        <span style="color:#E56F42;" class="el-icon-close" @click="backTo()"></span>
+		<p>{{title}}</p >
+	</div>
   <div class="all">
     <div class="head">
       <img class="success-img" src="../../assets/pay/order_success.svg" />
@@ -74,6 +74,28 @@ export default{
 </script>
 
 <style scoped>
+.indexheader{
+		width: 100%;
+		height: 8%;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42
+}
+.indexheader /deep/ .el-icon-close{
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
+}
 #header {
   background-color: #F9F9F9;
   z-index: 99;

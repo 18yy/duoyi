@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .basicCard {
 	height: 48px;
 	padding: 28px;
@@ -103,7 +103,6 @@ export default {
 	float: right;
 	color: #FFCC00;
 	font-size: 19px;
-    margin-top: 0.8px;
     margin-left: 8px;
 }
 </style>

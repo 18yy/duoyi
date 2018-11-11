@@ -1,9 +1,9 @@
 <template>
   <div class="goodsMsgWrap">
-    <x-header id="header">
-        <x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-25px;left:-8px;"
-          @click="backTo()"></x-icon>
-    </x-header>
+  <div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				
+			</div>
     <div class="block">
       <div class="goodsImgBox">
         <img :src="goodsMsg.goodsimage[0]" />
@@ -25,15 +25,11 @@
           <img :src="goodsMsg.goodsimage[index]" class="goods-image" />
         </div>
       </div>
-      <div class="block-three" @click="buy">
-        <div class="block-three-mid">
-          <p class="font-three">确认购买</p>
+   <div class="myBtn" @click="buy">
+          <button>
+          确认发布
+          </button>
         </div>
-        <div class="block-three-left">
-        </div>
-        <div class="block-three-right">
-        </div>
-      </div>
     </div>
      <confirm v-model="bugVisible"
       title="确定购买吗？"
@@ -112,6 +108,44 @@ export default{
 </script>
 
 <style scoped>
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #f9f9f9;
+		display: flex;
+		align-items: center;
+	}
+
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
+}
+.myBtn{
+	 width: 100%;
+    height: 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+
+}
+ .myBtn button{
+    width: 70%;
+    height: 50%;
+    background: rgb(255,149,101); 
+    border-radius: 30px;
+    box-shadow: 2px 8px 12px rgba(255,149,101,0.6);
+    font-size:20px;
+    color: white;
+    line-height: 55%;
+    text-align: center;
+  }
 .goodsMsgWrap /deep/ .weui-mask {
 	opacity: 0.2;
 }
@@ -144,7 +178,8 @@ hr {
 .goodsImgBox{
   width: 100%;
   height: 250px;
-  overflow: hidden
+  overflow: hidden;
+  margin-top: 40px;
 }
 .goodsImgBox>img{
   width: 100%;

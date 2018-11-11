@@ -1,12 +1,10 @@
 <template>
     <div class="Register">
         <el-container>
-            <el-header>
-                <x-header id="header" :left-options="options">
-                	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
-                    <span class="headerTitle">{{title}}</span>
-                </x-header>
-            </el-header>
+        	<div class="indexheader">
+            	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
+				<p>{{title}}</p >
+			</div>
             <el-main>
                 <el-card class="registerCard">
                     <img src="../../assets/register/logo.png" class="registerImg">
@@ -129,7 +127,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     margin:0;
     padding:0; 
@@ -142,46 +140,55 @@ body {
     bottom:0px;
     background-color: #FEECDC;
 }
-.Register .el-header {
-  padding: 0;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #FEECDC;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42;
 }
-.Register #header {
-  background-color: #FEECDC;
-}
-.Register .headerTitle {
-    height: 90px;
-    width: 180px;
-    text-align: center;
-    color: #E56F42;
-    font-weight: bold;
+.indexheader /deep/ .el-icon-arrow-left {
+	font-size: 25px;
+	margin-left:20px;
+	font-weight: bold;
 }
 .Register .registerCard {
     height: 420px;
     padding: 10px;
-    margin: 25px;
+    margin: 40px 25px 25px 25px;
 }
 .Register .registerImg {
     margin: 20px 70px;
     width: 80px;
     height: 70px;
 }
-.Register .el-form {
+.Register /deep/ .el-form {
     margin-top: 20px;
 }
-.Register .el-form-item {
+.Register /deep/ .el-form-item {
     margin-bottom: 5px;
 }
-.Register .el-form-item__label {
+.Register /deep/ .el-form-item__label {
     line-height: 55px;
     color:#F0AD94;
     font-size: 15px;
 }
-.Register .el-input__inner {
+.Register /deep/ .el-input__inner {
     /* width: 100px; */
     border: 0;
     border-bottom: 1px solid #FEECDC;
 }
-.Register .el-form-item__error {
+.Register /deep/ .el-form-item__error {
     top: 80%;
 }
 .confirm {
