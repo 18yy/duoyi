@@ -212,7 +212,7 @@ body {
     padding: 0;
     margin: 0;
 }
-.el-container {
+.information .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -220,14 +220,14 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.el-header {
+.information .el-header {
   	padding: 0;
   	z-index: 99;
 }
-#header {
+.information #header {
   background-color: #F9F9F9;
 }
-.headerTitle {
+.information .headerTitle {
     text-align: center;
     color: #6B6B6B;
     font-weight: bold;

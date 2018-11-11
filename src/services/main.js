@@ -19,7 +19,8 @@ import {
 import {
     addGoods,
     showGoods,
-    insertOrder
+    insertOrder,
+    payOrder
 } from './secondHand.js'
 
 export default {
@@ -37,5 +38,6 @@ export default {
 
     addGoods,
     showGoods,
-    insertOrder
+    insertOrder,
+    payOrder
 }

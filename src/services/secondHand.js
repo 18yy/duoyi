@@ -19,7 +19,7 @@ function showGoods(fn) {
         fn(err);
       });
 }
-//提交订单（购买）
+//提交订单
 //发布闲置
 function insertOrder(fn,data) {
 	services.post('/duoyi/order/insertOrder',data)
@@ -30,8 +30,19 @@ function insertOrder(fn,data) {
 		});
 }
 
+//购买闲置
+function payOrder(fn, data) {
+	services.post('/duoyi/order/pay',data)
+		.then(function (res) {
+		fn(false, res);
+		}).catch(function (err) {
+		fn(err);
+		});
+}
+
 export {
 	addGoods,
 	showGoods,
-	insertOrder
+	insertOrder,
+	payOrder
 }

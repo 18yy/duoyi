@@ -85,8 +85,9 @@ export default{
 		}
 		api.insertOrder((err, res) => {
 			if (res.data.status == 1) {
-				this.$message.success("购买成功");
-				this.$router.push({ path: '/about/bought' });
+				this.$store.state.orderid=res.data.orderid
+				
+				this.$router.push({ path: '/paying2' });
 			} else {
 				this.$message.error("购买失败");
 			}

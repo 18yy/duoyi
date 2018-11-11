@@ -1,6 +1,7 @@
 <template>
 <div class="Paying">
-  <x-header id="header" :left-options="options" @on-click-back="backTo()">
+  <x-header id="header" :left-options="options">
+  	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
     <span class="header_title">{{title}}</span>
 </x-header>
   <div class="all">
@@ -20,12 +21,12 @@
       <div>
         <div class="block-one-imgdiv"></div>
         <div class="block-one-p1">
-          <p class="font-two" style="font-weight: bold; display: block">商品名称</p>
+          <p class="font-two" style="font-weight: bold; display: block">{{goodname}}</p>
           <br/>
           <p class="font-two">备注信息</p>
         </div>
         <div class="block-one-p2">
-          <p class="font-two" style="font-weight: bold">价钱</p>
+          <p class="font-two" style="font-weight: bold">{{goodprice}}</p>
         </div>
       </div>
     </div>
@@ -35,7 +36,7 @@
         <img src="../../assets/Compose.png" class="img-pen" @click="write('way')"/>
       </div>
       <div class="block-child-three">
-        <p class="font-two">联系人 ：</p>
+        <p class="font-two">联系人 ：{{name}}</p>
         <p></p>      
       </div>
     </div>
@@ -44,8 +45,8 @@
         <p class="font-one">收货人电话</p>
         <img src="../../assets/Compose.png" class="img-pen"/>
       </div>
-      <div>
-        <p></p>
+      <div class="block-child-three">
+        <p class="font-two">{{phone}}</p>
       </div>
     </div>
     <div class="block block-four">
@@ -60,12 +61,18 @@
         </div>
       </div>
     </div>
+    <div class="block-five" @click="toPaying3">
+      <div class="block-child-five">
+      <p class="font-one font-three">NEXT</p>
+      </div>
+    </div>
   </div>
 </div>
 </template>
 
 <script>
 import { XHeader } from 'vux'
+import api from '../../services/main.js'
 
 export default{
   name: 'Paying2',
@@ -80,6 +87,10 @@ export default{
             backText: '',
             preventGoBack: true
         },
+        goodname:'',
+        goodprice:'',
+        name: "",
+        phone: "",
       payType: '支付',
         radios:[
           {
@@ -101,9 +112,29 @@ export default{
     }
   },
   methods: {
+  	toPaying3(){
+  		this.$router.push({
+            path: "/paying2/paying3"
+        });
+  	},
+  	init() {
+  		api.getInfo((err, res) => {
+            if (err || res.status != 200) {
+           	 	this.$message.error("出错了，刷新一下吧");
+             	return;
+             }
+            if (res.data.status == 1) {
+            	this.name = res.data.result.name;
+            	this.phone = res.data.result.phone;
+            	console.log(res);
+            } else{
+                this.$message.error(res.data.message);
+            }
+        });
+  	},
   	backTo() {
         this.$router.push({
-            path: "/login"
+            path: "/goodsMsg"
         });
     },
     check(index) {
@@ -127,13 +158,24 @@ export default{
     write(method){
       alert(method);
     }
+  },
+  mounted() {
+  	this.init();
+  	var goodsmsg=this.$store.state.showGoodsDetail
+  	console.log(goodsmsg)
+  	this.goodname=goodsmsg.name
+  	this.goodprice=goodsmsg.price
   }
 }
 </script>
 
-<style>
+<style scoped>
 #header {
   background-color: #F9F9F9;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 .header_title {
     height: 90px;
@@ -184,6 +226,15 @@ export default{
   margin-top: 8px;
   height: 151px;
 }
+.block-five {
+  height: 44px;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #FF9565;
+  /* border: 1px solid blue; */
+}
 .block-child-one {
   height: 16px;
   width: 286px;
@@ -197,6 +248,10 @@ export default{
   margin-top: 10px;
   margin-left: 15px;
   width: 50%;
+}
+.block-child-five {
+  padding-top: 14px;
+  text-align: center;
 }
 .block-one-imgdiv {
   height: 40px;
@@ -227,6 +282,9 @@ export default{
   display: inline;
   font-size: 14px;
   color: rgb(229,111,66);
+}
+.font-three {
+  color: #FF9565;
 }
 label {
   font-size: 14px;

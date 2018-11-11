@@ -107,10 +107,10 @@ export default {
                         }
                         if (res.data.status == 1) {
                             this.$router.push({ path: '/login' });
-                            console.log(res);
+                            //console.log(res);
                         } else{
                             this.$message.error(res.data.message);
-                            console.log(res);
+                            //console.log(res);
                         }
                     },data);
                 } else {

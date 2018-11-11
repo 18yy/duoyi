@@ -1,6 +1,7 @@
 <template>
   <div class="Paying3">
-    <x-header id="header" :left-options="options" @on-click-back="backTo()">
+    <x-header id="header" :left-options="options">
+    	<x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;" @click="backTo()"></x-icon>
         <span class="header_title">{{title}}</span>
     </x-header>
     <div class="head">
@@ -16,16 +17,16 @@
         <p class="font font-three">您将向“{{username}}”支付：</p>
       </div>
       <div class="block-child-one">
-        <p class="font font-four">￥{{total}}</p>
+        <p class="font font-four">￥{{goodprice}}</p>
       </div>
     </div>
     <hr/>
     <div class="block block-two">
       <div class="block-two-left">
-        <p class="font-two font-five" v-for="item in itemsName">{{item.name}}</p>
+        <p class="font-two font-five" >{{goodname}}</p>
       </div>
       <div class="block-two-right">
-        <p class="font-two font-five" v-for="item in itemsValue">￥{{valueString(item.value)}}</p>
+        <p class="font-two font-five" >￥{{goodprice}}</p>
       </div>
     </div>
     <hr/>
@@ -34,7 +35,7 @@
         <p class="font-two font-five">外送费</p>
       </div>
       <div class="block-two-right">
-        <p class="font-two font-five">￥{{valueString(fee)}}</p>
+        <p class="font-two font-five">￥{{fee}}</p>
       </div>
     </div>
     <hr/>
@@ -43,21 +44,27 @@
         <p class="font font-one">您的商城账户余额{{leave}}</p>
       </div>
     </div>
-    <div class="block-four" @click="pay">
+    <div class="block-four" @click="openPay">
       <div class="block-child-two">
-      <p class="font-one font-six">pay now</p>
+      <p class="font-one font-six">PAY NOW</p>
       </div>
     </div>
+     <confirm v-model="payVisible"
+      title="确定支付吗？"
+      @on-confirm="payOrder">
+    </confirm>
   </div>
 </template>
 
 <script>
-import { XHeader } from 'vux'
+import { XHeader,Confirm } from 'vux'
+import api from '../../services/main.js'
 
 export default {
   name: "Paying3",
   components: {
-      XHeader
+      XHeader,
+      Confirm
   },
   data () {
     return {
@@ -67,17 +74,13 @@ export default {
 	        backText: '',
 	        preventGoBack: true
 	    },
-      username: 'username',
-      fee: 44,
-      leave: 2000,
-      itemsName: [
-        {name: 'nike'},
-        {name: 'adidas'}
-      ],
-      itemsValue: [
-        {value: 2555},
-        {value: 1234}
-      ]
+      username: '',
+      fee: 0,
+      leave: 1000,
+      goodname:'',
+      goodprice:'',
+      payVisible: false
+     
     }
   },
   methods: {
@@ -86,29 +89,60 @@ export default {
             path: "/paying2"
         });
     },
-    valueString (value) {
-      var val=value.toString();
-      return val.indexOf(".")==-1 ? val+".00" : val+"0";
+    openPay () {
+    	this.payVisible = true;
     },
-    pay () {
-      alert("pay now");
+    payOrder() {
+    	//购买
+		var orderId= this.$store.state.orderid
+		var goodid =this.$store.state.showGoodsDetail.id
+
+		let config = {
+			 	"goodid":goodid,
+			    "orderid":orderId,
+			    "price":this.goodprice
+		}
+		api.payOrder((err, res) => {
+			if (res.data.status == 1) {
+				this.$message.success("支付成功");
+					 this.$router.push({
+			            name: "Paid"
+			        });
+			} else {
+				this.$message.error(res.data.message);
+			}
+		}, config)
     }
   },
   computed: {
-    total () {
-      var tol=0;
-      for(var i=0; i<this.itemsValue.length; i++){
-        tol += this.itemsValue[i].value;
-      }
-      return this.valueString(tol);
-    }
+  
+  },
+  mounted(){
+  	var goodsmsg=this.$store.state.showGoodsDetail
+  	console.log(goodsmsg)
+  	this.goodname=goodsmsg.name
+  	this.goodprice=goodsmsg.price
+  	this.username=goodsmsg.username
   }
 }  
 </script>
 
-<style>
+<style scoped>
+.Paying3 /deep/ .weui-mask {
+	opacity: 0.2;
+}
+.Paying3 /deep/ .weui-dialog strong {
+	color: #E56F42;
+}
+.Paying3 /deep/ .weui-dialog__ft a {
+	color: #E56F42;
+}
 #header {
   background-color: #F9F9F9;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 .header_title {
     height: 90px;
@@ -126,8 +160,9 @@ hr {
 }
 .head {
   height: 65px;
-  width: 327px;    
-  margin: 25px auto;
+  width: 327px; 
+  margin: 0 auto;  
+  padding: 80px 0 25px 0;
 }
 .head-img {
   width: 300px;
@@ -175,7 +210,7 @@ hr {
   width: 100%;
   background-color: rgb(229,111,66);
   position: fixed;
-  top: 600px;
+  bottom: 0;
   /* border: 1px solid blue; */
 }
 .block-child-one {

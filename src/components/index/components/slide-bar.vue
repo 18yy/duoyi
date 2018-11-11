@@ -19,7 +19,7 @@
             <img src="../../../assets/indexslidebar/jinbi.png" alt="">
             <span>我的金币</span>
           </div>
-          <div>
+          <div @click="goto">
             <img src="../../../assets/indexslidebar/goods.png" alt="">
             <span>我的闲置</span>
           </div>
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import api from '../../services/main.js'
+import api from '../../../services/main.js'
 
     export default {
         name: 'slide-bar',
@@ -94,6 +94,10 @@ import api from '../../services/main.js'
         	},
             hideSlide: function() {
                 this.$store.dispatch('hideSlideBar');
+            },
+            goto(){
+            	 this.$store.dispatch('hideSlideBar');
+            	this.$router.push({ path: '/about/unused' });
             }
         },
         computed: {
@@ -180,7 +184,13 @@ import api from '../../services/main.js'
         background: rgb(254, 238, 222);
         margin-bottom: 5px;
     }
-    
+    .userAvatar img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgb(254, 238, 222);
+        margin-bottom: 5px;
+    }
     .userName {
         font-size: 18px;
         color: rgb(229, 111, 66);

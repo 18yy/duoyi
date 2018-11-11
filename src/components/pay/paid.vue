@@ -1,9 +1,9 @@
 <template>
 <div class="paid">
-  <XHeader>
-    <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;"></x-icon>
-    支付成功
-  </XHeader>
+  <x-Header id="header">
+    <x-icon slot="overwrite-left" type="ios-close-empty" size="100" style="fill:#cc6633;position:relative;top:-25px;left:-10px;" @click="backTo"></x-icon>
+    <span class="header_title">{{title}}</span>
+  </x-Header>
   <div class="all">
     <div class="head">
       <img class="success-img" src="../../assets/pay/order_success.svg" />
@@ -19,7 +19,7 @@
       <hr/>
       <p class="mid-font">商品交易日期：{{month1}}月{{date1}}日</p>
       <hr/>
-      <p class="mid-font">商品支付金额：{{money}}</p>
+      <p class="mid-font">商品支付金额：￥{{money}}</p>
       <hr/>
       <p class="mid-font">估计到货时间：{{month2}}月{{date2}}日</p>
       <hr/>
@@ -42,7 +42,7 @@ export default{
   },
   data () {
     return {
-      title: "支付",
+      title: "支付成功",
       options: {
         showBack: true,
         backText: '',
@@ -60,16 +60,26 @@ export default{
   methods: {
   	backTo() {
             this.$router.push({
-                path: "/paying2/paying3"
+                name: "Bought"
             });
         }
+
+  },
+   mounted(){
+  	var goodsmsg=this.$store.state.showGoodsDetail
+  	this.money=goodsmsg.price
   }
+
 }
 </script>
 
 <style>
 #header {
   background-color: #F9F9F9;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 .header_title {
     height: 90px;
@@ -102,7 +112,8 @@ p {
 .all {
   font-size: 14px;
   width: 80%;
-  margin: 25px auto;
+  margin: 0 auto;  
+  padding: 60px 0 25px 0;
 }
 .head {
   height: 170px;

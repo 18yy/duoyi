@@ -92,7 +92,7 @@ body {
     padding: 0;
     margin: 0;
 }
-.el-container {
+.bought .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -100,56 +100,56 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.el-header {
+.bought .el-header {
   padding: 0;
   z-index: 99;
 }
-#header {
+.bought #header {
   background-color: #F9F9F9;
 }
-.headerTitle {
+.bought .headerTitle {
     text-align: center;
     color: #6B6B6B;
     font-weight: bold;
 }
-.boughtMain {
+.bought .boughtMain {
 	padding-left: 0;
 	padding-right: 0;
 }
-.boughtCard {
+.bought .boughtCard {
 	margin: 12px 0;
-}
-.boughtTitle {
+}.bought 
+.bought .boughtTitle {
 	color: #E56F42;
 	margin-right: 18px;
 }
-/*.boughtName {
+/*.bought .boughtName {
 	color: #E56F42;
 	margin-left: 18px;
 } */
-.boughtImg {
+.bought .boughtImg {
     width: 60px;
     height: 60px;
     float: left;
     margin: 18px;
 }
-.boughtInfo {
+.bought .boughtInfo {
 	padding-top: 24px; 
 }
-.boughtGoods {
+.bought .boughtGoods {
 	color: #E56F42;
 	font-size: 16px;
 }
-.boughtMoney {
+.bought .boughtMoney {
 	color: #FF3840;
 	font-size: 18px;
 	margin-top: 25px;
 	margin-bottom: 10px;
 }
-.btnGroup {
+.bought .btnGroup {
 	float:right;
 }
-.boughtBtn {
+.bought .boughtBtn {
 	width: 60px;
 	height: 20px;
 	margin: 15px;

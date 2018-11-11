@@ -39,7 +39,7 @@
                 </el-card>
             </el-main>
         </el-container>
-    </di
+    </div>
 </template>
 
 <script>
@@ -127,7 +127,7 @@ body {
     padding: 0;
     margin: 0;
 }
-.el-container {
+.orders .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -135,14 +135,14 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.el-header {
+.orders .el-header {
   padding: 0;
   z-index: 99;
 }
-#header {
+.orders #header {
   background-color: #F9F9F9;
 }
-.headerTitle {
+.orders .headerTitle {
     text-align: center;
     color: #6B6B6B;
     font-weight: bold;

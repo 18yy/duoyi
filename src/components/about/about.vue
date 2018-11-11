@@ -1,5 +1,5 @@
 <template>
-    <div class="About">
+    <div class="about">
          <el-container>
          	<el-header>
 	            <x-header id="header" :left-options="{ showBack: false }">
@@ -120,7 +120,7 @@ body {
     padding: 0;
     margin: 0;
 }
-.el-container {
+.about .el-container {
     width:100%;
     clear:both;
     position:absolute;
@@ -128,14 +128,14 @@ body {
     bottom:0px;
     background-color: #EFEFF4;
 }
-.el-header {
+.about .el-header {
   padding: 0;
   z-index: 99;
 }
-#header {
+.about #header {
   background-color: #F9F9F9;
 }
-.headerTitle {
+.about .headerTitle {
     text-align: center;
     color: #E56F42;
     font-weight: bold;
