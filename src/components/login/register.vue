@@ -5,7 +5,7 @@
             	<span style="color:#E56F42;" class="el-icon-arrow-left" @click="backTo()"></span>
 				<p>{{title}}</p >
 			</div>
-            <el-main>
+            <el-main class="registerMain">
                 <el-card class="registerCard">
                     <img src="../../assets/register/logo.png" class="registerImg">
                     <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
@@ -162,10 +162,14 @@ body {
 	margin-left:20px;
 	font-weight: bold;
 }
+.registerMain {
+	padding-left: 0;
+	padding-right: 0;
+}
 .Register .registerCard {
     height: 420px;
     padding: 10px;
-    margin: 40px 25px 25px 25px;
+    margin: 40px;
 }
 .Register .registerImg {
     margin: 20px 70px;

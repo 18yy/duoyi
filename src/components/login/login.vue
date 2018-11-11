@@ -6,7 +6,7 @@
                     <span class="headerTitle">{{title}}</span>
                 </x-header>
             </el-header>
-            <el-main>
+            <el-main class="loginMain">
                 <el-card class="loginCard">
                     <img src="../../assets/login/Profile.png" class="loginImg">
                     <el-form 
@@ -140,10 +140,14 @@ body {
     color: #E56F42;
     font-weight: bold;
 }
+.loginMain {
+	padding-left: 0;
+	padding-right: 0;
+}
 .Login .loginCard {
     height: 420px;
     padding: 10px;
-    margin: 25px;
+    margin: 25px 40px;
 }
 .Login .loginImg {
     margin: 20px 70px;

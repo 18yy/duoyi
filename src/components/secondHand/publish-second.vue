@@ -61,7 +61,7 @@
         </div>
         <div class="publishBtn">
           <button @click="submitPublish">
-          确认发布
+          确认购买
           </button>
         </div>
         </div>
