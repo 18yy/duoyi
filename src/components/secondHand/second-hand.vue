@@ -72,7 +72,7 @@
   }
   .secondHand>div{
     box-sizing: border-box;
-    padding: 30px 0 70px 0;
+    padding: 2rem 0 70px 0;
     width:92%;
     min-height: 100%;
     margin: 0 auto;

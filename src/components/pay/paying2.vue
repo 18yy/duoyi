@@ -26,7 +26,7 @@
           <p class="font-two">备注信息</p>
         </div>
         <div class="block-one-p2">
-          <p class="font-two" style="font-weight: bold">{{goodprice}}</p>
+          <p class="font-two" style="font-weight: bold">￥{{goodprice}}</p>
         </div>
       </div>
     </div>

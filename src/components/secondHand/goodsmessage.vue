@@ -1,7 +1,7 @@
 <template>
   <div class="goodsMsgWrap">
     <x-header id="header">
-        <x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-20px;left:-8px;"
+        <x-icon slot="overwrite-left" type="ios-arrow-back" size="78" style="fill:#E56F42;position:relative;top:-25px;left:-8px;"
           @click="backTo()"></x-icon>
     </x-header>
     <div class="block">

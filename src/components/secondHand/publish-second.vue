@@ -16,7 +16,7 @@
             </textarea>
           </div>
           <div class="imgAndMore">
-              <ul class="updateImg">
+              <ul class="pubUpdateImg">
                 <li class="previewBox" v-for="(value,key) in imgs" :key="key"> 
                    <img :src="deleteSrc" alt="delete" @click="deleteImg(key)"> 
                    <img :src="getImgUrl(value)" class="previewImg">
@@ -338,12 +338,12 @@
     position: relative
   }
   /*上传图片模块*/
-  .updateImg{
+  .pubUpdateImg{
     width: 260px;
     height: 60px;
 
   }
- .updateImg li{
+ .pubUpdateImg li{
    width: 60px;
    height: 60px;
    display: inline-block;
@@ -353,7 +353,7 @@
     border-radius: 10px;
     background: rgb(254, 238, 222);
  }
- .updateImg li img[alt="update"]{
+ .pubUpdateImg li img[alt="update"]{
    width: 16px;
    height: 16px;
    position: absolute;

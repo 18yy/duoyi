@@ -200,6 +200,7 @@ import api from '../../../services/main.js'
     .userDes {
         font-size: 12px;
         color: rgb(229, 111, 66);
+        padding-top: .2rem
     }
     
    .slideMenu{

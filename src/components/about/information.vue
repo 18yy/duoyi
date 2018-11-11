@@ -246,7 +246,7 @@ body {
 .infoMain {
 	padding: 0;
 }
-.updateImg {
+information .updateImg {
 	position: fixed;
 	top: 98px;
 	left: 68px;
