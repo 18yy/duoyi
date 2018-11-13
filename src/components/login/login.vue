@@ -10,8 +10,7 @@
                     <el-form 
                     	:model="loginForm" 
                     	:rules="rules" 
-                    	ref="loginForm" 
-                    	label-width="80px">
+                    	ref="loginForm">
                         <el-form-item label="登录名" prop="username">
                             <el-input v-model="loginForm.username"></el-input>
                         </el-form-item>
@@ -27,10 +26,10 @@
                     </div>
                 </el-card>
             </el-main>
-            <el-footer class="footer">
+            <div class="footer">
                 <el-button @click="jump()" class="register">注册</el-button>
                 <el-button @click="submitForm('loginForm')" class="loginBtn">登录</el-button>
-            </el-footer>
+            </div>
         </el-container>
     </div>
 </template>
@@ -168,9 +167,14 @@ body {
     width: 100%;
 }
 .Login /deep/ .el-form-item__label {
+	width: 68px;
     line-height: 55px;
     color:#F0AD94;
     font-size: 15px;
+}
+.Login /deep/ .el-form-item__content {
+	float: right;
+	width: 4.2rem;
 }
 .Login /deep/ .el-input__inner {
     /* width: 150px; */
@@ -220,6 +224,13 @@ body {
     color: #FFFFFF;
 }
 .footer {
-	margin-bottom: 18px;
+	background-color: #FEECDC;
+    color: #333;
+    text-align: center;
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	height: 88px;
 }
 </style>
