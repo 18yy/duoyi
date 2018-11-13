@@ -8,7 +8,7 @@
             <el-main class="registerMain">
                 <el-card class="registerCard">
                     <img src="../../assets/register/logo.png" class="registerImg">
-                    <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="170px">
+                    <el-form :model="registerForm" :rules="rules" ref="registerForm" label-width="90px">
                         <el-form-item label="用户名" prop="name">
                             <el-input v-model="registerForm.name"></el-input>
                         </el-form-item>
@@ -24,7 +24,7 @@
                     </el-form>
                 </el-card>
             </el-main>
-            <el-footer height="150px">
+            <el-footer class="footer">
                 <el-button @click.native="submitForm('registerForm')" class="confirm">完成注册</el-button>
             </el-footer>
         </el-container>
@@ -169,7 +169,7 @@ body {
 .Register .registerCard {
     height: 420px;
     padding: 10px;
-    margin: 40px;
+    margin: 55px 40px;
 }
 .Register .registerImg {
     margin: 20px 70px;
@@ -178,9 +178,11 @@ body {
 }
 .Register /deep/ .el-form {
     margin-top: 20px;
+    width: 100%;
 }
 .Register /deep/ .el-form-item {
     margin-bottom: 5px;
+    width: 100%;
 }
 .Register /deep/ .el-form-item__label {
     line-height: 55px;
@@ -202,6 +204,9 @@ body {
     height: 50px;
     background-color: #FF9565;
     color: #FFFFFF;
+}
+.Register .footer {
+	margin-bottom: 18px;
 }
 </style>
 

@@ -1,11 +1,9 @@
 <template>
     <div class="Login">
         <el-container>
-            <el-header>
-                <x-header id="header" :left-options="{ showBack: false }">
-                    <span class="headerTitle">{{title}}</span>
-                </x-header>
-            </el-header>
+            <div class="indexheader">
+				<p>{{title}}</p >
+			</div>
             <el-main class="loginMain">
                 <el-card class="loginCard">
                     <img src="../../assets/login/Profile.png" class="loginImg">
@@ -13,7 +11,7 @@
                     	:model="loginForm" 
                     	:rules="rules" 
                     	ref="loginForm" 
-                    	label-width="150px">
+                    	label-width="80px">
                         <el-form-item label="登录名" prop="username">
                             <el-input v-model="loginForm.username"></el-input>
                         </el-form-item>
@@ -29,7 +27,7 @@
                     </div>
                 </el-card>
             </el-main>
-            <el-footer height="150px">
+            <el-footer class="footer">
                 <el-button @click="jump()" class="register">注册</el-button>
                 <el-button @click="submitForm('loginForm')" class="loginBtn">登录</el-button>
             </el-footer>
@@ -127,18 +125,22 @@ body {
     bottom:0px;
     background-color: #FEECDC;
 }
-.Login .el-header {
-  padding: 0;
-}
-.Login #header {
-  background-color: #FEECDC;
-}
-.Login .headerTitle {
-    height: 90px;
-    width: 180px;
-    text-align: center;
-    color: #E56F42;
-    font-weight: bold;
+.indexheader{
+		width: 100%;
+		height: 45px;
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		background-color: #FEECDC;
+		display: flex;
+		align-items: center;
+	}
+.indexheader>p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -25px;
+	color:#E56F42;
 }
 .loginMain {
 	padding-left: 0;
@@ -147,7 +149,7 @@ body {
 .Login .loginCard {
     height: 420px;
     padding: 10px;
-    margin: 25px 40px;
+    margin: 55px 40px;
 }
 .Login .loginImg {
     margin: 20px 70px;
@@ -159,9 +161,11 @@ body {
 }
 .Login /deep/ .el-form {
     margin-top: 20px;
+    width: 100%;
 }
 .Login /deep/ .el-form-item {
     margin-bottom: 5px;
+    width: 100%;
 }
 .Login /deep/ .el-form-item__label {
     line-height: 55px;
@@ -214,5 +218,8 @@ body {
 .loginBtn {
     background-color: #FF9565;
     color: #FFFFFF;
+}
+.footer {
+	margin-bottom: 18px;
 }
 </style>

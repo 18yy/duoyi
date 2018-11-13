@@ -27,7 +27,7 @@
       </div>
    <div class="myBtn" @click="buy">
           <button>
-          确认发布
+          确认购买
           </button>
         </div>
     </div>

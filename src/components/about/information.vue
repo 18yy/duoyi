@@ -234,30 +234,14 @@ body {
 	margin-left:20px;
 	font-weight: bold;
 }
-.information .headerTitle {
-    text-align: center;
-    color: #6B6B6B;
-    font-weight: bold;
-}
 .infoMain {
 	padding: 0;
 	margin-top: 40px;
 }
 .updateImg {
 	position: fixed;
-	top: 98px;
-	left: 68px;
-	width: 15px;
-	height: 15px;
-	border-radius: 100%;
-}
-.infoMain {
-	padding: 0;
-}
-.information .updateImg {
-	position: fixed;
-	top: 98px;
-	left: 68px;
+	top: 118px;
+	left: 78px;
 	width: 15px;
 	height: 15px;
 	border-radius: 100%;
